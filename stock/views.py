@@ -1,14 +1,25 @@
-from django.views import generic
-from .forms import InquiryForm, StockCreateForm
+
 import logging
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-
+from django.views import generic
 from django.shortcuts import get_object_or_404
 
+from .forms import InquiryForm, StockCreateForm
 from .models import Stock
+
+logger = logging.getLogger(__name__)
+
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        # URLに埋め込まれた主キーから日記データを1件取得。取得できなかった場合は404エラー
+        stock = get_object_or_404(Stock, pk=self.kwargs['pk'])
+        # ログインユーザーと日記の作成ユーザーを比較し、異なればraise_exceptionの設定に従う
+        return self.request.user == stock.user
 
 class IndexView(generic.TemplateView):
     template_name = "index.html"
@@ -16,7 +27,6 @@ class IndexView(generic.TemplateView):
 class InquiryView(generic.FormView):
     template_name = "inquiry.html"
     form_class = InquiryForm
-
 
     def form_valid(self, form):
         form.send_email()
@@ -35,7 +45,7 @@ class StockListView(LoginRequiredMixin, generic.ListView):
         return stocks
 
 
-class StockDetailView(LoginRequiredMixin,  generic.DetailView): #,OnlyYouMixin,
+class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
     template_name = 'stock_detail.html'
 
@@ -58,7 +68,7 @@ class StockCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_invalid(form)
 
 
-class StockUpdateView(LoginRequiredMixin, generic.UpdateView):
+class StockUpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView):
     model = Stock
     template_name = 'stock_update.html'
     form_class = StockCreateForm
@@ -75,7 +85,7 @@ class StockUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 
-class StockDeleteView(LoginRequiredMixin,  generic.DeleteView): #OnlyYouMixin,
+class StockDeleteView(LoginRequiredMixin,  OnlyYouMixin, generic.DeleteView):
     model = Stock
     template_name = 'stock_delete.html'
     success_url = reverse_lazy('stock:stock_list')
@@ -83,3 +93,5 @@ class StockDeleteView(LoginRequiredMixin,  generic.DeleteView): #OnlyYouMixin,
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "日記を削除しました。")
         return super().delete(request, *args, **kwargs)
+
+

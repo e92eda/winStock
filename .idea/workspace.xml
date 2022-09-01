@@ -4,35 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="First commit.">
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/email/email_confirmation_message.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/email/email_confirmation_subject.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/email/password_reset_key_message.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/email/password_reset_key_subject.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/email_confirm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/password_reset.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_done.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_from_key.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_from_key_done.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/signupt.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accountT/verification_sent.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/assets/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/cleanblog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/mystyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/one-page-wonder.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/403.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/500.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/inquiry.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/urls.py" afterDir="false" />
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="setting fileを分割する前。サインアップではエラーのまま。">
+      <change afterPath="$PROJECT_DIR$/stock/templates/stock_create.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock/templates/stock_delete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock/templates/stock_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock/templates/stock_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/winStock/settings_common.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/winStock/settings_dev.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/email_confirmation_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/email_confirmation_message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/email_confirmation_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/email_confirmation_subject.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/password_reset_key_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/password_reset_key_message.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/password_reset_key_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/password_reset_key_subject.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_from_key.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_from_key_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/signupt.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/verification_sent.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/verification_sent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winStock/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winStock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/urls.py" afterDir="false" />
@@ -45,8 +38,26 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../venv/Lib/site-packages/django/core/mail/backends/console.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/accounts/admin.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/accounts/models.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/accounts/templates/account/signup.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/accounts/templates/account/verification_sent.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/stock/models.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/stock/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/winStock/settings.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/winStock/urls.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,33 +68,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "X:/PythonsWin/venv/Lib/site-packages/django/core/mail/backends/console.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;X:/PythonsWin/APItest&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="X:\PythonsWin\winStock\stock\templates" />
+      <recent name="X:\PythonsWin\winStock\winStock" />
       <recent name="X:\PythonsWin\winStock\accounts" />
       <recent name="X:\PythonsWin\winStock" />
       <recent name="X:\PythonsWin\winStock\stock" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.migrate">
+  <component name="RunManager" selected="Python.runserver">
     <configuration name="makemigrations" type="PythonConfigurationType" factoryName="Python">
       <module name="winStock" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DB_PASSWORD" value="kohinata" />
+        <env name="DB_USER" value="postgres" />
+        <env name="DJANGO_SETTINGS_MODULE" value="winStock.settings_dev" />
       </envs>
       <option name="SDK_HOME" value="X:\PythonsWin\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -106,6 +122,9 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DB_PASSWORD" value="kohinata" />
+        <env name="DB_USER" value="postgres" />
+        <env name="DJANGO_SETTINGS_MODULE" value="winStock.settings_dev" />
       </envs>
       <option name="SDK_HOME" value="X:\PythonsWin\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -128,6 +147,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="winStock.settings_dev" />
       </envs>
       <option name="SDK_HOME" value="X:\PythonsWin\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -188,7 +208,8 @@
       <workItem from="1661845743281" duration="81000" />
       <workItem from="1661845884031" duration="44000" />
       <workItem from="1661845935942" duration="10203000" />
-      <workItem from="1661886117821" duration="3373000" />
+      <workItem from="1661886117821" duration="16031000" />
+      <workItem from="1661997031623" duration="472000" />
     </task>
     <task id="LOCAL-00001" summary="First commit.">
       <created>1661854695792</created>
@@ -197,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661854695792</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="setting fileを分割する前。サインアップではエラーのまま。">
+      <created>1661906951647</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1661906951647</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +247,8 @@
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="First commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit." />
+    <MESSAGE value="setting fileを分割する前。サインアップではエラーのまま。" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting fileを分割する前。サインアップではエラーのまま。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -233,8 +262,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1661906860139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1661904551573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1661906852006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1661941197182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1661997036717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1661941206658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
