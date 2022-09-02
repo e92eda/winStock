@@ -4,31 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="setting fileを分割する前。サインアップではエラーのまま。">
-      <change afterPath="$PROJECT_DIR$/stock/templates/stock_create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/stock_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/stock_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock/templates/stock_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/winStock/settings_common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/winStock/settings_dev.py" afterDir="false" />
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="サインアップではエラー解消">
+      <change afterPath="$PROJECT_DIR$/myActions/ksAPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/winStock.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/winStock.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/email_confirmation_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/email_confirmation_message.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/email_confirmation_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/email_confirmation_subject.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/password_reset_key_message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/password_reset_key_message.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email/password_reset_key_subject.txt" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email/password_reset_key_subject.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/email_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/email_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_from_key.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/password_reset_from_key_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/password_reset_from_key_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/signupt.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/templates/accountT/verification_sent.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/account/verification_sent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/inquiry.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/inquiry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winStock/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winStock/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winStock/settings_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings_common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winStock/settings_dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings_dev.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winStock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winStock/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,12 +76,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;X:/PythonsWin/APItest&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/kunieda/Dropbox/PythonsWin/winStock&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -149,9 +152,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="winStock.settings_dev" />
       </envs>
-      <option name="SDK_HOME" value="X:\PythonsWin\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -209,7 +212,10 @@
       <workItem from="1661845884031" duration="44000" />
       <workItem from="1661845935942" duration="10203000" />
       <workItem from="1661886117821" duration="16031000" />
-      <workItem from="1661997031623" duration="472000" />
+      <workItem from="1661997031623" duration="4541000" />
+      <workItem from="1662069925599" duration="3674000" />
+      <workItem from="1662095158052" duration="288000" />
+      <workItem from="1662095453941" duration="548000" />
     </task>
     <task id="LOCAL-00001" summary="First commit.">
       <created>1661854695792</created>
@@ -225,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661906951647</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="サインアップではエラー解消">
+      <created>1661997853313</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1661997853314</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,7 +261,8 @@
     </ignored-roots>
     <MESSAGE value="First commit." />
     <MESSAGE value="setting fileを分割する前。サインアップではエラーのまま。" />
-    <option name="LAST_COMMIT_MESSAGE" value="setting fileを分割する前。サインアップではエラーのまま。" />
+    <MESSAGE value="サインアップではエラー解消" />
+    <option name="LAST_COMMIT_MESSAGE" value="サインアップではエラー解消" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -263,7 +277,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1661941197182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1661997036717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1662095543316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1661941206658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
