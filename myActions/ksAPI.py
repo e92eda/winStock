@@ -82,7 +82,6 @@ def get_order(token,order_type=0):
     return pd.DataFrame(data, columns=['注文ID','コード','銘柄', '注文価格','売/買','注文数','現在価格','期限'])
 
 # ポジションを確認する関数
-
 def get_position(token, product=0):
     url = f'http://localhost:18080/kabusapi/positions?product={product}'
     response = requests.get(url, headers={'X-API-KEY': token,})

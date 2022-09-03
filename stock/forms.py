@@ -48,7 +48,7 @@ class InquiryForm(forms.Form):
 class StockCreateForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ('title', 'content', 'photo1', 'photo2', 'photo3',)
+        fields = ('title', 'comment', 'photo1', 'photo2', 'photo3',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

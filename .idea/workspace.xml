@@ -4,34 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="サインアップではエラー解消">
-      <change afterPath="$PROJECT_DIR$/myActions/ksAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/winStock.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/winStock.iml" afterDir="false" />
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myActions/ksAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/myActions/ksAPI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/templates/inquiry.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/inquiry.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winStock/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winStock/settings_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings_common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winStock/settings_dev.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings_dev.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winStock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/winStock/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/stock_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/stock_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,9 +85,9 @@
         <env name="DB_USER" value="postgres" />
         <env name="DJANGO_SETTINGS_MODULE" value="winStock.settings_dev" />
       </envs>
-      <option name="SDK_HOME" value="X:\PythonsWin\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -129,9 +110,9 @@
         <env name="DB_USER" value="postgres" />
         <env name="DJANGO_SETTINGS_MODULE" value="winStock.settings_dev" />
       </envs>
-      <option name="SDK_HOME" value="X:\PythonsWin\venv\Scripts\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
@@ -215,7 +196,7 @@
       <workItem from="1661997031623" duration="4541000" />
       <workItem from="1662069925599" duration="3674000" />
       <workItem from="1662095158052" duration="288000" />
-      <workItem from="1662095453941" duration="548000" />
+      <workItem from="1662095453941" duration="11734000" />
     </task>
     <task id="LOCAL-00001" summary="First commit.">
       <created>1661854695792</created>
@@ -238,7 +219,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661997853314</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動">
+      <created>1662096044476</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662096044476</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動">
+      <created>1662096053522</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662096053522</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +257,8 @@
     <MESSAGE value="First commit." />
     <MESSAGE value="setting fileを分割する前。サインアップではエラーのまま。" />
     <MESSAGE value="サインアップではエラー解消" />
-    <option name="LAST_COMMIT_MESSAGE" value="サインアップではエラー解消" />
+    <MESSAGE value="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -276,8 +272,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1661941197182" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1662095543316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1661941206658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1662192977845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1662193002365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1662192909307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

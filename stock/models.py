@@ -3,11 +3,32 @@ from django.db import models
 
 
 class Stock(models.Model):
-    """日記モデル"""
+    """Stockモデル"""
+    ExecutionID = models.CharField(null=True, max_length=40)
+    AccountType = models.CharField(null=True, max_length=6)
+    Symbol = models.IntegerField(null=True,)
+    SymbolName = models.CharField(null=True,verbose_name='タイトル', max_length=40)
+    Exchange = models.IntegerField(null=True)
+    ExchangeName = models.CharField(null=True, max_length=40)
+    ExecutionDay = models.DateField(null=True)
+    Price = models.IntegerField(null=True)
+    LeavesQty = models.IntegerField(null=True)
+    HoldQty = models.IntegerField(null=True)
+    Side = models.IntegerField(null=True)
+    Expenses = models.DecimalField(null=True,decimal_places=1, max_digits=6)
+    Commission = models.DecimalField(null=True, decimal_places=1, max_digits=6)
+    CommissionTax = models.DecimalField(null=True, decimal_places=1, max_digits=6)
+    ExpireDay = models.DateField(null=True)
+    MarginTradeType = models.IntegerField(null=True)
+    CurrentPrice = models.DecimalField(null=True,decimal_places=1, max_digits=6)
+    Valuation = models.DecimalField(null=True,decimal_places=1, max_digits=6)
+    ProfitLoss = models.DecimalField(null=True,decimal_places=1, max_digits=6)
+    ProfitLossRate = models.DecimalField(null=True,decimal_places=5, max_digits=6)
 
+    comment = models.TextField(verbose_name='コメント', blank=True, null=True)
     user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)
     title = models.CharField(verbose_name='タイトル', max_length=40)
-    content = models.TextField(verbose_name='本文', blank=True, null=True)
+    # content = models.TextField(verbose_name='本文', blank=True, null=True)
     photo1 = models.ImageField(verbose_name='写真1', blank=True, null=True)
     photo2 = models.ImageField(verbose_name='写真2', blank=True, null=True)
     photo3 = models.ImageField(verbose_name='写真3', blank=True, null=True)
