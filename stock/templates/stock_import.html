@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}STOCK一覧 | Private Diary{% endblock %}
+{% block title %}STOCKインポート | Private Diary{% endblock %}
 
 {% block active_stock_list %}active{% endblock %}
 
@@ -15,7 +15,6 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="d-flex justify-content-end mb-4">
                 <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">新規作成</a>
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_import' %}">インポート</a>
             </div>
             {% for stock in stock_list %}
             <div class="post-preview">

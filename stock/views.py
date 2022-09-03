@@ -95,3 +95,12 @@ class StockDeleteView(LoginRequiredMixin,  OnlyYouMixin, generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
+class StockImportView(LoginRequiredMixin, generic.ListView):
+    model = Stock
+    template_name = 'stock_import.html'
+    paginate_by = 2
+
+    def get_queryset(self):
+        stocks = Stock.objects.filter(user=self.request.user).order_by('-created_at')
+        return stocks
+
