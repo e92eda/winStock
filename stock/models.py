@@ -38,5 +38,19 @@ class Stock(models.Model):
     class Meta:
         verbose_name_plural = 'Stock'
 
+    @classmethod
+    def exportListHeader(cls):
+        return(['ExecutionID', 'AccountType', 'Symbol', 'SymbolName', 'Exchange',
+                'ExchangeName', 'ExecutionDay', 'Price', 'LeavesQty', 'HoldQty', 'Side',
+                'Expenses', 'Commission', 'CommissionTax', ' ExpireDay', 'MarginTradeType',
+                'CurrentPrice', 'Valuation', 'ProfitLoss', 'ProfitLossRate'])
+
+    def exportList(self):
+        return ([self.ExecutionID, self.AccountType, self.Symbol, self.SymbolName, self.Exchange
+            , self.ExchangeName, self.ExecutionDay, self.Price, self.LeavesQty, self.HoldQty, self.Side
+            , self.Expenses, self.Commission, self.CommissionTax, self.ExpireDay, self.MarginTradeType
+            , self.CurrentPrice, self.Valuation, self.ProfitLoss, self.ProfitLossRate])
+
     def __str__(self):
         return self.title
+

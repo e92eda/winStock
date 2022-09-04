@@ -121,6 +121,8 @@ def stock_export(request):
     response['Content-Disposition'] = 'attachment; filename="posts.csv"'
     # HttpResponseオブジェクトはファイルっぽいオブジェクトなので、csv.writerにそのまま渡せます。
     writer = csv.writer(response)
+
+    writer.writerow(Stock.exportListHeader())   # Header write
     for post in Stock.objects.all():
-        writer.writerow([post.pk, post.title])
+        writer.writerow(post.exportList())
     return response
