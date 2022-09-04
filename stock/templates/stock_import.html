@@ -1,70 +1,64 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}STOCKインポート | Private Diary{% endblock %}
+{% block title %}Stockインポート | Private Stock{% endblock %}
 
 {% block active_stock_list %}active{% endblock %}
 
-{% block head %}
-<link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
-{% endblock %}
 
 {% block contents %}
-<div class="container px-4 px-lg-5 my-div-style">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">新規作成</a>
-            </div>
-            {% for stock in stock_list %}
-            <div class="post-preview">
-                <a href="{% url 'stock:stock_detail' stock.pk %}">
-                    <h2 class="post-title">
-                        {{ stock.title }}
-                    </h2>
-                    <h3 class="post-subtitle">
-                        {{ stock.content|truncatechars:20 }}
-                    </h3>
-                </a>
-                <p class="post-meta">{{ stock.created_at }}</p>
-            </div>
-            <hr class="my-4">
-            {% empty %}
-            <p>日記がありません。</p>
-            {% endfor %}
-
-            <!-- ページネーション処理 -->
-            {% if is_paginated %}
-            <ul class="pagination">
-                <!-- 前ページへのリンク -->
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-
-                <!-- ページ数表示 -->
-                {% for page_num in page_obj.paginator.page_range %}
-                {% if page_obj.number == page_num %}
-                <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
-                {% endif %}
-                {% endfor %}
-
-                <!-- 次ページへのリンク -->
-                {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
-            {% endif %}
+<div class="container my-div-style">
+    <div class="row">
+        <div class="col-3">
+            <strong>タイトル</strong>
+        </div>
+        <div class="col-9">
+            {{ object.title }}
         </div>
     </div>
+
+    <hr>
+
+{#    <div class="row">#}
+{#        <div class="col-3">#}
+{#            <strong>コメント</strong>#}
+{#        </div>#}
+{#        <div class="col-9">#}
+{#            {{ object.comment|linebreaksbr }}#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <hr>#}
+{##}
+{#    <div class="row">#}
+{#        <div class="col-3">#}
+{#            <strong>写真</strong>#}
+{#        </div>#}
+{#        <div class="col-3">#}
+{#            {% if object.photo1 %}#}
+{#            <img src="{{ object.photo1.url }}" width="200" height="200"/>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        <div class="col-3">#}
+{#            {% if object.photo2 %}#}
+{#            <img src="{{ object.photo2.url }}" width="200" height="200"/>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#        <div class="col-3">#}
+{#            {% if object.photo3 %}#}
+{#            <img src="{{ object.photo3.url }}" width="200" height="200"/>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <hr>#}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+      {{ form.as_ul }}
+      {% csrf_token %}
+      <button type="submit">送信</button>
+    </form>
+
 </div>
 {% endblock %}
+

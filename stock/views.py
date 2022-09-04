@@ -10,6 +10,15 @@ from django.shortcuts import get_object_or_404
 from .forms import InquiryForm, StockCreateForm
 from .models import Stock
 
+import csv
+from django.http import HttpResponse
+from django.shortcuts import redirect
+#from django.urls import reverse_lazy
+#from django.views import generic
+from .forms import CSVUploadForm
+# from .models import Post
+
+
 logger = logging.getLogger(__name__)
 
 class OnlyYouMixin(UserPassesTestMixin):
@@ -95,12 +104,23 @@ class StockDeleteView(LoginRequiredMixin,  OnlyYouMixin, generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-class StockImportView(LoginRequiredMixin, generic.ListView):
-    model = Stock
+# class StockImportView(LoginRequiredMixin, generic.ListView):
+
+class StockImportView(LoginRequiredMixin, generic.FormView):
     template_name = 'stock_import.html'
-    paginate_by = 2
+    success_url = reverse_lazy('stock:stock_list')
+    form_class = CSVUploadForm
 
-    def get_queryset(self):
-        stocks = Stock.objects.filter(user=self.request.user).order_by('-created_at')
-        return stocks
+    def form_valid(self, form):
+        form.save()
+        # return redirect('app:index')
+        return super().form_valid(form)
 
+def post_export(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="posts.csv"'
+    # HttpResponseオブジェクトはファイルっぽいオブジェクトなので、csv.writerにそのまま渡せます。
+    writer = csv.writer(response)
+    for post in Post.objects.all():
+        writer.writerow([post.pk, post.title])
+    return response
