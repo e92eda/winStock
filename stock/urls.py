@@ -14,4 +14,5 @@ urlpatterns = [
     path('stock-delete/<int:pk>/', views.StockDeleteView.as_view(), name="stock_delete"),
 
     path('stock-import/', views.StockImportView.as_view(), name="stock_import"),
+    path('stock-export/', views.stock_export, name='stock_export'),
 ]

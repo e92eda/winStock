@@ -16,6 +16,7 @@
             <div class="d-flex justify-content-end mb-4">
                 <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">新規作成</a>
                 <a class="btn btn-primary float-right" href="{% url 'stock:stock_import' %}">インポート</a>
+                <a class="btn btn-primary float-right" href="{% url 'stock:stock_export' %}">エクスポート</a>
             </div>
             {% for stock in stock_list %}
             <div class="post-preview">

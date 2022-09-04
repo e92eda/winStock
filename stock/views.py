@@ -116,11 +116,11 @@ class StockImportView(LoginRequiredMixin, generic.FormView):
         # return redirect('app:index')
         return super().form_valid(form)
 
-def post_export(request):
+def stock_export(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="posts.csv"'
     # HttpResponseオブジェクトはファイルっぽいオブジェクトなので、csv.writerにそのまま渡せます。
     writer = csv.writer(response)
-    for post in Post.objects.all():
+    for post in Stock.objects.all():
         writer.writerow([post.pk, post.title])
     return response
