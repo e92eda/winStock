@@ -17,42 +17,6 @@
         </div>
     </div>
 
-    <hr>
-
-{#    <div class="row">#}
-{#        <div class="col-3">#}
-{#            <strong>コメント</strong>#}
-{#        </div>#}
-{#        <div class="col-9">#}
-{#            {{ object.comment|linebreaksbr }}#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#    <hr>#}
-{##}
-{#    <div class="row">#}
-{#        <div class="col-3">#}
-{#            <strong>写真</strong>#}
-{#        </div>#}
-{#        <div class="col-3">#}
-{#            {% if object.photo1 %}#}
-{#            <img src="{{ object.photo1.url }}" width="200" height="200"/>#}
-{#            {% endif %}#}
-{#        </div>#}
-{#        <div class="col-3">#}
-{#            {% if object.photo2 %}#}
-{#            <img src="{{ object.photo2.url }}" width="200" height="200"/>#}
-{#            {% endif %}#}
-{#        </div>#}
-{#        <div class="col-3">#}
-{#            {% if object.photo3 %}#}
-{#            <img src="{{ object.photo3.url }}" width="200" height="200"/>#}
-{#            {% endif %}#}
-{#        </div>#}
-{#    </div>#}
-{##}
-{#    <hr>#}
-
     <form action="" method="POST" enctype="multipart/form-data">
       {{ form.as_ul }}
       {% csrf_token %}

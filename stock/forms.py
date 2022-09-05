@@ -80,7 +80,8 @@ class CSVUploadForm(forms.Form):
         self._instances = []
         try:
             for row in reader:
-                post = Post(pk=row[0], title=row[1])
+                post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1],
+                             LeavesQty=row[3], Price=row[5],user_id=1 ) # user_id をとりあえず１へ
                 self._instances.append(post)
         except UnicodeDecodeError:
             raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
@@ -88,5 +89,5 @@ class CSVUploadForm(forms.Form):
         return file
 
     def save(self):
-        Post.objects.bulk_create(self._instances, ignore_conflicts=True)
-        Post.objects.bulk_update(self._instances, fields=['title'])
+        Stock.objects.bulk_create(self._instances, ignore_conflicts=False) # Initially ignore_conflicts=True
+        Stock.objects.bulk_update(self._instances, fields=['title'])
