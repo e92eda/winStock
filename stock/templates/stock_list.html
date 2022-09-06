@@ -21,16 +21,17 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>pk</th>
+
                   <th>Symbol</th>
                   <th>SymbolName</th>
+                    <th>LeavesQty</th>
                     <th>Price</th>
+                    <th>CurrentPrice</th>
                 </tr>
               </thead>
               <tbody>
                 {% for stock in stock_list %}
                   <tr>
-                      <td>{{ stock.pk }}</td>
                       <td>{{ stock.Symbol }}</td>
                       <td>{{ stock.SymbolName }}</td>
                       <td>{{ stock.LeavesQty }}</td>
