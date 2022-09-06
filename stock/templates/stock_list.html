@@ -14,26 +14,46 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">新規作成</a>
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_import' %}">インポート</a>
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_export' %}">エクスポート</a>
+                <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">New</a>
+                <a class="btn btn-primary float-right" href="{% url 'stock:stock_import' %}">Import</a>
+                <a class="btn btn-primary float-right" href="{% url 'stock:stock_export' %}">Export</a>
             </div>
-            {% for stock in stock_list %}
-            <div class="post-preview">
-                <a href="{% url 'stock:stock_detail' stock.pk %}">
-                    <h2 class="post-title">
-                        {{ stock.title }}
-                    </h2>
-                    <h3 class="post-subtitle">
-                        {{ stock.content|truncatechars:20 }}
-                    </h3>
-                </a>
-                <p class="post-meta">{{ stock.created_at }}</p>
-            </div>
-            <hr class="my-4">
-            {% empty %}
-            <p>日記がありません。</p>
-            {% endfor %}
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>pk</th>
+                  <th>Symbol</th>
+                  <th>SymbolName</th>
+                    <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for stock in stock_list %}
+                  <tr>
+                    <td>{{ stock.pk }}</td>
+                    <td>{{ stock.Symbol }}</td>
+                   <td>{{ stock.SymbolName }}</td>
+                   <td>{{ stock.Price }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+{#            {% for stock in stock_list %}#}
+{#            <div class="post-preview">#}
+{#                <a href="{% url 'stock:stock_detail' stock.pk %}">#}
+{#                    <h2 class="post-title">#}
+{#                        {{ stock.title }}#}
+{#                    </h2>#}
+{#                    <h3 class="post-subtitle">#}
+{#                        {{ stock.content|truncatechars:20 }}#}
+{#                    </h3>#}
+{#                </a>#}
+{#                <p class="post-meta">{{ stock.created_at }}</p>#}
+{#            </div>#}
+{#            <hr class="my-4">#}
+{#            {% empty %}#}
+{#            <p>日記がありません。</p>#}
+{#            {% endfor %}#}
 
             <!-- ページネーション処理 -->
             {% if is_paginated %}

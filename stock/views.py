@@ -13,10 +13,9 @@ from .models import Stock
 import csv
 from django.http import HttpResponse
 from django.shortcuts import redirect
-#from django.urls import reverse_lazy
-#from django.views import generic
+
 from .forms import CSVUploadForm
-# from .models import Post
+
 
 
 logger = logging.getLogger(__name__)
@@ -47,7 +46,7 @@ class InquiryView(generic.FormView):
 class StockListView(LoginRequiredMixin, generic.ListView):
     model = Stock
     template_name = 'stock_list.html'
-    paginate_by = 2
+    paginate_by = 6
 
     def get_queryset(self):
         stocks = Stock.objects.filter(user=self.request.user).order_by('-created_at')

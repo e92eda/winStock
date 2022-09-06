@@ -450,7 +450,7 @@ legend + * {
 }
 
 ::-webkit-color-swatch-wrapper {
-  padding: 0;
+  padding: 5;
 }
 
 ::-webkit-file-upload-button {

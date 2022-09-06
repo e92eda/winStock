@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="Edited on Mac OS　Database　Stock用&#10;importの画面までは動く&#10;exportも、タイトルなどを保存できる&#10;temp">
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/5&#10;user_id をとりあえず１へ　＠forms.pyで">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/cleanblog.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cleanblog.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/templates/stock_import.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_import.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/stock_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662266276978</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="9/5&#10;user_id をとりあえず１へ　＠forms.pyで">
+      <created>1662380185602</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1662380185602</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +310,8 @@
     <MESSAGE value="Edited on Mac OS&#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く" />
     <MESSAGE value="Edited on Mac OS&#10;Database　Stock用に変更した。&#10;importの画面までは動く" />
     <MESSAGE value="Edited on Mac OS　Database　Stock用&#10;importの画面までは動く&#10;exportも、タイトルなどを保存できる&#10;temp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited on Mac OS　Database　Stock用&#10;importの画面までは動く&#10;exportも、タイトルなどを保存できる&#10;temp" />
+    <MESSAGE value="9/5&#10;user_id をとりあえず１へ　＠forms.pyで" />
+    <option name="LAST_COMMIT_MESSAGE" value="9/5&#10;user_id をとりあえず１へ　＠forms.pyで" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -314,7 +323,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock/forms.py</url>
-          <line>90</line>
+          <line>91</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
