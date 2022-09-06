@@ -73,18 +73,22 @@ class CSVUploadForm(forms.Form):
         file = self.cleaned_data['file']
 
         # csv.readerに渡すため、TextIOWrapperでテキストモードなファイルに変換
-        csv_file = io.TextIOWrapper(file, encoding='utf-8')
+        csv_file = io.TextIOWrapper(file, encoding='shift_jis')
         reader = csv.reader(csv_file)
 
         # 各行から作った保存前のモデルインスタンスを保管するリスト
         self._instances = []
         try:
-            for row in reader:
-                post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
+            lcount = 0
+            for row in reader:  # Skip 2 rows
+                if lcount > 1:
+                    post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
                     CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
                     ProfitLossRate=row[9],user_id=1 ) # user_id をとりあえず１へ
+                    self._instances.append(post)
 
-                self._instances.append(post)
+                lcount += 1
+
         except UnicodeDecodeError:
             raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
 
