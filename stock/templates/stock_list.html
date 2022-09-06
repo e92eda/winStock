@@ -30,10 +30,15 @@
               <tbody>
                 {% for stock in stock_list %}
                   <tr>
-                    <td>{{ stock.pk }}</td>
-                    <td>{{ stock.Symbol }}</td>
-                   <td>{{ stock.SymbolName }}</td>
-                   <td>{{ stock.Price }}</td>
+                      <td>{{ stock.pk }}</td>
+                      <td>{{ stock.Symbol }}</td>
+                      <td>{{ stock.SymbolName }}</td>
+                      <td>{{ stock.LeavesQty }}</td>
+                      <td>{{ stock.Price }}</td>
+                      <td>{{ stock.CurrentPrice }}</td>
+{#                      <td>{{ stock.Valuation }}</td>#}
+{#                      <td>{{ stock.ProfitLoss }}</td>#}
+{#                      <td>{{ stock.ProfitLossRate }}</td>#}
                   </tr>
                 {% endfor %}
               </tbody>
