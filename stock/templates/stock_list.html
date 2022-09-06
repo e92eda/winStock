@@ -27,6 +27,9 @@
                     <th>LeavesQty</th>
                     <th>Price</th>
                     <th>CurrentPrice</th>
+                    <th>Valuation</th>
+                    <th>ProfitLoss</th>
+                    <th>ProfitLossRate</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,9 +40,9 @@
                       <td>{{ stock.LeavesQty }}</td>
                       <td>{{ stock.Price }}</td>
                       <td>{{ stock.CurrentPrice }}</td>
-{#                      <td>{{ stock.Valuation }}</td>#}
-{#                      <td>{{ stock.ProfitLoss }}</td>#}
-{#                      <td>{{ stock.ProfitLossRate }}</td>#}
+                      <td>{{ stock.Valuation }}</td>
+                      <td>{{ stock.ProfitLoss }}</td>
+                      <td>{{ stock.ProfitLossRate }}</td>
                   </tr>
                 {% endfor %}
               </tbody>

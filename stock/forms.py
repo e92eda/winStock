@@ -81,10 +81,9 @@ class CSVUploadForm(forms.Form):
         try:
             for row in reader:
                 post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
-                    CurrentPrice=row[4], Price=row[5],
-                # Valuation=row[6], ProfitLoss=row[0],
-                # ProfitLossRate=row[0],
-                user_id=1 ) # user_id をとりあえず１へ
+                    CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
+                    ProfitLossRate=row[9],user_id=1 ) # user_id をとりあえず１へ
+
                 self._instances.append(post)
         except UnicodeDecodeError:
             raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
