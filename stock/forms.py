@@ -89,5 +89,5 @@ class CSVUploadForm(forms.Form):
         return file
 
     def save(self):
-        Stock.objects.bulk_create(self._instances, ignore_conflicts=False)  # Initially ignore_conflicts=True
+        Stock.objects.bulk_create(self._instances, ignore_conflicts=True)  # Initially ignore_conflicts=True
         Stock.objects.bulk_update(self._instances, fields=['title'])
