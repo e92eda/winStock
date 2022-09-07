@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',    # ソーシャル連携認証を使っていない場合でも必要
 
     'django_bootstrap5',
+    'django.contrib.humanize',
 
 ]
 
@@ -151,4 +152,6 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+NUMBER_GROUPING = 3  #3桁ごとカンマ
 

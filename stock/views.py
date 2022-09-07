@@ -46,7 +46,7 @@ class InquiryView(generic.FormView):
 class StockListView(LoginRequiredMixin, generic.ListView):
     model = Stock
     template_name = 'stock_list.html'
-    paginate_by = 6
+    paginate_by = 10
 
     def get_queryset(self):
         stocks = Stock.objects.filter(user=self.request.user).order_by('-created_at')

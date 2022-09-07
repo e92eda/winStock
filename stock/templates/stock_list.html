@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}STOCK一覧 | Private Diary{% endblock %}
 
@@ -12,41 +13,45 @@
 {% block contents %}
 <div class="container px-4 px-lg-5 my-div-style">
     <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <div class="d-flex justify-content-end mb-4">
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">New</a>
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_import' %}">Import</a>
-                <a class="btn btn-primary float-right" href="{% url 'stock:stock_export' %}">Export</a>
-            </div>
-            <table class="table">
-              <thead>
-                <tr>
+        <div class="col-md-6 col-sm-2 "></div>
+        <div class="col-md-2 col-sm-2 ">
+            <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">New</a>
+        </div>
+        <div class="col-md-2 col-sm-2 ">
+            <a class="btn btn-primary float-right" href="{% url 'stock:stock_import' %}">Import</a>
+        </div>
+        <div class="col-md-2 col-sm-2 ">
+            <a class="btn btn-primary float-right" href="{% url 'stock:stock_export' %}">Export</a>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
 
-                  <th>Symbol</th>
-                  <th>SymbolName</th>
-                    <th>LeavesQty</th>
-                    <th>Price</th>
-                    <th>CurrentPrice</th>
-                    <th>Valuation</th>
-                    <th>ProfitLoss</th>
-                    <th>ProfitLossRate</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for stock in stock_list %}
-                  <tr>
-                      <td>{{ stock.Symbol }}</td>
-                      <td>{{ stock.SymbolName }}</td>
-                      <td>{{ stock.LeavesQty }}</td>
-                      <td>{{ stock.Price }}</td>
-                      <td>{{ stock.CurrentPrice }}</td>
-                      <td>{{ stock.Valuation }}</td>
-                      <td>{{ stock.ProfitLoss }}</td>
-                      <td>{{ stock.ProfitLossRate }}</td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
+              <th>Symbol</th>
+              <th>SymbolName</th>
+                <th>LeavesQty</th>
+                <th>Price</th>
+                <th>CurrentPrice</th>
+                <th>Valuation</th>
+                <th>ProfitLoss</th>
+                <th>ProfitLossRate</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for stock in stock_list %}
+              <tr>
+                  <td>{{ stock.Symbol }}</td>
+                  <td>{{ stock.SymbolName }}</td>
+                  <td>{{ stock.LeavesQty | intcomma}}</td>
+                  <td>{{ stock.Price | intcomma}}</td>
+                  <td>{{ stock.CurrentPrice | intcomma}}</td>
+                  <td>{{ stock.Valuation | intcomma }}</td>
+                  <td>{{ stock.ProfitLoss }}</td>
+                  <td>{{ stock.ProfitLossRate|floatformat }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
 {#            {% for stock in stock_list %}#}
 {#            <div class="post-preview">#}
 {#                <a href="{% url 'stock:stock_detail' stock.pk %}">#}
@@ -64,38 +69,38 @@
 {#            <p>日記がありません。</p>#}
 {#            {% endfor %}#}
 
-            <!-- ページネーション処理 -->
-            {% if is_paginated %}
-            <ul class="pagination">
-                <!-- 前ページへのリンク -->
-                {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-
-                <!-- ページ数表示 -->
-                {% for page_num in page_obj.paginator.page_range %}
-                {% if page_obj.number == page_num %}
-                <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
-                {% endif %}
-                {% endfor %}
-
-                <!-- 次ページへのリンク -->
-                {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-                {% endif %}
-            </ul>
+        <!-- ページネーション処理 -->
+        {% if is_paginated %}
+        <ul class="pagination">
+            <!-- 前ページへのリンク -->
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
             {% endif %}
-        </div>
+
+            <!-- ページ数表示 -->
+            {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+            <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            <!-- 次ページへのリンク -->
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+
     </div>
 </div>
 {% endblock %}
