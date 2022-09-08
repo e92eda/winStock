@@ -45,6 +45,7 @@ class InquiryForm(forms.Form):
         message = EmailMessage(subject=subject, body=message, from_email=from_email, to=to_list, cc=cc_list)
         message.send()
 
+
 class StockCreateForm(forms.ModelForm):
     class Meta:
         model = Stock
@@ -55,10 +56,13 @@ class StockCreateForm(forms.ModelForm):
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
+
 import csv
 import io
 from django import forms
 from django.core.validators import FileExtensionValidator
+
+
 # from .models import Post
 
 
@@ -83,8 +87,8 @@ class CSVUploadForm(forms.Form):
             for row in reader:  # Skip 2 rows
                 if lcount > 1:
                     post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
-                    CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
-                    ProfitLossRate=row[9],user_id=1 ) # user_id をとりあえず１へ
+                                 CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
+                                 ProfitLossRate=row[9], user_id=1, holding=True)  # user_id をとりあえず１へ
                     self._instances.append(post)
 
                 lcount += 1
@@ -95,6 +99,15 @@ class CSVUploadForm(forms.Form):
         return file
 
     def save(self):
+        # 一括でheld = False
+        templist = []
+
+        for stock in Stock.objects.all():
+            stock.holding = False
+            templist.append(stock)
+
+        Stock.objects.bulk_update(templist, fields=['holding'])
+
         Stock.objects.bulk_create(self._instances, ignore_conflicts=True)  # Initially ignore_conflicts=True
-        Stock.objects.bulk_update(self._instances, fields=[ 'LeavesQty','CurrentPrice', 'Price', 'Valuation',
-                                                            'ProfitLoss', 'ProfitLossRate'])
+        Stock.objects.bulk_update(self._instances, fields=['LeavesQty', 'CurrentPrice', 'Price', 'Valuation',
+                                                           'ProfitLoss', 'ProfitLossRate', 'holding'])

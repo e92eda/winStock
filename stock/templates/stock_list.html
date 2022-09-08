@@ -35,6 +35,7 @@
                 <th>Valuation</th>
                 <th>ProfitLoss</th>
                 <th>ProfitLossRate</th>
+                <th>holding</th>
             </tr>
           </thead>
           <tbody>
@@ -48,6 +49,7 @@
                   <td>{{ stock.Valuation | intcomma }}</td>
                   <td>{{ stock.ProfitLoss }}</td>
                   <td>{{ stock.ProfitLossRate|floatformat }}</td>
+                  <td>{{ stock.holding }}</td>
               </tr>
             {% endfor %}
           </tbody>

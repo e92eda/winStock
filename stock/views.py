@@ -1,4 +1,3 @@
-
 import logging
 
 from django.contrib import messages
@@ -16,9 +15,8 @@ from django.shortcuts import redirect
 
 from .forms import CSVUploadForm
 
-
-
 logger = logging.getLogger(__name__)
+
 
 class OnlyYouMixin(UserPassesTestMixin):
     raise_exception = True
@@ -29,8 +27,10 @@ class OnlyYouMixin(UserPassesTestMixin):
         # ログインユーザーと日記の作成ユーザーを比較し、異なればraise_exceptionの設定に従う
         return self.request.user == stock.user
 
+
 class IndexView(generic.TemplateView):
     template_name = "index.html"
+
 
 class InquiryView(generic.FormView):
     template_name = "inquiry.html"
@@ -93,7 +93,7 @@ class StockUpdateView(LoginRequiredMixin, OnlyYouMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 
-class StockDeleteView(LoginRequiredMixin,  OnlyYouMixin, generic.DeleteView):
+class StockDeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
     model = Stock
     template_name = 'stock_delete.html'
     success_url = reverse_lazy('stock:stock_list')
@@ -115,13 +115,14 @@ class StockImportView(LoginRequiredMixin, generic.FormView):
         # return redirect('app:index')
         return super().form_valid(form)
 
+
 def stock_export(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="posts.csv"'
     # HttpResponseオブジェクトはファイルっぽいオブジェクトなので、csv.writerにそのまま渡せます。
     writer = csv.writer(response)
 
-    writer.writerow(Stock.exportListHeader())   # Header write
+    writer.writerow(Stock.exportListHeader())  # Header write
     for post in Stock.objects.all():
         writer.writerow(post.exportList())
     return response
