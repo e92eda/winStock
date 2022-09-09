@@ -41,6 +41,9 @@
           <tbody>
             {% for stock in stock_list %}
               <tr>
+                  <td>
+                      <button type="button" class="btn btn-secondary">Secondary</button>
+                  </td>
                   <td>{{ stock.Symbol }}</td>
                   <td>{{ stock.SymbolName }}</td>
                   <td>{{ stock.LeavesQty | intcomma}}</td>
