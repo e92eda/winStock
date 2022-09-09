@@ -26,7 +26,6 @@
         <table class="table">
           <thead>
             <tr>
-
               <th>Symbol</th>
               <th>SymbolName</th>
                 <th>LeavesQty</th>
@@ -42,9 +41,8 @@
             {% for stock in stock_list %}
               <tr>
                   <td>
-                      <button type="button" class="btn btn-secondary">Secondary</button>
-                  </td>
-                  <td>{{ stock.Symbol }}</td>
+                      <a href="{% url 'stock:stock_detail' stock.pk %}">
+                      {{ stock.Symbol }}</a></td>
                   <td>{{ stock.SymbolName }}</td>
                   <td>{{ stock.LeavesQty | intcomma}}</td>
                   <td>{{ stock.Price | intcomma}}</td>
