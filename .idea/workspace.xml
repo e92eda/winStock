@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/6 未実装、 user ID :1としておく&#10;Bootstrapの部分を少し変更、３桁ごと、カンマ&#10;Update動作不良を改善, Stock hold&#10;Button追加　形のみ">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/templates/stock_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
-    </list>
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/10&#10;チャート　アプリ　別の試み！途中" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -366,11 +363,6 @@
             </State>
           </value>
         </entry>
-      </map>
-    </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="61a12729-8915-4e92-b7b9-ff2a55aef495" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>
