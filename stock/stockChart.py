@@ -175,7 +175,7 @@ class StockChart:
 
         plt.pause(.001)
 
-        return self.Output_Graph()
+        return self.pltToSvg()
 
     def beginingOfTheDayIndice(self, df):       #Just for making ticks
         result = [];
@@ -189,15 +189,24 @@ class StockChart:
         return result
 
     #プロットしたグラフを画像データとして出力するための関数
-    def Output_Graph(self):
-        buffer = BytesIO()                   #バイナリI/O(画像や音声データを取り扱う際に利用)
-        plt.savefig(buffer, format="png")    #png形式の画像データを取り扱う
-        buffer.seek(0)                       #ストリーム先頭のoffset byteに変更
-        img = buffer.getvalue()            #バッファの全内容を含むbytes
-        graph = base64.b64encode(img)        #画像ファイルをbase64でエンコード
-        graph = graph.decode("utf-8")        #デコードして文字列から画像に変換
-        buffer.close()
-        return graph
+    # def Output_Graph(self):
+    #     buffer = BytesIO()                   #バイナリI/O(画像や音声データを取り扱う際に利用)
+    #     plt.savefig(buffer, format="png")    #png形式の画像データを取り扱う
+    #     buffer.seek(0)                       #ストリーム先頭のoffset byteに変更
+    #     img = buffer.getvalue()            #バッファの全内容を含むbytes
+    #     graph = base64.b64encode(img)        #画像ファイルをbase64でエンコード
+    #     graph = graph.decode("utf-8")        #デコードして文字列から画像に変換
+    #     buffer.close()
+    #     return graph
+# svgへの変換
+
+    @staticmethod
+    def pltToSvg():
+        buf = BytesIO()
+        plt.savefig(buf, format='svg', bbox_inches='tight')
+        s = buf.getvalue()
+        buf.close()
+        return s
 
 
 
