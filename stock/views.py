@@ -148,12 +148,12 @@ import matplotlib.pyplot as plt
 import io
 from django.http import HttpResponse
 
-def setPlt():
+def setPlt(pk):
     x = ["07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07"]
     y = [3, 5, 0, 5, 6, 10, 2]
     plt.bar(x, y, color='#00d5ff')
     plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
-    plt.xlabel("Date")
+    plt.xlabel(pk)
     plt.ylabel("km")
 
 # SVG化
@@ -167,7 +167,7 @@ def plt2svg():
 # 実行するビュー関数
 def get_svg(request, pk):
     print("PK=",pk)
-    setPlt()
+    setPlt(pk)
     svg = plt2svg()  #SVG化
     plt.cla()  # グラフをリセット
     response = HttpResponse(svg, content_type='image/svg+xml')

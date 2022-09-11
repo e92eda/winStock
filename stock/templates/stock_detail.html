@@ -35,8 +35,8 @@
             <strong>写真</strong>
         </div>
         <div class="col-3">
-            <img src="{% url 'stock:plot' %}" width=600 height=600>
-{#            <img src='{% url 'stock:plot' object.pk %}' width=600 height=600>#}
+{#            <img src="{% url 'stock:plot' %}" width=600 height=600>#}
+            <img src='{% url 'stock:plot' object.pk %}' width=600 height=600>
 {#            <img src='data:image/svg;base64,{{ chart | safe }}' width=600 height=600>#}
         </div>
         <div class="col-3">
