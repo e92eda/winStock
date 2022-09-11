@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../Pythons/pyCharm/StockPrj/.idea/StockPrj.iml" filepath="$PROJECT_DIR$/../../Pythons/pyCharm/StockPrj/.idea/StockPrj.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/winStock.iml" filepath="$PROJECT_DIR$/.idea/winStock.iml" />
     </modules>
   </component>

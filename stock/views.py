@@ -15,7 +15,10 @@ from django.shortcuts import redirect
 
 from .forms import CSVUploadForm
 
+from . import stockChart
+
 logger = logging.getLogger(__name__)
+
 
 
 class OnlyYouMixin(UserPassesTestMixin):
@@ -56,6 +59,8 @@ class StockListView(LoginRequiredMixin, generic.ListView):
 class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
     template_name = 'stock_detail.html'
+
+
 
 
 class StockCreateView(LoginRequiredMixin, generic.CreateView):

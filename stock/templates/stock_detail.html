@@ -35,9 +35,10 @@
             <strong>写真</strong>
         </div>
         <div class="col-3">
-            {% if object.photo1 %}
-            <img src="{{ object.photo1.url }}" width="200" height="200"/>
-            {% endif %}
+            <img src="data:image/png;base64,{{ chart | safe }}">
+{#            {% if object.photo1 %}#}
+{#            <img src="{{ object.photo1.url }}" width="200" height="200"/>#}
+{#            {% endif %}#}
         </div>
         <div class="col-3">
             {% if object.photo2 %}

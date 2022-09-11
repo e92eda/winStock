@@ -9,10 +9,20 @@ import sys
 from yahoo_finance_api2 import share
 from yahoo_finance_api2.exceptions import YahooFinanceError
 
+import base64
+from io import BytesIO
+
 
 class StockChart:
 
-    def __init__(self, split=4, size=1, display=False):  # 初期化
+    # get data and return chart image.
+
+    def get(self, symbol):
+        self.stockLoad(symbol)
+        return self.stockFigure()
+
+
+    def __init__(self, split=1, size=1, display=False):  # 初期化
         self.split = split
 
         for m in get_monitors():
@@ -44,8 +54,7 @@ class StockChart:
     def close(self):
         plt.close()
 
-    def chartDraw(symbol):
-        return
+
 
     def stockLoad(self, symbolToQuery, period_day=7, freq_interval=5):  # Load new values from the net and calculate averages.
 
@@ -88,12 +97,121 @@ class StockChart:
 
         return
 
-    def stockDisplay(self):
+
+    def stockFigure(self, title=""):  # Draw figure
+        # attributes of arrow
+        arrowsColor = {"Buy": "yellow", "Sell": "red"}
+        arrowsDirect = {"Buy": -0.1, "Sell": 0.1, "Other": 0.01}
+
+        xmin, xmax = 0, self.df.shape[0]
+
+        xTickList = self.beginingOfTheDayIndice(self.df)
+
+        acount = 0      # Temporally this time.
+
+        self.axa[acount].cla()      # Clear axis a, b
+        self.axb[acount].cla()
+
+        self.axb[acount].plot(self.df["close"], color="black")  # Stock price
+        # dPlotb = [str(a) + "hAv" for a in brand.searchHour]
+        # for dd in dPlotb:  # Average plot
+        #     self.axb[acount].plot(self.df[dd], alpha=0.6, label=dd)
+        #
+        # dPlota = [str(a) + "hAvD" for a in brand.searchHour]  # Data to plot
+        # for dd in dPlota:  # Parameters plot
+        #     self.axa[acount].plot(self.df[dd], ls=":", alpha=0.4, label=dd)
+
+        # Draw ticks
+        self.axa[acount].set_xticks(xTickList)
+        self.axa[acount].set_xticklabels(
+            str(self.df.at[i, "datetime"].month) + str(self.df.at[i, "datetime"].day) for i in xTickList)
+        self.axa[acount].tick_params(axis='both', which='both', length=0)
+
+        # Title
+        self.axa[acount].set_title(
+            f"{title}  Title")
+
+        self.axa[acount].hlines([0], xmin, xmax, "blue", linestyles='dashed', alpha=0.4)  # hlines
+
+        # # Limit lines
+        # for ll in brand.limits:
+        #     self.axb[acount].hlines([ll], xmin, xmax, "red", linestyles='dashed', alpha=0.4)  # hlines
+
+        # Sell over line !!!!Not in use!!
+        # self.axb[acount].hlines(brand.sellOver, xmin, xmax, "yellow", linestyles='dashdot', alpha=0.6, label="Sell over")  # hlines
+
+        # Buy under line !!!!Not in use!!
+        # self.axb[acount].hlines(brand.buyUnder, xmin, xmax, "magenta", linestyles='dashdot', alpha=0.6, label="Buy under")  # hlines
+
+        # Legends,  handsにはlabelが指定された曲線オブジェクトのリスト、 labsには対応するlabelのリストが入る
+        hansa, labsa = self.axa[acount].get_legend_handles_labels()
+        hansb, labsb = self.axb[acount].get_legend_handles_labels()
+
+        self.axa[acount].legend(handles=hansa + hansb, labels=labsa + labsb, bbox_to_anchor=(0, 1),
+                                loc='upper left')
+
+        # Alert arrows
+        # for alpoint in brand.alertList:
+        #     # altimestamp, alvalue, aKindFull, repeat = alpoint
+        #
+        #     adf = brand.df.loc[brand.df["timestamp"] == alpoint["Timestamp"]]
+        #     if len(adf.index) == 1:  # if there is a stored timestamp that matches
+        #         alIndex = adf.index[0]
+        #         ylimimts = self.axb[acount].get_ylim()
+        #
+        #         if 'Buy' in alpoint["Logic"]:
+        #             aKind = 'Buy'
+        #         elif 'Sell' in alpoint["Logic"]:
+        #             aKind = 'Sell'
+        #         else:
+        #             aKind = 'Other'
+        #
+        #         plt.annotate(alpoint["Logic"] + '!' + str(alpoint["Repeat"]), xy=(alIndex, alpoint["Price"]),
+        #                      xytext=(alIndex, alpoint["Price"] + arrowsDirect[aKind] * (ylimimts[1] - ylimimts[0])),
+        #                      arrowprops=dict(shrink=0, width=1, headwidth=8,
+        #                                      headlength=10, connectionstyle='arc3',
+        #                                      facecolor=arrowsColor[aKind], edgecolor='gray')
+        #                      )
+
+        plt.pause(.001)
+
+        return self.Output_Graph()
+
+    def beginingOfTheDayIndice(self, df):       #Just for making ticks
+        result = [];
+        tday = 0
+
+        for i in range(df.shape[0]):
+            if tday != df.at[i, "datetime"].day:
+                result.append(i)
+                tday = df.at[i, "datetime"].day
+
+        return result
+
+    #プロットしたグラフを画像データとして出力するための関数
+    def Output_Graph(self):
+        buffer = BytesIO()                   #バイナリI/O(画像や音声データを取り扱う際に利用)
+        plt.savefig(buffer, format="png")    #png形式の画像データを取り扱う
+        buffer.seek(0)                       #ストリーム先頭のoffset byteに変更
+        img = buffer.getvalue()            #バッファの全内容を含むbytes
+        graph = base64.b64encode(img)        #画像ファイルをbase64でエンコード
+        graph = graph.decode("utf-8")        #デコードして文字列から画像に変換
+        buffer.close()
+        return graph
+
 
 
 
 if __name__ == "__main__":
 
-    stockChart = StockChart(display=True)
 
-    result = stockChart.stockLoad('4385.T')
+    stockChart = StockChart(display=True)
+    #
+    # stockChart.stockLoad('4385.T')
+    # figData = stockChart.stockFigure()
+
+    stockChart.get('4385.T')
+
+    print()
+
+    exit(0)
