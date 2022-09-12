@@ -72,7 +72,7 @@ class CSVUploadForm(forms.Form):
         help_text='※拡張子csvのファイルをアップロードしてください。',
         validators=[FileExtensionValidator(allowed_extensions=['csv'])]
     )
-
+    print("File name:",file)
     def clean_file(self):
         file = self.cleaned_data['file']
 

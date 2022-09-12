@@ -130,14 +130,6 @@ def stock_export(request):
         writer.writerow(post.exportList())
     return response
 
-# チャート表示
-# def get_svg(request):
-#     # setPlt(pk)       # create the plot
-#     # svg = pltToSvg() # convert plot to SVG
-#     # plt.cla()        # clean up plt so it can be re-used
-#     chart = stockChart.StockChart("9142.T")
-#     response = HttpResponse(chart, content_type='image/svg+xml')
-#     return response
 
 
 #グラフ作成
@@ -148,27 +140,38 @@ import matplotlib.pyplot as plt
 import io
 from django.http import HttpResponse
 
-def setPlt(pk):
-    x = ["07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07"]
-    y = [3, 5, 0, 5, 6, 10, 2]
-    plt.bar(x, y, color='#00d5ff')
-    plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
-    plt.xlabel(pk)
-    plt.ylabel("km")
+# def setPlt(pk):
+#     x = ["07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07"]
+#     y = [3, 5, 0, 5, 6, 10, 2]
+#     plt.bar(x, y, color='#00d5ff')
+#     plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
+#     plt.xlabel(pk)
+#     plt.ylabel("km")
+#
+# # SVG化
+# def plt2svg():
+#     buf = io.BytesIO()
+#     plt.savefig(buf, format='svg', bbox_inches='tight')
+#     s = buf.getvalue()
+#     buf.close()
+#     return s
 
-# SVG化
-def plt2svg():
-    buf = io.BytesIO()
-    plt.savefig(buf, format='svg', bbox_inches='tight')
-    s = buf.getvalue()
-    buf.close()
-    return s
 
-# 実行するビュー関数
+# チャート表示
 def get_svg(request, pk):
-    print("PK=",pk)
-    setPlt(pk)
-    svg = plt2svg()  #SVG化
-    plt.cla()  # グラフをリセット
+
+    stockC = stockChart.StockChart(display=True)
+
+    stockC.stockLoad(pk + '.T')
+    fig = stockC.stockFigure()
+
+    # fig.savefig("img.png")
+
+    buf = io.BytesIO()
+    fig.savefig(buf, format='svg', bbox_inches='tight')
+    svg = buf.getvalue()
+
+    buf.close()
+
     response = HttpResponse(svg, content_type='image/svg+xml')
     return response
