@@ -98,7 +98,7 @@ class StockChart:
         self.axa[acount].tick_params(axis='both', which='both', length=0)
 
         # Title
-        self.axa[acount].set_title(f"{title}  Title", title)
+        self.axa[acount].set_title(f"{title}  Title")
 
         self.axa[acount].hlines([0], xmin, xmax, "blue", linestyles='dashed', alpha=0.4)  # hlines
 

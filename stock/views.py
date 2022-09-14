@@ -7,11 +7,18 @@ from django.views import generic
 from django.shortcuts import get_object_or_404
 
 from .forms import InquiryForm, StockCreateForm
-from .models import Stock
+from .models import Stock, Trade
 
 import csv
 from django.http import HttpResponse
-from django.shortcuts import redirect
+
+#グラフ作成
+import matplotlib
+#バックエンドを指定
+matplotlib.use('Agg')
+
+import io
+
 
 from .forms import CSVUploadForm
 
@@ -56,6 +63,16 @@ class StockListView(LoginRequiredMixin, generic.ListView):
         return stocks
 
 
+class TradeListView(LoginRequiredMixin, generic.ListView):
+    model = Trade
+    template_name = 'trade_list.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        trades = Trade.objects.filter(user=self.request.user).order_by('-created_at')
+        return trades
+
+
 class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
     template_name = 'stock_detail.html'
@@ -70,12 +87,12 @@ class StockCreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         stock = form.save(commit=False)
         stock.user = self.request.user
-        stock.save()
-        messages.success(self.request, '日記を作成しました。')
+        stock.save_stocks()
+        messages.success(self.request, 'Stockデータを作成しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, "日記の作成に失敗しました。")
+        messages.error(self.request, "Stockデータの作成に失敗しました。")
         return super().form_invalid(form)
 
 
@@ -114,8 +131,17 @@ class StockImportView(LoginRequiredMixin, generic.FormView):
     form_class = CSVUploadForm
 
     def form_valid(self, form):
-        form.save()
+        form.save_stocks()
         # return redirect('app:index')
+        return super().form_valid(form)
+
+class TradeImportView(LoginRequiredMixin, generic.FormView):
+    template_name = 'trade_import.html'
+    success_url = reverse_lazy('stock:trade_list')
+    form_class = CSVUploadForm
+
+    def form_valid(self, form):
+        form.save_trades()
         return super().form_valid(form)
 
 
@@ -129,32 +155,6 @@ def stock_export(request):
     for post in Stock.objects.all():
         writer.writerow(post.exportList())
     return response
-
-
-
-#グラフ作成
-import matplotlib
-#バックエンドを指定
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import io
-from django.http import HttpResponse
-
-# def setPlt(pk):
-#     x = ["07/01", "07/02", "07/03", "07/04", "07/05", "07/06", "07/07"]
-#     y = [3, 5, 0, 5, 6, 10, 2]
-#     plt.bar(x, y, color='#00d5ff')
-#     plt.title(r"$\bf{Running Trend  -2020/07/07}$", color='#3407ba')
-#     plt.xlabel(pk)
-#     plt.ylabel("km")
-#
-# # SVG化
-# def plt2svg():
-#     buf = io.BytesIO()
-#     plt.savefig(buf, format='svg', bbox_inches='tight')
-#     s = buf.getvalue()
-#     buf.close()
-#     return s
 
 
 # チャート表示

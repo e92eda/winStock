@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Tradeインポート | Private Equity{% endblock %}
+
+{% block active_trade_list %}active{% endblock %}
+
+
+{% block contents %}
+<div class="container my-div-style">
+    <div class="row">
+        <div class="col-3">
+            <strong>タイトル</strong>
+        </div>
+        <div class="col-9">
+            {{ object.title }}
+        </div>
+    </div>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+      {{ form.as_ul }}
+      {% csrf_token %}
+      <button type="submit">送信</button>
+    </form>
+
+</div>
+{% endblock %}
+

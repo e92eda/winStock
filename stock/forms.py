@@ -2,8 +2,14 @@ import os
 
 from django import forms
 from django.core.mail import EmailMessage
-from .models import Stock
+from .models import Stock, Trade
 
+import csv
+import io
+from django import forms
+from django.core.validators import FileExtensionValidator
+
+sideTable = ('','売', '買')       # 1:売 2:買　sideを数値で
 
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
@@ -57,14 +63,6 @@ class StockCreateForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 
-import csv
-import io
-from django import forms
-from django.core.validators import FileExtensionValidator
-
-
-# from .models import Post
-
 
 class CSVUploadForm(forms.Form):
     file = forms.FileField(
@@ -72,7 +70,7 @@ class CSVUploadForm(forms.Form):
         help_text='※拡張子csvのファイルをアップロードしてください。',
         validators=[FileExtensionValidator(allowed_extensions=['csv'])]
     )
-    print("File name:",file)
+    # print("File name:",file)
     def clean_file(self):
         file = self.cleaned_data['file']
 
@@ -82,32 +80,60 @@ class CSVUploadForm(forms.Form):
 
         # 各行から作った保存前のモデルインスタンスを保管するリスト
         self._instances = []
-        try:
-            lcount = 0
-            for row in reader:  # Skip 2 rows
-                if lcount > 1:
-                    post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
-                                 CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
-                                 ProfitLossRate=row[9], user_id=1, holding=True)  # user_id をとりあえず１へ
-                    self._instances.append(post)
 
-                lcount += 1
+        if 'Account' in file.name:      # 現有残高　読み込み
+            try:
+                lcount = 0
+                for row in reader:  # Skip 2 rows
+                    if lcount > 1:
+                        post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
+                                     CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
+                                     ProfitLossRate=row[9], user_id=1, holding=True)  # user_id をとりあえず１へ
+                        self._instances.append(post)
 
-        except UnicodeDecodeError:
-            raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
+                    lcount += 1
+
+            except UnicodeDecodeError:
+                raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
+
+        elif 'TradeKabu' in file.name:  # 売買履歴　読み込み
+            try:
+                lcount = 0
+                for row in reader:  # Skip 2 rows
+                    if lcount > 1:
+                        post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], SymbolName=row[3],
+                                     Symbol=row[4], Side= sideTable.index(row[5]), Qty=row[6], Price=row[7], Valuation=row[8], PointUse=row[9],
+                                     Commission=row[10],  ProfitLoss=row[12])       #AccountType=row[11],
+                        self._instances.append(post)
+
+                    lcount += 1
+
+            except UnicodeDecodeError:
+                raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
+
 
         return file
 
-    def save(self):
-        # 一括でheld = False
+    def save_stocks(self):
+        #まず、現有しているかどうかのKey：　holding = Falseとする。
         templist = []
-
         for stock in Stock.objects.all():
             stock.holding = False
             templist.append(stock)
 
         Stock.objects.bulk_update(templist, fields=['holding'])
 
+        # 現有の場合、Key：　holding　はTrue
         Stock.objects.bulk_create(self._instances, ignore_conflicts=True)  # Initially ignore_conflicts=True
         Stock.objects.bulk_update(self._instances, fields=['LeavesQty', 'CurrentPrice', 'Price', 'Valuation',
                                                            'ProfitLoss', 'ProfitLossRate', 'holding'])
+
+
+
+    def save_trades(self):      # Trades save
+
+
+        # 現有の場合、Key：　holding　はTrue
+        Trade.objects.bulk_create(self._instances, ignore_conflicts=True)  # Initially ignore_conflicts=True
+        # Trade.objects.bulk_update(self._instances, fields=['LeavesQty', 'CurrentPrice', 'Price', 'Valuation',
+        #                                                    'ProfitLoss', 'ProfitLossRate', 'holding'])
