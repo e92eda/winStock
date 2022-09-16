@@ -99,11 +99,11 @@ class CSVUploadForm(forms.Form):
         elif 'TradeKabu' in file.name:  # 売買履歴　読み込み
             try:
                 lcount = 0
-                for row in reader:  # Skip 2 rows
-                    if lcount > 1:
+                for row in reader:  # Skip 1 rows
+                    if lcount > 0:
                         post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], SymbolName=row[3],
                                      Symbol=row[4], Side= sideTable.index(row[5]), Qty=row[6], Price=row[7], Valuation=row[8], PointUse=row[9],
-                                     Commission=row[10],  ProfitLoss=row[12])       #AccountType=row[11],
+                                     Commission=row[10],  ProfitLoss=row[12], user_id=1)       #AccountType=row[11],
                         self._instances.append(post)
 
                     lcount += 1
@@ -134,6 +134,6 @@ class CSVUploadForm(forms.Form):
 
 
         # 現有の場合、Key：　holding　はTrue
-        Trade.objects.bulk_create(self._instances, ignore_conflicts=True)  # Initially ignore_conflicts=True
-        # Trade.objects.bulk_update(self._instances, fields=['LeavesQty', 'CurrentPrice', 'Price', 'Valuation',
-        #                                                    'ProfitLoss', 'ProfitLossRate', 'holding'])
+        Trade.objects.bulk_create(self._instances, ignore_conflicts=False)  # Initially ignore_conflicts=True
+        Trade.objects.bulk_update(self._instances, fields=['Qty', 'CurrentPrice', 'Price', 'Valuation',
+                                                           'ProfitLoss'])

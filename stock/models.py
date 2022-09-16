@@ -62,12 +62,14 @@ class Stock(models.Model):
 #  Trade database 定義
 class Trade(models.Model):
     """Tradeモデル  売買履歴　CSVファイル読み込み。該当するAPIはない模様　"""
+    id = models.BigAutoField(primary_key=True, default=0)
+    # stock_record = models.ForeignKey(Stock, on_delete=models.PROTECT, default=None)     # Relation to Stock model
     ExecutionDay = models.DateField(null=True)
     DeliveryDay = models.DateField(null=True)
     Exchange = models.IntegerField(null=True)
 
     ExchangeName = models.CharField(max_length=6, default='')
-    Symbol = models.CharField(max_length=6, default='', primary_key=True)
+    Symbol = models.CharField(max_length=6, default='')
     SymbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
     Side = models.IntegerField(null=True)
     Qty = models.IntegerField(null=True)

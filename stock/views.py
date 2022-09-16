@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 
 from .forms import InquiryForm, StockCreateForm
 from .models import Stock, Trade
@@ -167,6 +167,7 @@ def get_svg(request, pk):
 
     # fig.savefig("img.png")
 
+    # SVG 形式体系
     buf = io.BytesIO()
     fig.savefig(buf, format='svg', bbox_inches='tight')
     svg = buf.getvalue()
@@ -175,3 +176,9 @@ def get_svg(request, pk):
 
     response = HttpResponse(svg, content_type='image/svg+xml')
     return response
+
+def trade_delete(request):
+    Trade.objects.all().delete()     #データベースから全て消去
+
+##
+    return redirect('/trade-list/')

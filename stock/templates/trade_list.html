@@ -14,9 +14,9 @@
 <div class="container px-4 px-lg-5 my-div-style">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 col-sm-2 "></div>
-{#        <div class="col-md-2 col-sm-2 ">#}
-{#            <a class="btn btn-primary float-right" href="{% url 'stock:stock_create' %}">New</a>#}
-{#        </div>#}
+        <div class="col-md-2 col-sm-2 ">
+            <a class="btn btn-primary float-right" href="{% url 'stock:trade_delete' %}">Delete All</a>
+        </div>
         <div class="col-md-2 col-sm-2 ">
             <a class="btn btn-primary float-right" href="{% url 'stock:trade_import' %}">Import</a>
         </div>
@@ -26,31 +26,28 @@
         <table class="table">
           <thead>
             <tr>
+
+              <th>ExecutionDay</th>
               <th>Symbol</th>
               <th>SymbolName</th>
-                <th>LeavesQty</th>
+                <th>Qty</th>
                 <th>Price</th>
                 <th>CurrentPrice</th>
                 <th>Valuation</th>
                 <th>ProfitLoss</th>
-                <th>ProfitLossRate</th>
-                <th>holding</th>
             </tr>
           </thead>
           <tbody>
             {% for trade in trade_list %}
               <tr>
-{#                  <td>#}
-{#                      <a href="{% url 'stock:trade_detail' stock.pk %}">#}
-{#                      {{ trade.Symbol }}</a></td>#}
+                  <td>{{ trade.ExecutionDay }}</td>
+                  <td>{{ trade.Symbol }}</td>
                   <td>{{ trade.SymbolName }}</td>
-                  <td>{{ trade.LeavesQty | intcomma}}</td>
+                  <td>{{ trade.Qty | intcomma}}</td>
                   <td>{{ trade.Price | intcomma}}</td>
                   <td>{{ trade.CurrentPrice | intcomma}}</td>
                   <td>{{ trade.Valuation | intcomma }}</td>
                   <td>{{ trade.ProfitLoss }}</td>
-                  <td>{{ trade.ProfitLossRate|floatformat }}</td>
-                  <td>{{ trade.holding }}</td>
               </tr>
             {% endfor %}
           </tbody>
