@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'stock.apps.StockConfig',
     'accounts.apps.AccountsConfig',
 
+
+
     'django.contrib.sites',
     'allauth',
     'allauth.account',

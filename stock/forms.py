@@ -9,6 +9,8 @@ import io
 from django import forms
 from django.core.validators import FileExtensionValidator
 
+import datetime
+
 sideTable = ('','売', '買')       # 1:売 2:買　sideを数値で
 
 class InquiryForm(forms.Form):
@@ -97,13 +99,22 @@ class CSVUploadForm(forms.Form):
                 raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
 
         elif 'TradeKabu' in file.name:  # 売買履歴　読み込み
+            # Bulk.create では、iD の連番生成ができないため、datetimeを元に、３桁追加して作成
+            t_delta = datetime.timedelta(hours=9)
+            JST = datetime.timezone(t_delta, 'JST')
+            now = datetime.datetime.now(JST)
+            dtimestring = now.strftime('%Y%m%d %H%M%S')
+
             try:
                 lcount = 0
                 for row in reader:  # Skip 1 rows
                     if lcount > 0:
+                        stockSymbol = Stock.objects.get(Symbol=row[4])
                         post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], SymbolName=row[3],
                                      Symbol=row[4], Side= sideTable.index(row[5]), Qty=row[6], Price=row[7], Valuation=row[8], PointUse=row[9],
-                                     Commission=row[10],  ProfitLoss=row[12], user_id=1)       #AccountType=row[11],
+                                     Commission=row[10],  ProfitLoss=row[12], stock_record=stockSymbol, user_id=1,
+                                     id = dtimestring + f'{lcount:03}'  # 年から秒までと、0埋めで3文字)       #AccountType=row[11],
+                                     )
                         self._instances.append(post)
 
                     lcount += 1
@@ -132,8 +143,6 @@ class CSVUploadForm(forms.Form):
 
     def save_trades(self):      # Trades save
 
-
-        # 現有の場合、Key：　holding　はTrue
+        #
         Trade.objects.bulk_create(self._instances, ignore_conflicts=False)  # Initially ignore_conflicts=True
-        Trade.objects.bulk_update(self._instances, fields=['Qty', 'CurrentPrice', 'Price', 'Valuation',
-                                                           'ProfitLoss'])
+        # Trade.objects.bulk_update(self._instances, fields=['Qty', 'CurrentPrice', 'Price', 'Valuation','ProfitLoss'])

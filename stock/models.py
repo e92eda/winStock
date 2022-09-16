@@ -62,8 +62,9 @@ class Stock(models.Model):
 #  Trade database 定義
 class Trade(models.Model):
     """Tradeモデル  売買履歴　CSVファイル読み込み。該当するAPIはない模様　"""
-    id = models.BigAutoField(primary_key=True, default=0)
-    # stock_record = models.ForeignKey(Stock, on_delete=models.PROTECT, default=None)     # Relation to Stock model
+    id = models.CharField(primary_key=True, max_length=20, default='')
+    stock_record = models.ForeignKey(Stock, on_delete=models.PROTECT,
+                                     related_name="Stock_record", default="111")     # Relation to Stock model
     ExecutionDay = models.DateField(null=True)
     DeliveryDay = models.DateField(null=True)
     Exchange = models.IntegerField(null=True)
@@ -94,4 +95,4 @@ class Trade(models.Model):
         verbose_name_plural = 'Trade'
 
     def __str__(self):
-        return self.title
+        return self.id

@@ -59,7 +59,7 @@ class StockListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        stocks = Stock.objects.filter(user=self.request.user).order_by('-created_at')
+        stocks = Stock.objects.order_by('-created_at')  #filter(user=self.request.user).
         return stocks
 
 
@@ -69,7 +69,7 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        trades = Trade.objects.filter(user=self.request.user).order_by('-created_at')
+        trades = Trade.objects.order_by('-created_at') #.filter(user=self.request.user)
         return trades
 
 
