@@ -140,7 +140,6 @@ class CSVUploadForm(forms.Form):
                                                            'ProfitLoss', 'ProfitLossRate', 'holding'])
 
 
-
     def save_trades(self):      # Trades save
 
         #
