@@ -50,7 +50,9 @@
                   <td>{{ stock.Valuation | intcomma }}</td>
                   <td>{{ stock.ProfitLoss }}</td>
                   <td>{{ stock.ProfitLossRate|floatformat }}</td>
-                  <td>{{ stock.holding }}</td>
+                  <td>
+                      <a href="{% url 'stock:trade_list' stock.pk %}">
+                      {{ stock.holding }}</a></td>
               </tr>
             {% endfor %}
           </tbody>

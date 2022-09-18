@@ -69,9 +69,14 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        trades = Trade.objects.order_by('-created_at') #.filter(user=self.request.user)
-        return trades
+        try:
+            symbolForDisplay = self.kwargs['pk']        # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
+            trades = Trade.objects.filter(Symbol=symbolForDisplay).order_by('-created_at') #.filter(user=self.request.user)        return trades
 
+        except:     # Requestの後に、pK がついていない場合
+            trades = Trade.objects.order_by('-created_at') #.filter(user=self.request.user)        return trades
+
+        return trades
 
 class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock

@@ -122,7 +122,6 @@ class CSVUploadForm(forms.Form):
             except UnicodeDecodeError:
                 raise forms.ValidationError('ファイルのエンコーディングや、正しいCSVファイルか確認ください。')
 
-
         return file
 
     def save_stocks(self):
