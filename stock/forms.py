@@ -109,10 +109,18 @@ class CSVUploadForm(forms.Form):
                 lcount = 0
                 for row in reader:  # Skip 1 rows
                     if lcount > 0:
-                        stockSymbol = Stock.objects.get(Symbol=row[4])
+                        symbolSerach = row[4]
+                        try:
+                            stockMatch = Stock.objects.get(Symbol=symbolSerach)
+                        except Exception as e:     # Muched stock does not exist
+                            print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
+
+                            stockMatch = Stock(Symbol=symbolSerach, SymbolName='Dummy', user_id=1)     # So, this is dummy.
+                            stockMatch.save()
+
                         post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], SymbolName=row[3],
                                      Symbol=row[4], Side= sideTable.index(row[5]), Qty=row[6], Price=row[7], Valuation=row[8], PointUse=row[9],
-                                     Commission=row[10],  ProfitLoss=row[12], stock_record=stockSymbol, user_id=1,
+                                     Commission=row[10],  ProfitLoss=row[12], stock_record=stockMatch, user_id=1,
                                      id = dtimestring + f'{lcount:03}'  # 年から秒までと、0埋めで3文字)       #AccountType=row[11],
                                      )
                         self._instances.append(post)
