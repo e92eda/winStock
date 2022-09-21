@@ -10,11 +10,32 @@
 <div class="container my-div-style">
     <div class="row">
         <div class="col-3">
-            <strong>タイトル</strong>
+            {{ object.Symbol }}
         </div>
         <div class="col-9">
-            {{ object.title }}
+            {{ object.SymbolName }}
         </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            {{ object.Price }}
+        </div>
+        <div class="col-2">
+            {{ object.LeavesQty }}
+        </div>
+        <div class="col-2">
+            {{ object.CurrentPrice }}
+        </div>
+        <div class="col-2">
+            {{ object.Valuation }}
+        </div>
+        <div class="col-2">
+            {{ object.ProfitLoss }}
+        </div>
+        <div class="col-2">
+            {{ object.ProfitLossRate }}
+        </div>
+
     </div>
 
     <hr>
@@ -32,17 +53,10 @@
 
     <div class="row">
         <div class="col-3">
-            <strong>写真</strong>
+            <strong>Chart</strong>
         </div>
         <div class="col-3">
-{#            <img src="{% url 'stock:plot' %}" width=600 height=600>#}
             <img src='{% url 'stock:plot' object.pk %}' width=600 height=600>
-{#            <img src='data:image/svg;base64,{{ chart | safe }}' width=600 height=600>#}
-        </div>
-        <div class="col-3">
-            {% if object.photo2 %}
-            <img src="{{ object.photo2.url }}" width="100" height="100"/>
-            {% endif %}
         </div>
     </div>
 

@@ -90,7 +90,7 @@ class CSVUploadForm(forms.Form):
                     if lcount > 1:
                         post = Stock(title=row[0], SymbolName=row[0], Symbol=row[1], LeavesQty=row[3],
                                      CurrentPrice=row[4], Price=row[5], Valuation=row[6], ProfitLoss=row[8],
-                                     ProfitLossRate=row[9], user_id=1, holding=True)  # user_id をとりあえず１へ
+                                     ProfitLossRate=row[9], user_id=1, holding=True)  # user_id をとりあえず１へ　
                         self._instances.append(post)
 
                     lcount += 1
@@ -115,7 +115,7 @@ class CSVUploadForm(forms.Form):
                         except Exception as e:     # Muched stock does not exist
                             print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
 
-                            stockMatch = Stock(Symbol=symbolSerach, SymbolName='Dummy', user_id=1)     # So, this is dummy.
+                            stockMatch = Stock(Symbol=symbolSerach, SymbolName='Dummy', user_id=1)     # So, this is dummy., user_id=1
                             stockMatch.save()
 
                         post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], SymbolName=row[3],
