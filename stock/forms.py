@@ -11,6 +11,7 @@ from django.core.validators import FileExtensionValidator
 
 import datetime
 
+
 sideTable = ('','売', '買')       # 1:売 2:買　sideを数値で
 
 class InquiryForm(forms.Form):
@@ -152,3 +153,16 @@ class CSVUploadForm(forms.Form):
         #
         Trade.objects.bulk_create(self._instances, ignore_conflicts=False)  # Initially ignore_conflicts=True
         # Trade.objects.bulk_update(self._instances, fields=['Qty', 'CurrentPrice', 'Price', 'Valuation','ProfitLoss'])
+
+
+
+class ChoiceForm(forms.Form):
+    selected_time = forms.fields.ChoiceField(
+        choices=(
+            ('XXXX', '10:00'),
+            ('XXXX', '10:30')
+        ),
+        label = '予約時間',
+        required = True,
+        widget = forms.widgets.RadioSelect
+    )

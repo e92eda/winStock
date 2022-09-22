@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import get_object_or_404, redirect
 
-from .forms import InquiryForm, StockCreateForm
+from .forms import InquiryForm, StockCreateForm, ChoiceForm
 from .models import Stock, Trade
 
 import csv
@@ -187,3 +187,14 @@ def trade_delete(request):
 
 ##
     return redirect('/trade-list/')
+
+# class MyTestView(generic.TemplateView):
+class MyTestView(generic.FormView):
+    template_name = "Mytest.html"
+    form_class = ChoiceForm
+
+    # def form_valid(self, form):
+    #     form.send_email()
+    #     messages.success(self.request, 'メッセージを送信しました。')
+    #     logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
+    #     return super().form_valid(form)
