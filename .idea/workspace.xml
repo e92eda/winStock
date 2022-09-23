@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/21&#10;Radio button 作成中">
-      <change afterPath="$PROJECT_DIR$/stock/templates/MyTest.html" afterDir="false" />
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/21&#10;choiceフィールド">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/templates/stock_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -348,7 +345,7 @@
       <workItem from="1662913469480" duration="73281000" />
       <workItem from="1663331384045" duration="29940000" />
       <workItem from="1663694195247" duration="350000" />
-      <workItem from="1663745346491" duration="10218000" />
+      <workItem from="1663745346491" duration="14067000" />
     </task>
     <task id="LOCAL-00001" summary="First commit.">
       <created>1661854695792</created>
@@ -574,7 +571,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663791941411</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="9/21&#10;choiceフィールド">
+      <created>1663868827130</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1663868827130</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -608,7 +612,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動" />
     <MESSAGE value="Edited on Mac OS &#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く" />
     <MESSAGE value="Edited on Mac OS &#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレートlis_viewで作成、動く" />
     <MESSAGE value="Edited on Mac OS&#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く" />
@@ -633,7 +636,8 @@
     <MESSAGE value="9/18 Trade 重複読み込み可　&#10;trade.id Unique に作成" />
     <MESSAGE value="9/19 Trade読み込みの際に、Stockがない場合には、仮にSymbolName='Dummy'で作る。" />
     <MESSAGE value="9/21&#10;Radio button 作成中" />
-    <option name="LAST_COMMIT_MESSAGE" value="9/21&#10;Radio button 作成中" />
+    <MESSAGE value="9/21&#10;choiceフィールド" />
+    <option name="LAST_COMMIT_MESSAGE" value="9/21&#10;choiceフィールド" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -660,7 +664,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>138</line>
+          <line>173</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

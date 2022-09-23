@@ -166,3 +166,4 @@ class ChoiceForm(forms.Form):
         required = True,
         widget = forms.widgets.RadioSelect
     )
+
