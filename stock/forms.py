@@ -155,14 +155,13 @@ class CSVUploadForm(forms.Form):
         # Trade.objects.bulk_update(self._instances, fields=['Qty', 'CurrentPrice', 'Price', 'Valuation','ProfitLoss'])
 
 
-
 class ChoiceForm(forms.Form):
     selected_time = forms.fields.ChoiceField(
         choices=(
             ('XXXX', '10:00'),
             ('XXXX', '10:30')
         ),
-        label = '予約時間',
+        label = '期間',
         required = True,
         widget = forms.widgets.RadioSelect
     )

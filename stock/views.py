@@ -88,13 +88,16 @@ class StockDetailForm(forms.Form):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = AuthorInterestForm()
+        context['form'] = ChoiceForm()
         return context
 
+
+from django.views.generic import FormView
+from django.views.generic.detail import SingleObjectMixin
 class AuthorInterestFormView(SingleObjectMixin, FormView):
-    template_name = 'books/author_detail.html'
-    form_class = AuthorInterestForm
-    model = Author
+    template_name = 'MyTest.html'
+    form_class = ChoiceForm
+    model = Stock
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
@@ -103,21 +106,8 @@ class AuthorInterestFormView(SingleObjectMixin, FormView):
         return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
-        return reverse('author-detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
 
-from django.views import View
-
-class AuthorView(View):
-
-    def get(self, request, *args, **kwargs):
-        view = AuthorDetailView.as_view()
-        return view(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        view = AuthorInterestFormView.as_view()
-        return view(request, *args, **kwargs)
-
-#########
 class StockCreateView(LoginRequiredMixin, generic.CreateView):
     model = Stock
     template_name = 'stock_create.html'
@@ -223,13 +213,31 @@ def trade_delete(request):
 ##
     return redirect('/trade-list/')
 
-# class MyTestView(generic.TemplateView):
-class MyTestView(generic.FormView):
-    template_name = "Mytest.html"
-    form_class = ChoiceForm
+class AuthorInterestForm(forms.Form):
+    message2 = forms.CharField()
 
-    # def form_valid(self, form):
-    #     form.send_email()
-    #     messages.success(self.request, 'メッセージを送信しました。')
-    #     logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
-    #     return super().form_valid(form)
+class AuthorDetailView(generic.DetailView):
+    model = Stock
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ChoiceForm()  #AuthorInterestForm() #ChoiceForm()    #
+        return context
+
+
+# class MyTestView(generic.TemplateView):
+
+
+class MyTestView(generic.FormView):
+    # template_name = "Mytest.html"
+    # form_class = ChoiceForm
+    def get(self, request, *args, **kwargs):
+        view = AuthorDetailView.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        # view = AuthorInterestFormView.as_view()
+        view = AuthorInterestFormView.as_view()
+
+        return view(request, *args, **kwargs)
+

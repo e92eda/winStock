@@ -29,6 +29,6 @@ urlpatterns = [
     path('trade-delete/', views.trade_delete, name='trade_delete'),
 
 # Test Radiobutton
-    path('my-test/', views.MyTestView.as_view(), name="my_test"),
+    path('my-test/<str:pk>/', views.MyTestView.as_view(), name="my_test"),
 
 ]

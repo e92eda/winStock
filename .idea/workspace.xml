@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/21&#10;choiceフィールド">
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="9/21&#10;choiceフィールド temp テストが動く">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
@@ -39,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="s_jis" />
+        <entry key="$PROJECT_DIR$" value="e4bfa387599cbdbc386864439535b193d088c1c3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,7 +70,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/kunieda/Dropbox/PythonsWin/winStock",
+    "last_opened_file_path": "/Users/kunieda/Dropbox/PythonsWin/winStock/stock/templates/stock",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -80,11 +80,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stock/templates/stock" />
       <recent name="$PROJECT_DIR$/stock/templates" />
       <recent name="$PROJECT_DIR$/winStock" />
       <recent name="$PROJECT_DIR$/stock" />
       <recent name="X:\PythonsWin\winStock\stock\templates" />
-      <recent name="X:\PythonsWin\winStock\winStock" />
     </key>
   </component>
   <component name="RunManager" selected="Python.runserver">
@@ -345,7 +345,7 @@
       <workItem from="1662913469480" duration="73281000" />
       <workItem from="1663331384045" duration="29940000" />
       <workItem from="1663694195247" duration="350000" />
-      <workItem from="1663745346491" duration="14067000" />
+      <workItem from="1663745346491" duration="20902000" />
     </task>
     <task id="LOCAL-00001" summary="First commit.">
       <created>1661854695792</created>
@@ -578,7 +578,21 @@
       <option name="project" value="LOCAL" />
       <updated>1663868827130</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="9/21&#10;choiceフィールド temp">
+      <created>1663906096123</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1663906096123</updated>
+    </task>
+    <task id="LOCAL-00035" summary="9/21&#10;choiceフィールド temp テストが動く">
+      <created>1663914607382</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1663914607382</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -612,8 +626,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="Edited on Mac OS &#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く" />
-    <MESSAGE value="Edited on Mac OS &#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレートlis_viewで作成、動く" />
     <MESSAGE value="Edited on Mac OS&#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く" />
     <MESSAGE value="Edited on Mac OS&#10;Database　Stock用に変更した。&#10;importの画面までは動く" />
     <MESSAGE value="Edited on Mac OS　Database　Stock用&#10;importの画面までは動く&#10;exportも、タイトルなどを保存できる&#10;temp" />
@@ -637,7 +649,9 @@
     <MESSAGE value="9/19 Trade読み込みの際に、Stockがない場合には、仮にSymbolName='Dummy'で作る。" />
     <MESSAGE value="9/21&#10;Radio button 作成中" />
     <MESSAGE value="9/21&#10;choiceフィールド" />
-    <option name="LAST_COMMIT_MESSAGE" value="9/21&#10;choiceフィールド" />
+    <MESSAGE value="9/21&#10;choiceフィールド temp" />
+    <MESSAGE value="9/21&#10;choiceフィールド temp テストが動く" />
+    <option name="LAST_COMMIT_MESSAGE" value="9/21&#10;choiceフィールド temp テストが動く" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -664,13 +678,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>173</line>
+          <line>176</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock/forms.py</url>
           <line>153</line>
           <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock/views.py</url>
+          <line>235</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock/views.py</url>
+          <line>247</line>
+          <option name="timeStamp" value="87" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -694,7 +718,7 @@
     <SUITE FILE_PATH="coverage/winStock$stockChart.coverage" NAME="stockChart Coverage Results" MODIFIED="1663030226009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
     <SUITE FILE_PATH="coverage/winStock$showmigrations.coverage" NAME="showmigrations Coverage Results" MODIFIED="1663310686646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$testYahooFinance2.coverage" NAME="testYahooFinance2 Coverage Results" MODIFIED="1662852078731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/miscellaneous" />
-    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1663857186920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1663918171510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1663583046888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
