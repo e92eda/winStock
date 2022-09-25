@@ -8,7 +8,8 @@ from django.views import generic
 from django.shortcuts import get_object_or_404, redirect
 
 import csv
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden
+
 
 from django.views.generic import FormView
 from django.views.generic.detail import SingleObjectMixin
@@ -191,9 +192,7 @@ class StockDetailView(generic.FormView):
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        # view = AuthorInterestFormView.as_view()
         view = StockDetailFormView.as_view()
-
         return view(request, *args, **kwargs)
 
 
@@ -208,7 +207,6 @@ class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailVi
 
 
 class StockDetailFormView(SingleObjectMixin, FormView):
-    template_name = 'MyTest.html'
     form_class = ChoiceForm
     model = Stock
 
