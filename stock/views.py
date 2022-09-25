@@ -76,18 +76,6 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 
         return trades
 
-# class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
-#     model = Stock
-#     template_name = 'stock_detail.html'
-#
-# from django import forms
-# class StockDetailForm(forms.Form):
-#     model = Stock
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['form'] = ChoiceForm()
-#         return context
 
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
@@ -137,8 +125,6 @@ class StockDeleteView(LoginRequiredMixin, OnlyYouMixin, generic.DeleteView):
         return super().delete(request, *args, **kwargs)
 
 
-# class StockImportView(LoginRequiredMixin, generic.ListView):
-
 class StockImportView(LoginRequiredMixin, generic.FormView):
     template_name = 'stock_import.html'
     success_url = reverse_lazy('stock:stock_list')
@@ -148,6 +134,7 @@ class StockImportView(LoginRequiredMixin, generic.FormView):
         form.save_stocks()
         # return redirect('app:index')
         return super().form_valid(form)
+
 
 class TradeImportView(LoginRequiredMixin, generic.FormView):
     template_name = 'trade_import.html'
@@ -193,22 +180,34 @@ def get_svg(request, pk):
 def trade_delete(request):
     Trade.objects.all().delete()     #データベースから全て消去
 
-##
     return redirect('/trade-list/')
 
-class AuthorInterestForm(forms.Form):
-    message2 = forms.CharField()
 
-class AuthorDetailView(generic.DetailView):
+class StockDetailView(generic.FormView):
+    # template_name = "Mytest.html"
+    # form_class = ChoiceForm
+    def get(self, request, *args, **kwargs):
+        view = StockDetailOriginalView.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        # view = AuthorInterestFormView.as_view()
+        view = StockDetailFormView.as_view()
+
+        return view(request, *args, **kwargs)
+
+
+#######
+class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = ChoiceForm()  #AuthorInterestForm() #ChoiceForm()    #
+        context['form'] = ChoiceForm()
         return context
 
 
-class AuthorInterestFormView(SingleObjectMixin, FormView):
+class StockDetailFormView(SingleObjectMixin, FormView):
     template_name = 'MyTest.html'
     form_class = ChoiceForm
     model = Stock
@@ -219,29 +218,6 @@ class AuthorInterestFormView(SingleObjectMixin, FormView):
         self.object = self.get_object()
         return super().post(request, *args, **kwargs)
 
+    def get_success_url(self):
+        return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
 
-class StockDetailView(generic.FormView):
-    # template_name = "Mytest.html"
-    # form_class = ChoiceForm
-    def get(self, request, *args, **kwargs):
-        view = AuthorDetailView.as_view()
-        return view(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        # view = AuthorInterestFormView.as_view()
-        view = AuthorInterestFormView.as_view()
-
-        return view(request, *args, **kwargs)
-
-#######
-class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
-    model = Stock
-    template_name = 'stock_detail.html'
-
-class StockDetailForm(forms.Form):
-    model = Stock
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = ChoiceForm()
-        return context
