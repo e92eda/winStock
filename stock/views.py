@@ -1,4 +1,5 @@
 import logging
+import io
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -6,26 +7,23 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import get_object_or_404, redirect
 
-from .forms import InquiryForm, StockCreateForm, ChoiceForm
-from .models import Stock, Trade
-
 import csv
 from django.http import HttpResponse
+
+from django.views.generic import FormView
+from django.views.generic.detail import SingleObjectMixin
+
+from django import forms
+from .forms import InquiryForm, StockCreateForm, ChoiceForm, CSVUploadForm
+from .models import Stock, Trade
+from . import stockChart
 
 #グラフ作成
 import matplotlib
 #バックエンドを指定
 matplotlib.use('Agg')
 
-import io
-
-
-from .forms import CSVUploadForm
-
-from . import stockChart
-
 logger = logging.getLogger(__name__)
-
 
 
 class OnlyYouMixin(UserPassesTestMixin):
@@ -78,32 +76,18 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 
         return trades
 
-class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
-    model = Stock
-    template_name = 'stock_detail.html'
-
-from django import forms
-class StockDetailForm(forms.Form):
-    model = Stock
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = ChoiceForm()
-        return context
-
-
-from django.views.generic import FormView
-from django.views.generic.detail import SingleObjectMixin
-class AuthorInterestFormView(SingleObjectMixin, FormView):
-    template_name = 'MyTest.html'
-    form_class = ChoiceForm
-    model = Stock
-
-    def post(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return HttpResponseForbidden()
-        self.object = self.get_object()
-        return super().post(request, *args, **kwargs)
+# class StockDetailView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
+#     model = Stock
+#     template_name = 'stock_detail.html'
+#
+# from django import forms
+# class StockDetailForm(forms.Form):
+#     model = Stock
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['form'] = ChoiceForm()
+#         return context
 
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
@@ -186,7 +170,6 @@ def stock_export(request):
         writer.writerow(post.exportList())
     return response
 
-
 # チャート表示
 def get_svg(request, pk):
 
@@ -225,10 +208,19 @@ class AuthorDetailView(generic.DetailView):
         return context
 
 
-# class MyTestView(generic.TemplateView):
+class AuthorInterestFormView(SingleObjectMixin, FormView):
+    template_name = 'MyTest.html'
+    form_class = ChoiceForm
+    model = Stock
+
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden()
+        self.object = self.get_object()
+        return super().post(request, *args, **kwargs)
 
 
-class MyTestView(generic.FormView):
+class StockDetailView(generic.FormView):
     # template_name = "Mytest.html"
     # form_class = ChoiceForm
     def get(self, request, *args, **kwargs):
@@ -241,3 +233,15 @@ class MyTestView(generic.FormView):
 
         return view(request, *args, **kwargs)
 
+#######
+class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
+    model = Stock
+    template_name = 'stock_detail.html'
+
+class StockDetailForm(forms.Form):
+    model = Stock
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = ChoiceForm()
+        return context
