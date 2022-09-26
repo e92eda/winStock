@@ -161,12 +161,13 @@ def stock_export(request):
 # チャート表示
 def get_svg(request, pk):
 
+    astock = Stock.objects.get(pk)
+
     stockC = stockChart.StockChart(display=True)
 
-    stockC.stockLoad(pk + '.T')
+    stockC.stockLoad(pk + '.T', period_day=astock.period)
     fig = stockC.stockFigure()
 
-    # fig.savefig("img.png")
 
     # SVG 形式体系
     buf = io.BytesIO()

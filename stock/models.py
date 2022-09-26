@@ -38,9 +38,15 @@ class Stock(models.Model):
     updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
 
     holding = models.BooleanField(default=False)  # Stock hold or not.
+    period = models.IntegerField(default=7)
 
     class Meta:
         verbose_name_plural = 'Stock'
+
+    # @classmethod
+    # def getStock(cls, pk):
+
+
 
     @classmethod
     def exportListHeader(cls):
@@ -96,3 +102,7 @@ class Trade(models.Model):
 
     def __str__(self):
         return self.id
+
+class FigPeriodChoice(models.Model):
+# To choose period to show in the chart. Store for each stock.
+    periodDay = models.IntegerField(default=7)
