@@ -8,12 +8,12 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name="index"),
     path('inquiry/', views.InquiryView.as_view(), name="inquiry"),
     path('stock-list/', views.StockListView.as_view(), name="stock_list"),
-    path('stock-detail/<str:pk>/', views.StockDetailView.as_view(), name="stock_detail"),
     path('stock-create/', views.StockCreateView.as_view(), name="stock_create"),
     path('stock-update/<str:pk>/', views.StockUpdateView.as_view(), name="stock_update"),
     path('stock-delete/<str:pk>/', views.StockDeleteView.as_view(), name="stock_delete"),
 
 # グラフ描画
+    path('stock-detail/<str:pk>/', views.StockDetailView.as_view(), name="stock_detail"),
     path('stock-detail/<str:pk>/plot/', views.get_svg, name='plot'),
     # path('plot/', views.get_svg, name='plot'),
 

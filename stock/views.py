@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 
 import csv
 from django.http import HttpResponse, HttpResponseForbidden
@@ -186,8 +186,7 @@ def trade_delete(request):
 
 
 class StockDetailView(generic.FormView):
-    # template_name = "Mytest.html"
-    # form_class = ChoiceForm
+
     def get(self, request, *args, **kwargs):
         view = StockDetailOriginalView.as_view()
         return view(request, *args, **kwargs)
@@ -200,6 +199,7 @@ class StockDetailView(generic.FormView):
 #######
 class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
+    template_name = "stock_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -210,13 +210,28 @@ class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailVi
 class StockDetailFormView(SingleObjectMixin, FormView):
     form_class = ChoiceForm
     model = Stock
+    template_name = "stock_detail.html"
 
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
         self.object = self.get_object()
 
-        return super().post(request, *args, **kwargs)
+        try:
+            selected_choice = request.POST['selected_period']
+        except (KeyError, selected_choice.DoesNotExist):
+            # Redisplay the question voting form.
+            return render(request, 'stock_detail.html', {
+                # 'question': question,
+                'error_message': "You didn't select a choice.",
+            })
+        else:
+            pk = kwargs['pk']
+            astock = Stock.objects.get(pk=pk)
+            astock.period = int(selected_choice)
+            astock.save()
+
+            return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})

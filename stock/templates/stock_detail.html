@@ -8,15 +8,6 @@
 
 {% block contents %}
 <div class="container my-div-style">
-
-<form action="" method="POST">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit">送信</button>
-</form>
-
-
-
     <div class="row">
         <div class="col-3">
             {{ object.Symbol }}
@@ -51,7 +42,7 @@
 
     <div class="row">
         <div class="col-3">
-            <strong>コメント</strong>
+            <strong>Comments</strong>
         </div>
         <div class="col-9">
             {{ object.comment|linebreaksbr }}
@@ -62,9 +53,13 @@
 
     <div class="row">
         <div class="col-3">
-            <strong>Chart</strong>
+            <form action="" method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit">Submit</button>
+            </form>
         </div>
-        <div class="col-3">
+        <div class="col-9">
             <img src='{% url 'stock:plot' object.pk %}' width=600 height=600>
         </div>
     </div>

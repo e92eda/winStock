@@ -156,10 +156,10 @@ class CSVUploadForm(forms.Form):
 
 
 class ChoiceForm(forms.Form):
-    selected_time = forms.fields.ChoiceField(
+    selected_period = forms.fields.ChoiceField(
         choices=(
-            ('XXXX', '10:00'),
-            ('XXXX', '10:30')
+            ('7', 'a week'),
+            ('1', 'a day')
         ),
         label = '期間',
         required = True,
