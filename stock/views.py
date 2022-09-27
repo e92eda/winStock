@@ -161,13 +161,13 @@ def stock_export(request):
 # チャート表示
 def get_svg(request, pk):
 
-    astock = Stock.objects.get(pk)
+    astock = Stock.objects.get(pk=pk)
 
     stockC = stockChart.StockChart(display=True)
 
     stockC.stockLoad(pk + '.T', period_day=astock.period)
-    fig = stockC.stockFigure()
 
+    fig = stockC.stockFigure()
 
     # SVG 形式体系
     buf = io.BytesIO()
@@ -215,6 +215,7 @@ class StockDetailFormView(SingleObjectMixin, FormView):
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
         self.object = self.get_object()
+
         return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
