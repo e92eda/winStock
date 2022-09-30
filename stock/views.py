@@ -217,6 +217,7 @@ class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailVi
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = ChoiceForm()
+
         return context
 
 
@@ -226,6 +227,7 @@ class StockDetailFormView(SingleObjectMixin, FormView):
     template_name = "stock_detail.html"
 
     def post(self, request, *args, **kwargs):
+
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
         self.object = self.get_object()
@@ -243,8 +245,9 @@ class StockDetailFormView(SingleObjectMixin, FormView):
             pk = kwargs['pk']
             astock = Stock.objects.get(pk=pk)
 
-            astock.period = selected_choice.find(' ')     #get the first comporneto of selected_choice.
-            astock.period_type = selected_choice[astock.period+1:]     #get teh rest.
+            foundPosition = selected_choice.find(' ')     #get the first comporneto of selected_choice.
+            astock.period = selected_choice[:foundPosition]
+            astock.period_type = selected_choice[foundPosition+1:]     #get the rest.
             astock.save()
 
             return super().post(request, *args, **kwargs)

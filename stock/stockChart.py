@@ -47,10 +47,6 @@ class StockChart:
         plt.close()
 
 
-    # def getChart(self, symbol): # Not in use.
-    #     self.stockLoad(self, symbol)
-    #     return self.stockFigure()
-
 
     def stockLoad(self, symbolToQuery, period=7, period_type='day'):  # Load new values from the net and calculate averages.
 
@@ -92,6 +88,9 @@ class StockChart:
 
 
     def stockFigure(self, title="Title", arrow = []):  # Draw figure
+
+        plt.rcParams["font.size"] = 18      #　font size 指定
+
         # attributes of arrow
         arrowsColor = {"Buy": "blue", "Sell": "red"}
         arrowsDirect = {"Buy": -0.1, "Sell": 0.1, "Other": 0.01}
@@ -169,14 +168,25 @@ class StockChart:
 
     def beginingOfTheDayIndice(self, df):       #Just for making ticks
         result = [];
-        tday = 0
+        tday = 0        # To make tick at the beginning of a day.
+
 
         for i in range(df.shape[0]):
             if tday != df.at[i, "datetime"].day:
                 result.append(i)
                 tday = df.at[i, "datetime"].day
 
-        return result
+
+        size = len(result)
+        skip = int(size/ 10)  # reduce the size if too big.
+        i = 0
+        sresult = []
+        while i < size:
+            sresult.append(result[i])
+            i += skip + 1
+
+
+        return sresult
 
     # def drawAllows(self, symbolForDisplay):
     #     # symbolForDisplay = self.kwargs['pk']  # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
