@@ -158,8 +158,13 @@ class CSVUploadForm(forms.Form):
 class ChoiceForm(forms.Form):
     selected_period = forms.fields.ChoiceField(
         choices=(
-            ('7', 'a week'),
-            ('1', 'a day')
+            ('1 day', 'a day'),
+            ('1 week', 'a week'),
+            ('1 month', 'a month'),
+            ('3 month', '3 months'),
+            ('6 month', '6 months'),
+            ('1 year', 'a year'),
+
         ),
         label = '期間',
         required = True,

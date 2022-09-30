@@ -39,6 +39,7 @@ class Stock(models.Model):
 
     holding = models.BooleanField(default=False)  # Stock hold or not.
     period = models.IntegerField(default=7)
+    period_type = models.CharField(default='day', verbose_name='期間表示タイプ', max_length=10)
 
     class Meta:
         verbose_name_plural = 'Stock'
@@ -103,6 +104,6 @@ class Trade(models.Model):
     def __str__(self):
         return self.id
 
-class FigPeriodChoice(models.Model):
-# To choose period to show in the chart. Store for each stock.
-    periodDay = models.IntegerField(default=7)
+# class FigPeriodChoice(models.Model):
+# # To choose period to show in the chart. Store for each stock.
+#     periodDay = models.IntegerField(default=7)

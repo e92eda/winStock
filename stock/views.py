@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 import csv
 from django.http import HttpResponse, HttpResponseForbidden
 
-
 from django.views.generic import FormView
 from django.views.generic.detail import SingleObjectMixin
 
@@ -19,9 +18,10 @@ from .forms import InquiryForm, StockCreateForm, ChoiceForm, CSVUploadForm
 from .models import Stock, Trade
 from . import stockChart
 
-#グラフ作成
+# グラフ作成
 import matplotlib
-#バックエンドを指定
+
+# バックエンドを指定
 matplotlib.use('Agg')
 
 logger = logging.getLogger(__name__)
@@ -58,7 +58,7 @@ class StockListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        stocks = Stock.objects.order_by('-created_at')  #filter(user=self.request.user).
+        stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
         return stocks
 
 
@@ -69,17 +69,18 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         try:
-            symbolForDisplay = self.kwargs['pk']        # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
-            trades = Trade.objects.filter(Symbol=symbolForDisplay).order_by('-created_at') #.filter(user=self.request.user)        return trades
+            symbolForDisplay = self.kwargs['pk']  # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
+            trades = Trade.objects.filter(Symbol=symbolForDisplay).order_by(
+                '-created_at')  # .filter(user=self.request.user)        return trades
 
-        except:     # Requestの後に、pK がついていない場合
-            trades = Trade.objects.order_by('-created_at') #.filter(user=self.request.user)        return trades
+        except:  # Requestの後に、pK がついていない場合
+            trades = Trade.objects.order_by('-created_at')  # .filter(user=self.request.user)        return trades
 
         return trades
 
-
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
+
 
 class StockCreateView(LoginRequiredMixin, generic.CreateView):
     model = Stock
@@ -158,16 +159,26 @@ def stock_export(request):
         writer.writerow(post.exportList())
     return response
 
+
 # チャート表示
 def get_svg(request, pk):
-
     astock = Stock.objects.get(pk=pk)
 
     stockC = stockChart.StockChart(display=True)
 
-    stockC.stockLoad(pk + '.T', period_day=astock.period)
+    stockC.stockLoad(pk + '.T', period_type=astock.period_type, period=astock.period)
 
-    fig = stockC.stockFigure()
+    # Trade data to show
+
+    trades = Trade.objects.filter(Symbol=pk).order_by(
+        '-created_at')  # .filter(user=self.request.user)
+
+    # arrowList = [(t.ExecutionDay, t.price)for t in trades] #, t.Side, t.Qty
+    arrowList = []
+    for t in trades:
+        arrowList.append({'x': t.ExecutionDay, 'y': t.Price, 'side': t.Side, 'qty': t.Qty})
+
+    fig = stockC.stockFigure(arrow=arrowList, title=stockC.period_type )
 
     # SVG 形式体系
     buf = io.BytesIO()
@@ -179,8 +190,9 @@ def get_svg(request, pk):
     response = HttpResponse(svg, content_type='image/svg+xml')
     return response
 
+
 def trade_delete(request):
-    Trade.objects.all().delete()     #データベースから全て消去
+    Trade.objects.all().delete()  # データベースから全て消去
 
     return redirect('/trade-list/')
 
@@ -226,13 +238,15 @@ class StockDetailFormView(SingleObjectMixin, FormView):
                 'error_message': "You didn't select a choice.",
             })
         else:
+            # Store given period, period_type to the database
             pk = kwargs['pk']
             astock = Stock.objects.get(pk=pk)
-            astock.period = int(selected_choice)
+
+            astock.period = selected_choice.find(' ')     #get the first comporneto of selected_choice.
+            astock.period_type = selected_choice[astock.period+1:]     #get teh rest.
             astock.save()
 
             return super().post(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
-
