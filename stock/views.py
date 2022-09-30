@@ -178,7 +178,8 @@ def get_svg(request, pk):
     for t in trades:
         arrowList.append({'x': t.ExecutionDay, 'y': t.Price, 'side': t.Side, 'qty': t.Qty})
 
-    fig = stockC.stockFigure(arrow=arrowList, title=stockC.period_type )
+    titleText = f"Display period: {astock.period} {astock.period_type}"
+    fig = stockC.stockFigure(arrow=arrowList, title=titleText)
 
     # SVG 形式体系
     buf = io.BytesIO()

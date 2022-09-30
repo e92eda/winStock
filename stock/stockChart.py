@@ -52,7 +52,7 @@ class StockChart:
     #     return self.stockFigure()
 
 
-    def stockLoad(self, symbolToQuery, period=7, period_type='day', freq_interval=5):  # Load new values from the net and calculate averages.
+    def stockLoad(self, symbolToQuery, period=7, period_type='day'):  # Load new values from the net and calculate averages.
 
         myshare = share.Share(symbolToQuery)
         symbol_data = None
@@ -91,7 +91,7 @@ class StockChart:
         self.df["datetime"] = pd.to_datetime(self.df.timestamp, unit="ms")  # Readable to human.
 
 
-    def stockFigure(self, title="", arrow = []):  # Draw figure
+    def stockFigure(self, title="Title", arrow = []):  # Draw figure
         # attributes of arrow
         arrowsColor = {"Buy": "blue", "Sell": "red"}
         arrowsDirect = {"Buy": -0.1, "Sell": 0.1, "Other": 0.01}
@@ -114,7 +114,7 @@ class StockChart:
         self.axa[acount].tick_params(axis='both', which='both', length=0)
 
         # Title
-        self.axa[acount].set_title(f"{title}  Title")
+        self.axa[acount].set_title(f"<< {title} >>")
 
         self.axa[acount].hlines([0], xmin, xmax, "blue", linestyles='dashed', alpha=0.4)  # hlines
 
