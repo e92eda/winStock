@@ -9,7 +9,10 @@ class Stock(models.Model):
     # AccountType = models.CharField(null=True, max_length=6)
     Symbol = models.CharField(max_length=6, default='', primary_key=True)
 
-    SymbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
+    SymbolName = models.CharField(null=True, verbose_name='Stock name', max_length=40)
+    SymbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40)
+    SymbolDisp = models.CharField(default="*", verbose_name='sName', max_length=40)
+
     # Exchange = models.IntegerField(null=True)
     # ExchangeName = models.CharField(null=True, max_length=40)
     # ExecutionDay = models.DateField(null=True)
@@ -40,6 +43,11 @@ class Stock(models.Model):
     holding = models.BooleanField(default=False)  # Stock hold or not.
     period = models.IntegerField(default=7)
     period_type = models.CharField(default='day', verbose_name='期間表示タイプ', max_length=10)
+
+    # def __init__(self):
+    #     super().__init__()
+    #     # self.SymbolAlias = self.SymbolName
+        # print(self.SymbolAlias, "True name:",self.SymbolName)
 
     class Meta:
         verbose_name_plural = 'Stock'

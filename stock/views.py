@@ -59,6 +59,12 @@ class StockListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
+        for stock in stocks:
+            if stock.SymbolAlias == '':
+                stock.SymbolDisp = stock.SymbolName
+            else:
+                stock.SymbolDisp = stock.SymbolAlias
+
         return stocks
 
 
@@ -192,6 +198,26 @@ def get_svg(request, pk):
     return response
 
 
+def stock_detail_pre(request, pk):      # Show the previous stock
+    theStock = Stock.objects.get(pk=pk)
+    try:
+        preStock = theStock.get_previous_by_created_at()
+    except:
+        return redirect('stock:stock_detail', pk=pk)
+
+    ppk = preStock.pk
+    return redirect('stock:stock_detail', pk=ppk)
+
+def stock_detail_post(request, pk):      # Show the next stock
+    theStock = Stock.objects.get(pk=pk)
+    try:
+        preStock = theStock.get_next_by_created_at()
+    except:
+        return redirect('stock:stock_detail', pk=pk)
+
+    ppk = preStock.pk
+    return redirect('stock:stock_detail', pk=ppk)
+
 def trade_delete(request):
     Trade.objects.all().delete()  # データベースから全て消去
 
@@ -209,7 +235,6 @@ class StockDetailView(generic.FormView):
         return view(request, *args, **kwargs)
 
 
-#######
 class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
     template_name = "stock_detail.html"
@@ -217,7 +242,6 @@ class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailVi
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = ChoiceForm()
-
         return context
 
 
@@ -254,3 +278,5 @@ class StockDetailFormView(SingleObjectMixin, FormView):
 
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
+
+

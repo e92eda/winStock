@@ -97,7 +97,7 @@ class StockChart:
 
         xmin, xmax = 0, self.df.shape[0]
 
-        xTickList = self.beginingOfTheDayIndice(self.df)
+        xTickList = self.tickListFromBeginningOfDay(self.df)
 
         acount = 0      # Temporally this time.
 
@@ -166,7 +166,7 @@ class StockChart:
 
 
 
-    def beginingOfTheDayIndice(self, df):       #Just for making ticks
+    def tickListFromBeginningOfDay(self, df):       #Just for making ticks
         result = [];
         tday = 0        # To make tick at the beginning of a day.
 

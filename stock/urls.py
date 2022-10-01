@@ -15,9 +15,10 @@ urlpatterns = [
 # グラフ描画
     path('stock-detail/<str:pk>/', views.StockDetailView.as_view(), name="stock_detail"),
     path('stock-detail/<str:pk>/plot/', views.get_svg, name='plot'),
-    # path('plot/', views.get_svg, name='plot'),
+    path('stock-detail-pre/<str:pk>/', views.stock_detail_pre, name='stock_detail_pre'),
+    path('stock-detail-post/<str:pk>/', views.stock_detail_post, name='stock_detail_post'),
 
-# Stock　データベース読み,書き込み
+    # Stock　データベース読み,書き込み
     path('stock-import/', views.StockImportView.as_view(), name="stock_import"),
     path('stock-export/', views.stock_export, name='stock_export'),
 
@@ -27,8 +28,4 @@ urlpatterns = [
 
     path('trade-import/', views.TradeImportView.as_view(), name="trade_import"),
     path('trade-delete/', views.trade_delete, name='trade_delete'),
-
-# Test Radiobutton
-#     path('my-test/<str:pk>/', views.MyTestView.as_view(), name="my_test"),
-
 ]

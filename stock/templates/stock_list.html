@@ -2,7 +2,7 @@
 {% load static %}
 {% load humanize %}
 
-{% block title %}STOCK一覧 | Private Diary{% endblock %}
+{% block title %}STOCK一覧 | Private Stock{% endblock %}
 
 {% block active_stock_list %}active{% endblock %}
 
@@ -27,7 +27,7 @@
           <thead>
             <tr>
               <th>Symbol</th>
-              <th>SymbolName</th>
+              <th>Name</th>
                 <th>LeavesQty</th>
                 <th>Price</th>
                 <th>CurrentPrice</th>
@@ -43,7 +43,7 @@
                   <td>
                       <a href="{% url 'stock:stock_detail' stock.pk %}">
                       {{ stock.Symbol }}</a></td>
-                  <td>{{ stock.SymbolName }}</td>
+                  <td>{{ stock.SymbolDisp }}</td>
                   <td>{{ stock.LeavesQty | intcomma}}</td>
                   <td>{{ stock.Price | intcomma}}</td>
                   <td>{{ stock.CurrentPrice | intcomma}}</td>
@@ -57,22 +57,6 @@
             {% endfor %}
           </tbody>
         </table>
-{#            {% for stock in stock_list %}#}
-{#            <div class="post-preview">#}
-{#                <a href="{% url 'stock:stock_detail' stock.pk %}">#}
-{#                    <h2 class="post-title">#}
-{#                        {{ stock.title }}#}
-{#                    </h2>#}
-{#                    <h3 class="post-subtitle">#}
-{#                        {{ stock.content|truncatechars:20 }}#}
-{#                    </h3>#}
-{#                </a>#}
-{#                <p class="post-meta">{{ stock.created_at }}</p>#}
-{#            </div>#}
-{#            <hr class="my-4">#}
-{#            {% empty %}#}
-{#            <p>日記がありません。</p>#}
-{#            {% endfor %}#}
 
         <!-- ページネーション処理 -->
         {% if is_paginated %}
