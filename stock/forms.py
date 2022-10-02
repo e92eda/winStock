@@ -116,7 +116,7 @@ class CSVUploadForm(forms.Form):
                         except Exception as e:     # Muched stock does not exist
                             print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
 
-                            stockMatch = Stock(Symbol=symbolSerach, SymbolName='Dummy', user_id=1)     # So, this is dummy., user_id=1
+                            stockMatch = Stock(Symbol=symbolSerach, SymbolName=row[0]+'*', user_id=1)     # So, this is dummy., user_id=1
                             stockMatch.save()
 
                         post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], SymbolName=row[3],

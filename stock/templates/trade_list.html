@@ -10,7 +10,9 @@
 <link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
 {% endblock %}
 
+
 {% block contents %}
+
 <div class="container px-4 px-lg-5 my-div-style">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-6 col-sm-2 "></div>
@@ -20,34 +22,35 @@
         <div class="col-md-2 col-sm-2 ">
             <a class="btn btn-primary float-right" href="{% url 'stock:trade_import' %}">Import</a>
         </div>
-{#        <div class="col-md-2 col-sm-2 ">#}
-{#            <a class="btn btn-primary float-right" href="{% url 'stock:trade_export' %}">Export</a>#}
-{#        </div>#}
+
         <table class="table">
           <thead>
-            <tr>
-
-              <th>ExecutionDay</th>
-              <th>Symbol</th>
-              <th>SymbolName</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th>CurrentPrice</th>
-                <th>Valuation</th>
-                <th>ProfitLoss</th>
+            <tr style="color:orange">
+                <th>ExecutionDay</th>
+                <th>Side</th>
+                <th>Symbol</th>
+                <th>SymbolName</th>
+                <th style="text-align:right;">Qty</th>
+                <th style="text-align:right;">Price</th>
+                <th style="text-align:right;">CurrentPrice</th>
+                <th style="text-align:right;">Valuation</th>
+                <th style="text-align:right;">ProfitLoss</th>
             </tr>
           </thead>
           <tbody>
             {% for trade in trade_list %}
               <tr>
                   <td>{{ trade.ExecutionDay }}</td>
+                  <td>{{ trade.Side }}</td>
                   <td>{{ trade.Symbol }}</td>
                   <td>{{ trade.SymbolName }}</td>
-                  <td>{{ trade.Qty | intcomma}}</td>
-                  <td>{{ trade.Price | intcomma}}</td>
-                  <td>{{ trade.CurrentPrice | intcomma}}</td>
-                  <td>{{ trade.Valuation | intcomma }}</td>
-                  <td>{{ trade.ProfitLoss }}</td>
+                  <div style="color:orange">
+                  <td style="text-align:right;">{{ trade.Qty | intcomma}}</td>
+                  <td style="text-align:right;">{{ trade.Price | intcomma}}</td>
+                  <td style="text-align:right;">{{ trade.CurrentPrice | intcomma}}</td>
+                  <td style="text-align:right;">{{ trade.Valuation | intcomma }}</td>
+                  <td style="text-align:right;">{{ trade.ProfitLoss | intcomma }}</td>
+                  </div>
               </tr>
             {% endfor %}
           </tbody>
