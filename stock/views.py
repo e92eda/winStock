@@ -154,6 +154,11 @@ class TradeImportView(LoginRequiredMixin, generic.FormView):
         return super().form_valid(form)
 
 
+def TradeMailImport(request):   # Import from the mail text.
+
+
+
+
 def stock_export(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="posts.csv"'
