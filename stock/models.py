@@ -79,7 +79,7 @@ class Trade(models.Model):
     """Tradeモデル  売買履歴　CSVファイル読み込み。該当するAPIはない模様　"""
     id = models.CharField(primary_key=True, max_length=20, default='')
     stock_record = models.ForeignKey(Stock, on_delete=models.PROTECT,
-                                     related_name="Stock_record", default="111")     # Relation to Stock model
+        related_name="Stock_record", default="111")     # Relation to Stock model
     ExecutionDay = models.DateField(null=True)
     DeliveryDay = models.DateField(null=True)
     Exchange = models.IntegerField(null=True)

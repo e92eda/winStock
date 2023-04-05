@@ -1,5 +1,6 @@
 import logging
 import io
+import datetime
 
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -16,7 +17,7 @@ from django.views.generic.detail import SingleObjectMixin
 from django import forms
 from .forms import InquiryForm, StockCreateForm, ChoiceForm, CSVUploadForm
 from .models import Stock, Trade
-from . import stockChart
+from . import stockChart, myMailRead
 
 # グラフ作成
 import matplotlib
@@ -74,6 +75,13 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
+#
+        tranMailFolder = "/Users/kunieda/Dropbox/StockExecute/tranMail/*.txt"
+        stockMail= myMailRead.StockMail()
+        fromMailText = stockMail.getFromMailSave(tranMailFolder)
+
+        self.saveTradeMail(fromMailText)        # Convert to Trade and save the results.
+
         try:
             symbolForDisplay = self.kwargs['pk']  # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
             trades = Trade.objects.filter(Symbol=symbolForDisplay).order_by(
@@ -86,6 +94,48 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 
     def get_success_url(self):
         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
+
+    def saveTradeMail(self, fromMailText):        # Convert to Trade and save the results.
+        # iD の連番生成のため、datetimeを元に、３桁追加して作成、元々はcsvファイルからの読み込みの場合だが、整合性をとる
+        t_delta = datetime.timedelta(hours=9)
+        JST = datetime.timezone(t_delta, 'JST')
+        now = datetime.datetime.now(JST)
+        dtimestring = now.strftime('%Y%m%d %H%M%S')
+        # sellBuy = {'売り': 1, '買い': 2}
+        lcount = 0
+        for result in fromMailText:
+
+            if '売り' in result['sellbuy']:
+                side = 1
+            else:
+                side = 2
+
+            symbolSerach = result['symbol']
+            try:
+                stockMatch = Stock.objects.get(Symbol=symbolSerach)
+            except Exception as e:  # Muched stock does not exist
+                print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
+
+                stockMatch = Stock(Symbol=symbolSerach, SymbolName=row[0] + '*',
+                                   user_id=1)  # So, this is dummy., user_id=1
+                stockMatch.save()
+
+            aTrade = Trade(ExecutionDay=result['tdate'].replace('/', '-'),
+                # ExchangeName =row[2],
+                SymbolName = result['symbolName'],
+                Symbol=result['symbol'],
+                Side= side,
+                Qty=result['qty'], Price= result['price'],
+                # Valuation=row[8], PointUse=row[9],
+                # Commission=row[10], ProfitLoss=row[12], stock_record=stockMatch, user_id=1,
+                stock_record=stockMatch,
+                user_id=1,
+                id=dtimestring + f'{lcount:03}'  # 年から秒までと、0埋めで3文字)       #AccountType=row[11],
+            )
+            # ないデータ：　DeliveryDay=,
+            aTrade.save()       # Databaseに保存
+
+            lcount += 1
 
 
 class StockCreateView(LoginRequiredMixin, generic.CreateView):
@@ -154,7 +204,11 @@ class TradeImportView(LoginRequiredMixin, generic.FormView):
         return super().form_valid(form)
 
 
-def TradeMailImport(request):   # Import from the mail text.
+# def tradeMailImport(request):   # Import from the mail text.
+#     tranMailFolder = "/Users/kunieda/Dropbox/StockExecute/tranMail/*.txt"
+#     stockMail= myMailRead.StockMail()
+#     results = stockMail.getFromMailSave(tranMailFolder)
+#     print (results)
 
 
 

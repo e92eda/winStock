@@ -28,4 +28,7 @@ urlpatterns = [
 
     path('trade-import/', views.TradeImportView.as_view(), name="trade_import"),
     path('trade-delete/', views.trade_delete, name='trade_delete'),
+
+    # path('trade-mailImport/', views.tradeMailImport, name='trade-list'),
+
 ]

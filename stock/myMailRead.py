@@ -4,6 +4,9 @@
 
 import glob
 import re
+from .models import Trade
+
+import shutil
 
 tranMailFolder = "/Users/kunieda/Dropbox/StockExecute/tranMail/*.txt"       # Text files
 
@@ -41,8 +44,6 @@ class StockMail():
 
         matchObject = re.search("[\d,]+", text)
         result['total'] = matchObject.group().replace(',','')
-        text = text[matchObject.end():]
-
 
         return result
 
@@ -51,21 +52,33 @@ class StockMail():
         # フォルダーにあるすべてのファイルをレコードに読み込む
         files = glob.glob(folderName)
         for file in files:
-            print(file)
-            f=open(file,"r")
-            fileContent = f.read()
+
+            with open(file,"r") as f:
+                fileContent = f.read()
             # 取り出し
+            results=[]
+            aresult = self.getFromText(fileContent)
+            results.append(aresult)
+
+            # ファイル移動
+            toFolder = file[:file.rfind('/tranMail')]
+            shutil.move(file, toFolder+'tranMailSave')
 
 
 
-if __name__ == "__main__":
+
+        return results
+
+
+if __name__ == "__main__":  #** メインでは相対インポート　from .models import はできない
     f= open("./test.txt","r")
     itext = f.read()
     stockMail=StockMail()
     # stockMail.getFromMailSave(tranMailFolder)
     aa = stockMail.getFromText(itext)
     print (aa)
-#
+
+
 # フィールドへ移動 [ Transactions::Tinput ]
 # 変数を設定 [ $MailText; 値:Trim ( Transactions::Tinput) ] If [ Left ( $MailText;12) = "約定アラートメールです。" ]
 # #マネックスの取引

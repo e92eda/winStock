@@ -67,7 +67,7 @@ class StockCreateForm(forms.ModelForm):
 
 
 
-class CSVUploadForm(forms.Form):
+class CSVUploadForm(forms.Form):    # ２種類のcsvファイルを読み込み
     file = forms.FileField(
         label='CSVファイル',
         help_text='※拡張子csvのファイルをアップロードしてください。',
