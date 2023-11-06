@@ -5,19 +5,45 @@ from django.db import models
 #  Stock database 定義
 class Stock(models.Model):
     """Stockモデル"""
+    executionid = models.CharField(db_column='ExecutionID', max_length=15, blank=True,
+                                   null=True)  # Field name made lowercase.
+    accounttype = models.CharField(db_column='AccountType', max_length=1, blank=True,
+                                   null=True)  # Field name made lowercase.
+    symbol = models.CharField(db_column='Symbol', primary_key=True, max_length=6, default='',)  # Field name made lowercase.
+    symbolName = models.CharField(db_column='symbolName', verbose_name='Stock name', max_length=15, blank=True,null=True)  # Field name made lowercase.
+    exchange = models.CharField(db_column='Exchange', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    exchangename = models.CharField(db_column='ExchangeName', max_length=15, blank=True,
+                                    null=True)  # Field name made lowercase.
+    price = models.DecimalField(db_column='Price', max_digits=12, decimal_places=1, blank=True,
+                                null=True)  # Field name made lowercase.
+    leavesqty = models.DecimalField(db_column='LeavesQty', max_digits=12, decimal_places=1, blank=True,
+                                    null=True)  # Field name made lowercase.
+    holdqty = models.DecimalField(db_column='HoldQty', max_digits=12, decimal_places=1, blank=True,
+                                  null=True)  # Field name made lowercase.
+    side = models.CharField(db_column='Side', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    currentprice = models.DecimalField(db_column='CurrentPrice', max_digits=12, decimal_places=1, blank=True,
+                                       null=True)  # Field name made lowercase.
+    valuation = models.DecimalField(db_column='Valuation', max_digits=12, decimal_places=1, blank=True,
+                                    null=True)  # Field name made lowercase.
+    profitloss = models.DecimalField(db_column='ProfitLoss', max_digits=12, decimal_places=1, blank=True,
+                                     null=True)  # Field name made lowercase.
+    profitlossrate = models.DecimalField(db_column='ProfitLossRate', max_digits=12, decimal_places=1, blank=True,
+                                         null=True)  # Field name made lowercase.
+
+####
     # ExecutionID = models.CharField(null=True, max_length=40)
     # AccountType = models.CharField(null=True, max_length=6)
-    Symbol = models.CharField(max_length=6, default='', primary_key=True)
-
-    SymbolName = models.CharField(null=True, verbose_name='Stock name', max_length=40)
-    SymbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40)
-    SymbolDisp = models.CharField(default="*", verbose_name='sName', max_length=40)
+    # Symbol = models.CharField(max_length=6, default='', primary_key=True)
+    #
+    # symbolName = models.CharField(verbose_name='Stock name', max_length=40, blank=True,null=True)
+    symbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40, blank=True,null=True)
+    symbolDisp = models.CharField(verbose_name='sName', max_length=40, blank=True,null=True)
 
     # Exchange = models.IntegerField(null=True)
     # ExchangeName = models.CharField(null=True, max_length=40)
     # ExecutionDay = models.DateField(null=True)
-    Price = models.IntegerField(null=True)
-    LeavesQty = models.IntegerField(null=True)
+    # Price = models.IntegerField(null=True)
+    # LeavesQty = models.IntegerField(null=True)
     # HoldQty = models.IntegerField(null=True)
     # Side = models.IntegerField(null=True)
     # Expenses = models.DecimalField(null=True,decimal_places=1, max_digits=10)
@@ -25,29 +51,29 @@ class Stock(models.Model):
     # CommissionTax = models.DecimalField(null=True, decimal_places=1, max_digits=6)
     # ExpireDay = models.DateField(null=True)
     # MarginTradeType = models.IntegerField(null=True)
-    CurrentPrice = models.DecimalField(null=True, decimal_places=0, max_digits=10)
-    Valuation = models.DecimalField(null=True, decimal_places=0, max_digits=10)
-    ProfitLoss = models.DecimalField(null=True, decimal_places=0, max_digits=10)
-    ProfitLossRate = models.DecimalField(null=True, decimal_places=3, max_digits=6)
+#price    CurrentPrice = models.DecimalField(null=True, decimal_places=0, max_digits=10)
+    # Valuation = models.DecimalField(null=True, decimal_places=0, max_digits=10)
+    # ProfitLoss = models.DecimalField(null=True, decimal_places=0, max_digits=10)
+    # ProfitLossRate = models.DecimalField(null=True, decimal_places=3, max_digits=6)
     #
     comment = models.TextField(verbose_name='コメント', blank=True, null=True)
-    user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)
-    title = models.CharField(verbose_name='タイトル', max_length=40)
+    user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT, blank=True, null=True                   )
+    title = models.CharField(verbose_name='タイトル', max_length=40, blank=True, null=True)
 
     photo1 = models.ImageField(verbose_name='写真1', blank=True, null=True)
     photo2 = models.ImageField(verbose_name='写真2', blank=True, null=True)
     photo3 = models.ImageField(verbose_name='写真3', blank=True, null=True)
-    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
-    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True, blank=True, null=True)
+    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True, blank=True, null=True)
 
-    holding = models.BooleanField(default=False)  # Stock hold or not.
-    period = models.IntegerField(default=7)
-    period_type = models.CharField(default='day', verbose_name='期間表示タイプ', max_length=10)
+    # holding = models.BooleanField(default=False)  # Stock hold or not.
+    # period = models.IntegerField(default=7)
+    # period_type = models.CharField(default='day', verbose_name='期間表示タイプ', max_length=10)
 
     # def __init__(self):
     #     super().__init__()
-    #     # self.SymbolAlias = self.SymbolName
-        # print(self.SymbolAlias, "True name:",self.SymbolName)
+    #     # self.SymbolAlias = self.symbolName
+        # print(self.SymbolAlias, "True name:",self.symbolName)
 
     class Meta:
         verbose_name_plural = 'Stock'
@@ -59,7 +85,7 @@ class Stock(models.Model):
 
     @classmethod
     def exportListHeader(cls):
-        return (['ExecutionID', 'AccountType', 'Symbol', 'SymbolName', 'Exchange',
+        return (['ExecutionID', 'AccountType', 'Symbol', 'symbolName', 'Exchange',
                  'ExchangeName', 'ExecutionDay', 'Price', 'LeavesQty', 'HoldQty', 'Side',
                  'Expenses', 'Commission', 'CommissionTax', ' ExpireDay', 'MarginTradeType',
                  'CurrentPrice', 'Valuation', 'ProfitLoss', 'ProfitLossRate'])
@@ -86,7 +112,7 @@ class Trade(models.Model):
 
     ExchangeName = models.CharField(max_length=6, default='')
     Symbol = models.CharField(max_length=6, default='')
-    SymbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
+    symbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
     Side = models.IntegerField(null=True)
     Qty = models.IntegerField(null=True)
     Price = models.DecimalField(null=True, decimal_places=1, max_digits=10)

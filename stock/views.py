@@ -61,10 +61,10 @@ class StockListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
         for stock in stocks:
-            if stock.SymbolAlias == '':
-                stock.SymbolDisp = stock.SymbolName
+            if stock.symbolAlias == '':
+                stock.symbolDisp = stock.symbolName
             else:
-                stock.SymbolDisp = stock.SymbolAlias
+                stock.symbolDisp = stock.symbolAlias
 
         return stocks
 

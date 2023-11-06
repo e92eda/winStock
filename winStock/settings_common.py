@@ -74,6 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'stockdb',
         'USER': os.environ.get('DB_USER'),
+        # 'USER': 'kunieda',
         'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': 'ik1-129-71250.vs.sakura.ne.jp',
         'PORT': '3306',

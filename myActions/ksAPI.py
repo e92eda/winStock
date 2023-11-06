@@ -72,7 +72,7 @@ def get_order(token,order_type=0):
         data.append(
             [order['ID'],
              order['Symbol'],
-             order['SymbolName'],
+             order['symbolName'],
              price,
              side,
              order['OrderQty'],
@@ -103,7 +103,7 @@ def get_position(token, product=0):
                 [ordertype,typeid,
                  position['ExecutionID'],
                  position['Symbol'],
-                 position['SymbolName'],
+                 position['symbolName'],
                  side,
                  position['Price'],
                  position['LeavesQty'],
