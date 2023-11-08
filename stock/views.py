@@ -59,7 +59,8 @@ class StockListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
+        # stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
+        stocks = Stock.objects.order_by('-symbol')  # filter(user=self.request.user).
         for stock in stocks:
             if stock.symbolAlias == '':
                 stock.symbolDisp = stock.symbolName

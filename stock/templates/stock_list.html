@@ -42,14 +42,14 @@
               <tr>
                   <td>
                       <a href="{% url 'stock:stock_detail' stock.pk %}">
-                      {{ stock.Symbol }}</a></td>
-                  <td>{{ stock.SymbolDisp }}</td>
-                  <td>{{ stock.LeavesQty | intcomma}}</td>
-                  <td>{{ stock.Price | intcomma}}</td>
-                  <td>{{ stock.CurrentPrice | intcomma}}</td>
+                      {{ stock.symbol }}</a></td>
+                  <td>{{ stock.symbolDisp }}</td>
+                  <td>{{ stock.leavesqty | intcomma}}</td>
+                  <td>{{ stock.price | intcomma}}</td>
+                  <td>{{ stock.currentprice | intcomma}}</td>
                   <td>{{ stock.Valuation | intcomma }}</td>
-                  <td>{{ stock.ProfitLoss }}</td>
-                  <td>{{ stock.ProfitLossRate|floatformat }}</td>
+                  <td>{{ stock.profitloss }}</td>
+                  <td>{{ stock.profitlossrate|floatformat }}</td>
                   <td>
                       <a href="{% url 'stock:trade_list' stock.pk %}">
                       {{ stock.holding }}</a></td>
