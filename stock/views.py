@@ -16,7 +16,7 @@ from django.views.generic.detail import SingleObjectMixin
 
 from django import forms
 from .forms import InquiryForm, StockCreateForm, ChoiceForm, CSVUploadForm
-from .models import Stock, Trade
+from .models import Stock, Trade, Company
 from . import stockChart, myMailRead
 
 # グラフ作成
@@ -61,11 +61,16 @@ class StockListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         # stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
         stocks = Stock.objects.order_by('-symbol')  # filter(user=self.request.user).
+        # for stock in stocks:
+        #     if stock.symbolAlias == '' or stock.symbolAlias == None:
+        #         stock.symbolDisp = stock.symbolName
+        #     else:
+        #         stock.symbolDisp = stock.symbolAlias
         for stock in stocks:
-            if stock.symbolAlias == '':
-                stock.symbolDisp = stock.symbolName
+            if Company.objects.filter(symbol=stock.symbol).exists():
+                stock.symbolDisp = Company.objects.get(symbol=stock.symbol).symbolAlias
             else:
-                stock.symbolDisp = stock.symbolAlias
+                stock.symbolDisp = "****" + str(stock.symbol)
 
         return stocks
 
@@ -79,13 +84,14 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 #
         tranMailFolder = "/Users/kunieda/Dropbox/StockExecute/tranMail/*.txt"
         stockMail= myMailRead.StockMail()
-        fromMailText = stockMail.getFromMailSave(tranMailFolder)
 
-        self.saveTradeMail(fromMailText)        # Convert to Trade and save the results.
+        # fromMailText = stockMail.getFromMailSave(tranMailFolder)
+
+        # self.saveTradeMail(fromMailText)        # Convert to Trade and save the results.
 
         try:
             symbolForDisplay = self.kwargs['pk']  # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
-            trades = Trade.objects.filter(Symbol=symbolForDisplay).order_by(
+            trades = Trade.objects.filter(symbol=symbolForDisplay).order_by(
                 '-created_at')  # .filter(user=self.request.user)        return trades
 
         except:  # Requestの後に、pK がついていない場合
@@ -113,18 +119,18 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 
             symbolSerach = result['symbol']
             try:
-                stockMatch = Stock.objects.get(Symbol=symbolSerach)
+                stockMatch = Stock.objects.get(symbol=symbolSerach)
             except Exception as e:  # Muched stock does not exist
                 print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
 
-                stockMatch = Stock(Symbol=symbolSerach, SymbolName=row[0] + '*',
+                stockMatch = Stock(symbol=symbolSerach, symbolName=row[0] + '*',
                                    user_id=1)  # So, this is dummy., user_id=1
                 stockMatch.save()
 
             aTrade = Trade(ExecutionDay=result['tdate'].replace('/', '-'),
                 # ExchangeName =row[2],
-                SymbolName = result['symbolName'],
-                Symbol=result['symbol'],
+                symbolName = result['symbolName'],
+                symbol=result['symbol'],
                 Side= side,
                 Qty=result['qty'], Price= result['price'],
                 # Valuation=row[8], PointUse=row[9],
@@ -236,7 +242,7 @@ def get_svg(request, pk):
 
     # Trade data to show
 
-    trades = Trade.objects.filter(Symbol=pk).order_by(
+    trades = Trade.objects.filter(symbol=pk).order_by(
         '-created_at')  # .filter(user=self.request.user)
 
     # arrowList = [(t.ExecutionDay, t.price)for t in trades] #, t.Side, t.Qty

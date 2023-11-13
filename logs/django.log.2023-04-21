@@ -1,0 +1,155 @@
+2023-04-21 13:19:56,311	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 13:19:59,492	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8888'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8888'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 13:19:59,494	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 13:19:59,494	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 13:20:03,101	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8888'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8888'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 13:20:03,102	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 13:20:03,102	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 13:20:47,483	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 13:20:50,080	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 13:20:50,081	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 13:20:50,081	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 13:20:50,141	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 13:20:50,141	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /favicon.ico
+2023-04-21 13:20:50,142	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /favicon.ico HTTP/1.1" 400 143
+2023-04-21 13:22:40,449	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 13:22:42,764	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 13:22:42,765	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 13:22:42,765	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 13:23:28,912	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 13:23:30,821	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 200 4743
+2023-04-21 13:23:30,844	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/one-page-wonder.css
+2023-04-21 13:23:30,844	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/one-page-wonder.css HTTP/1.1" 404 2816
+2023-04-21 13:23:30,848	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/mystyle.css
+2023-04-21 13:23:30,849	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/01.jpg
+2023-04-21 13:23:30,849	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/mystyle.css HTTP/1.1" 404 2816
+2023-04-21 13:23:30,849	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/01.jpg HTTP/1.1" 404 2816
+2023-04-21 13:23:30,850	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/02.jpg
+2023-04-21 13:23:30,851	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/03.jpg
+2023-04-21 13:23:30,851	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/02.jpg HTTP/1.1" 404 2816
+2023-04-21 13:23:30,851	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/03.jpg HTTP/1.1" 404 2816
+2023-04-21 13:23:31,004	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/one-page-wonder.css
+2023-04-21 13:23:31,004	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/mystyle.css
+2023-04-21 13:23:31,005	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/one-page-wonder.css HTTP/1.1" 404 2816
+2023-04-21 13:23:31,005	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/mystyle.css HTTP/1.1" 404 2816
+2023-04-21 13:23:31,006	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/01.jpg
+2023-04-21 13:23:31,007	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/02.jpg
+2023-04-21 13:23:31,007	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/01.jpg HTTP/1.1" 404 2816
+2023-04-21 13:23:31,007	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/02.jpg HTTP/1.1" 404 2816
+2023-04-21 13:23:31,009	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/03.jpg
+2023-04-21 13:23:31,009	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/03.jpg HTTP/1.1" 404 2816
+2023-04-21 13:24:31,701	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 13:24:33,427	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 13:24:33,429	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 13:24:33,429	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 14:14:54,500	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 14:14:57,536	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 14:14:57,537	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 14:14:57,537	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 14:16:14,591	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 14:16:16,835	[ERROR]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py(Line:124)	Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/deprecation.py", line 135, in __call__
+    response = self.process_request(request)
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+  File "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/http/request.py", line 148, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+2023-04-21 14:16:16,836	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Bad Request: /
+2023-04-21 14:16:16,837	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 400 143
+2023-04-21 14:17:20,409	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-21 14:17:22,351	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 200 4743
+2023-04-21 14:17:22,362	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/one-page-wonder.css
+2023-04-21 14:17:22,362	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/one-page-wonder.css HTTP/1.1" 404 2816
+2023-04-21 14:17:22,363	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/mystyle.css
+2023-04-21 14:17:22,363	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/mystyle.css HTTP/1.1" 404 2816
+2023-04-21 14:17:22,364	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/01.jpg
+2023-04-21 14:17:22,364	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/01.jpg HTTP/1.1" 404 2816
+2023-04-21 14:17:22,365	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/02.jpg
+2023-04-21 14:17:22,366	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/03.jpg
+2023-04-21 14:17:22,366	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/02.jpg HTTP/1.1" 404 2816
+2023-04-21 14:17:22,366	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/03.jpg HTTP/1.1" 404 2816
+2023-04-21 14:17:22,528	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/one-page-wonder.css
+2023-04-21 14:17:22,531	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/mystyle.css
+2023-04-21 14:17:22,532	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/one-page-wonder.css HTTP/1.1" 404 2816
+2023-04-21 14:17:22,532	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/mystyle.css HTTP/1.1" 404 2816
+2023-04-21 14:17:22,536	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/01.jpg
+2023-04-21 14:17:22,540	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/02.jpg
+2023-04-21 14:17:22,550	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/02.jpg HTTP/1.1" 404 2816
+2023-04-21 14:17:22,549	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/01.jpg HTTP/1.1" 404 2816
+2023-04-21 14:17:22,549	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/03.jpg
+2023-04-21 14:17:22,551	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/03.jpg HTTP/1.1" 404 2816
+2023-04-21 22:52:48,015	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader

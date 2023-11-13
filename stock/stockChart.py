@@ -190,7 +190,7 @@ class StockChart:
 
     # def drawAllows(self, symbolForDisplay):
     #     # symbolForDisplay = self.kwargs['pk']  # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
-    #     trades = Trade.objects.filter(Symbol=symbolForDisplay).order_by(
+    #     trades = Trade.objects.filter(symbol=symbolForDisplay).order_by(
     #         '-created_at')  # .filter(user=self.request.user)        return trades
 
 

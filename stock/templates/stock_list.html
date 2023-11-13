@@ -46,9 +46,9 @@
                   <td>{{ stock.symbolDisp }}</td>
                   <td>{{ stock.leavesqty | intcomma}}</td>
                   <td>{{ stock.price | intcomma}}</td>
-                  <td>{{ stock.currentprice | intcomma}}</td>
+                  <td>{{ stock.currentprice | intcomma|rjust:10}}</td>
                   <td>{{ stock.Valuation | intcomma }}</td>
-                  <td>{{ stock.profitloss }}</td>
+                  <td>{{ stock.profitloss|intcomma }}</td>
                   <td>{{ stock.profitlossrate|floatformat }}</td>
                   <td>
                       <a href="{% url 'stock:trade_list' stock.pk %}">

@@ -1,0 +1,22 @@
+2023-04-28 13:40:01,574	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/autoreload.py(Line:677)	Watching for file changes with StatReloader
+2023-04-28 13:40:04,797	[INFO]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET / HTTP/1.1" 200 4743
+2023-04-28 13:40:04,885	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/one-page-wonder.css
+2023-04-28 13:40:04,885	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/one-page-wonder.css HTTP/1.1" 404 2816
+2023-04-28 13:40:04,887	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/01.jpg
+2023-04-28 13:40:04,887	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/01.jpg HTTP/1.1" 404 2816
+2023-04-28 13:40:04,889	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/mystyle.css
+2023-04-28 13:40:04,890	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/02.jpg
+2023-04-28 13:40:04,890	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/02.jpg HTTP/1.1" 404 2816
+2023-04-28 13:40:04,891	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/mystyle.css HTTP/1.1" 404 2816
+2023-04-28 13:40:04,892	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/03.jpg
+2023-04-28 13:40:04,893	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/03.jpg HTTP/1.1" 404 2816
+2023-04-28 13:40:04,982	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/one-page-wonder.css
+2023-04-28 13:40:04,982	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/one-page-wonder.css HTTP/1.1" 404 2816
+2023-04-28 13:40:04,983	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/css/mystyle.css
+2023-04-28 13:40:04,983	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/01.jpg
+2023-04-28 13:40:04,984	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/css/mystyle.css HTTP/1.1" 404 2816
+2023-04-28 13:40:04,984	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/01.jpg HTTP/1.1" 404 2816
+2023-04-28 13:40:04,985	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/02.jpg
+2023-04-28 13:40:04,986	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/utils/log.py(Line:241)	Not Found: /static/assets/img/03.jpg
+2023-04-28 13:40:04,986	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/02.jpg HTTP/1.1" 404 2816
+2023-04-28 13:40:04,986	[WARNING]	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/venvmac/lib/python3.10/site-packages/django/core/servers/basehttp.py(Line:187)	"GET /static/assets/img/03.jpg HTTP/1.1" 404 2816

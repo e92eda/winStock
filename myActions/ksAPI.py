@@ -61,7 +61,7 @@ def get_order(token,order_type=0):
 
             side = '売'
 
-        board = get_priceinfo(1, order['Symbol'], token)
+        board = get_priceinfo(1, order['symbol'], token)
 
         current_price = board["CurrentPrice"]
 
@@ -71,7 +71,7 @@ def get_order(token,order_type=0):
 
         data.append(
             [order['ID'],
-             order['Symbol'],
+             order['symbol'],
              order['symbolName'],
              price,
              side,
@@ -102,7 +102,7 @@ def get_position(token, product=0):
         data.append(
                 [ordertype,typeid,
                  position['ExecutionID'],
-                 position['Symbol'],
+                 position['symbol'],
                  position['symbolName'],
                  side,
                  position['Price'],

@@ -1,6 +1,11 @@
 from accounts.models import CustomUser
 from django.db import models
 
+class Company(models.Model):
+    symbol = models.IntegerField(db_column='Symbol', primary_key=True, default=0,)  # Field name made lowercase.
+    symbolAlias = models.CharField(db_column='SymbolAlias',default="", verbose_name='Alias', max_length=12, blank=True,null=True)
+    symbolName = models.CharField(db_column='SymbolName', verbose_name='Stock name', max_length=40, blank=True,null=True)  # Field name made lowercase.
+
 
 #  Stock database 定義
 class Stock(models.Model):
@@ -9,7 +14,7 @@ class Stock(models.Model):
                                    null=True)  # Field name made lowercase.
     accounttype = models.CharField(db_column='AccountType', max_length=1, blank=True,
                                    null=True)  # Field name made lowercase.
-    symbol = models.CharField(db_column='Symbol', primary_key=True, max_length=6, default='',)  # Field name made lowercase.
+    symbol = models.IntegerField(db_column='symbol', primary_key=True,  default=0,)  # Field name made lowercase.
     symbolName = models.CharField(db_column='symbolName', verbose_name='Stock name', max_length=15, blank=True,null=True)  # Field name made lowercase.
     exchange = models.CharField(db_column='Exchange', max_length=1, blank=True, null=True)  # Field name made lowercase.
     exchangename = models.CharField(db_column='ExchangeName', max_length=15, blank=True,
@@ -32,6 +37,7 @@ class Stock(models.Model):
 
     symbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40, blank=True,null=True)
     symbolDisp = models.CharField(verbose_name='sName', max_length=40, blank=True,null=True)
+    # cmp = models.OneToOneField(Company,on_delete=models.CASCADE, default='')
 
     # ExecutionDay = models.DateField(null=True)
     # Expenses = models.DecimalField(null=True,decimal_places=1, max_digits=10)
@@ -69,7 +75,7 @@ class Stock(models.Model):
 
     @classmethod
     def exportListHeader(cls):
-        return (['ExecutionID', 'AccountType', 'Symbol', 'symbolName', 'Exchange',
+        return (['ExecutionID', 'AccountType', 'symbol', 'symbolName', 'Exchange',
                  'ExchangeName', 'ExecutionDay', 'Price', 'LeavesQty', 'HoldQty', 'Side',
                  'Expenses', 'Commission', 'CommissionTax', ' ExpireDay', 'MarginTradeType',
                  'CurrentPrice', 'Valuation', 'ProfitLoss', 'ProfitLossRate'])
@@ -94,8 +100,8 @@ class Trade(models.Model):
     DeliveryDay = models.DateField(null=True)
     Exchange = models.IntegerField(null=True)
 
-    ExchangeName = models.CharField(max_length=6, default='')
-    Symbol = models.CharField(max_length=6, default='')
+    ExchangeName = models.CharField(max_length=6, default=0)
+    symbol = models.IntegerField(default=0)
     symbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
     Side = models.IntegerField(null=True)
     Qty = models.IntegerField(null=True)
@@ -121,6 +127,8 @@ class Trade(models.Model):
 
     def __str__(self):
         return self.id
+
+
 
 # class FigPeriodChoice(models.Model):
 # # To choose period to show in the chart. Store for each stock.

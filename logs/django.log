@@ -1,0 +1,5 @@
+2023-11-05 21:10:39,224	[INFO]	/opt/homebrew/lib/python3.11/site-packages/django/utils/autoreload.py(Line:668)	Watching for file changes with StatReloader
+2023-11-05 21:12:36,870	[INFO]	/opt/homebrew/lib/python3.11/site-packages/django/utils/autoreload.py(Line:266)	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/winStock/stock/migrations/0005_remove_stock_created_at_remove_stock_holding_and_more.py changed, reloading.
+2023-11-05 21:12:37,304	[INFO]	/opt/homebrew/lib/python3.11/site-packages/django/utils/autoreload.py(Line:668)	Watching for file changes with StatReloader
+2023-11-05 21:49:38,921	[INFO]	/opt/homebrew/lib/python3.11/site-packages/django/utils/autoreload.py(Line:266)	/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/winStock/stock/migrations/0001_initial.py changed, reloading.
+2023-11-05 21:49:39,414	[INFO]	/opt/homebrew/lib/python3.11/site-packages/django/utils/autoreload.py(Line:668)	Watching for file changes with StatReloader

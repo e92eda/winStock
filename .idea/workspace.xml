@@ -4,18 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="外部MySQL 用、Runserver できるが、表示でエラー">
-      <change afterPath="$PROJECT_DIR$/stock/migrations/0002_rename_symbolname_stock_symbolname_and_more.py" afterDir="false" />
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。&#10;StockDetailはUserIDの問題から表示できず。">
+      <change afterPath="$PROJECT_DIR$/ServerPrograms/Old/updateDB.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ServerPrograms/kabuUpdateB.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log.2023-04-21" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log.2023-04-23" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log.2023-04-24" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log.2023-04-26" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log.2023-04-28" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/django.log.2023-10-30" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock/migrations/0002_alter_stock_symbol_alter_trade_symbol.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/その他/ConsoleLog.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/その他/日本株.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/migrations/0002_alter_stock_symboldisp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/migrations/0003_alter_stock_title.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/migrations/0004_alter_stock_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/migrations/0003_stock_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/migrations/0005_stock_symbolalias.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/migrations/0006_rename_symbolalias_stock_symbolalias_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/migrations/0007_rename_symbolname_stock_symbolname.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myActions/ksAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/myActions/ksAPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/migrations/0002_rename_symbolname_stock_symbolname_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/migrations/0003_stock_user.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/stockChart.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/stockChart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/stock_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/templates/stock_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/trade_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/trade_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/winStock/settings_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/winStock/settings_common.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +61,12 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="228856578fd9a79e3423f6b7e57fed07192d02b0" />
+        <entry key="$PROJECT_DIR$" value="932bf8a317754db1df54d010b57d1b6fc6012c8d" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -64,22 +79,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/kunieda/Dropbox/PythonsWin/winStock/stock/templates/stock&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/kunieda/Library/CloudStorage/Dropbox/PythonsWin/winStock2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/stock/templates/stock" />
@@ -89,6 +104,7 @@
       <recent name="X:\PythonsWin\winStock\stock\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ServerPrograms/Old" />
       <recent name="$PROJECT_DIR$/stock/" />
     </key>
   </component>
@@ -411,14 +427,17 @@
       <workItem from="1699273310929" duration="124000" />
       <workItem from="1699275379216" duration="9786000" />
       <workItem from="1699320630254" duration="8915000" />
-      <workItem from="1699416460770" duration="5816000" />
-    </task>
-    <task id="LOCAL-00003" summary="サインアップではエラー解消">
-      <created>1661997853313</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1661997853314</updated>
+      <workItem from="1699416460770" duration="19207000" />
+      <workItem from="1699494630180" duration="3607000" />
+      <workItem from="1699572288186" duration="1215000" />
+      <workItem from="1699696792318" duration="3283000" />
+      <workItem from="1699750897997" duration="2670000" />
+      <workItem from="1699753811858" duration="2499000" />
+      <workItem from="1699798822797" duration="79000" />
+      <workItem from="1699799137390" duration="4485000" />
+      <workItem from="1699804273575" duration="411000" />
+      <workItem from="1699836708417" duration="347000" />
+      <workItem from="1699837196308" duration="8149000" />
     </task>
     <task id="LOCAL-00004" summary="Mac OS /Users/kunieda/Dropbox/Pythons/django/pyStockProject&#10;venvで起動">
       <created>1662096044476</created>
@@ -756,7 +775,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664939731999</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。">
+      <created>1699424559466</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1699424559466</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -796,8 +822,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="9/10&#10;チャート" />
-    <MESSAGE value="9/10&#10;Yahoo finace data load completed." />
     <MESSAGE value="9/10&#10;Yahoo finace data load completed.2" />
     <MESSAGE value="9/10&#10;Yahoo finace data load completed.3 inline dummy chart" />
     <MESSAGE value="9/11 str:pkに変更" />
@@ -821,7 +845,9 @@
     <MESSAGE value="10/1 Pre Nextボタン" />
     <MESSAGE value="10/2 Trade  数値右詰め" />
     <MESSAGE value="Trade mail からインポート" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trade mail からインポート" />
+    <MESSAGE value="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。" />
+    <MESSAGE value="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。&#10;StockDetailはUserIDの問題から表示できず。" />
+    <option name="LAST_COMMIT_MESSAGE" value="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。&#10;StockDetailはUserIDの問題から表示できず。" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -843,52 +869,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>192</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/forms.py</url>
-          <line>153</line>
-          <option name="timeStamp" value="85" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>316</line>
-          <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>290</line>
-          <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>294</line>
-          <option name="timeStamp" value="131" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>267</line>
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>96</line>
+          <line>185</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>136</line>
-          <option name="timeStamp" value="156" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/winStock/settings.py</url>
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
-          <line>69</line>
-          <option name="timeStamp" value="167" />
+          <url>file://$PROJECT_DIR$/ServerPrograms/kabuUpdateB.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="149" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="django-line">
           <url>file://$PROJECT_DIR$/stock/templates/stock_detail.html</url>
@@ -906,15 +893,19 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1699420668530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1699855324080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$createsuperuser.coverage" NAME="createsuperuser Coverage Results" MODIFIED="1663315113004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$del_migrations.coverage" NAME="del_migrations Coverage Results" MODIFIED="1699417160882" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$runserver_real.coverage" NAME="runserver real Coverage Results" MODIFIED="1699186238598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1699804379997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1699842484294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1699804391028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$del_migrations.coverage" NAME="del_migrations Coverage Results" MODIFIED="1699753646989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$stockChart.coverage" NAME="stockChart Coverage Results" MODIFIED="1663030226009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
     <SUITE FILE_PATH="coverage/winStock$showmigrations.coverage" NAME="showmigrations Coverage Results" MODIFIED="1663310686646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1699856858791" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$testYahooFinance2.coverage" NAME="testYahooFinance2 Coverage Results" MODIFIED="1662852078731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/miscellaneous" />
     <SUITE FILE_PATH="coverage/winStock$myMailRead.coverage" NAME="myMailRead Coverage Results" MODIFIED="1664865476907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
-    <SUITE FILE_PATH="coverage/winStock$runserver_real.coverage" NAME="runserver real Coverage Results" MODIFIED="1699186238598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1699420685709" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1699420658128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1699804403254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStockOld$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1699836721624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
