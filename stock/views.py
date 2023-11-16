@@ -267,14 +267,12 @@ def get_svg(request, pk):
 
 def stock_detail_pre(request, pk): # Show the previous stock
     # ipk = int (pk)
-    theStock = Stock.objects.get(pk=pk)
-    # ordered_objects = Stock.objects.order_by('created_at')
-    # preStock = ordered_objects.filter(created_at__lt=theStock.created_at)
-
    # preStock = theStock.get_previous_by_created_at()
 
     try:
-        preStock = theStock.get_previous_by_created_at()
+        theStock = Stock.objects.get(pk=pk)
+        ordered_objects = Stock.objects.order_by('symbol')
+        preStock = ordered_objects.filter(symbol__lt=theStock.symbol).last()  #前のSymbol順を取得
     except:
         return redirect('stock:stock_detail', pk=pk)
 
@@ -282,9 +280,10 @@ def stock_detail_pre(request, pk): # Show the previous stock
     return redirect('stock:stock_detail', pk=ppk)
 
 def stock_detail_post(request, pk):      # Show the next stock
-    theStock = Stock.objects.get(pk=pk)
     try:
-        preStock = theStock.get_next_by_created_at()
+        theStock = Stock.objects.get(pk=pk)
+        ordered_objects = Stock.objects.order_by('symbol')
+        preStock = ordered_objects.filter(symbol__gt=theStock.symbol).first()  #前のSymbol順を取得
     except:
         return redirect('stock:stock_detail', pk=pk)
 
