@@ -34,8 +34,9 @@ class OnlyYouMixin(UserPassesTestMixin):
     def test_func(self):
         # URLに埋め込まれた主キーから日記データを1件取得。取得できなかった場合は404エラー
         stock = get_object_or_404(Stock, pk=self.kwargs['pk'])
-        # ログインユーザーと日記の作成ユーザーを比較し、異なればraise_exceptionの設定に従う
-        return self.request.user == stock.user
+        # ログインユーザーと日記の作成ユーザーを比較し、異なればraise_exceptionの設定に従う=>すべてOK
+        # return self.request.user == stock.user
+        return True
 
 
 class IndexView(generic.TemplateView):
@@ -59,8 +60,8 @@ class StockListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        # stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
-        stocks = Stock.objects.order_by('-symbol')  # filter(user=self.request.user).
+        stocks = Stock.objects.order_by('-created_at')  # filter(user=self.request.user).
+        #stocks = Stock.objects.order_by('-symbol')  # filter(user=self.request.user).
         # for stock in stocks:
         #     if stock.symbolAlias == '' or stock.symbolAlias == None:
         #         stock.symbolDisp = stock.symbolName
@@ -264,8 +265,14 @@ def get_svg(request, pk):
     return response
 
 
-def stock_detail_pre(request, pk):      # Show the previous stock
+def stock_detail_pre(request, pk): # Show the previous stock
+    # ipk = int (pk)
     theStock = Stock.objects.get(pk=pk)
+    # ordered_objects = Stock.objects.order_by('created_at')
+    # preStock = ordered_objects.filter(created_at__lt=theStock.created_at)
+
+   # preStock = theStock.get_previous_by_created_at()
+
     try:
         preStock = theStock.get_previous_by_created_at()
     except:

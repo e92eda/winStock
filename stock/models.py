@@ -47,7 +47,8 @@ class Stock(models.Model):
     # MarginTradeType = models.IntegerField(null=True)
 
     comment = models.TextField(verbose_name='コメント', blank=True, null=True)
-    user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT, blank=True, null=True)
+    # user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT, blank=True, null=True)
+    user_id = models.IntegerField(default=1)
     title = models.CharField(verbose_name='タイトル', max_length=40, blank=True, null=True)
 
     photo1 = models.ImageField(verbose_name='写真1', blank=True, null=True)

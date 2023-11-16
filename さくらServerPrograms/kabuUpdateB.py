@@ -1,6 +1,6 @@
 # Database kabudb tabbles: postions, orders update
-# 2023/10/21,11/5
-# E.Kunieda
+# 2023/10/21,11/5,15
+#               E.Kunieda
 
 
 #  MySQL へ接続
@@ -75,21 +75,29 @@ def get_orders(token):  # 注文約定照会
 # MySQL db table stock_stockにpositionsリスト更新登録
 def insertPositions(connection, positions):
     cur = connection.cursor()
-    values = [tuple(apos.values()) for apos in positions]
+    now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+
+    # Kabu Stationから
+    values = []
+    for apos in positions:
+        apost = tuple(apos.values())
+        apostt = apost + (True, 7, "day", 1, now, now)
+
+        values.append(apostt)
 
 ####Insert update
     sql = ('''
     INSERT INTO stock_stock 
-            (ExecutionID, AccountType, Symbol, SymbolName, Exchange, ExchangeName, Price, \
-            LeavesQty, HoldQty, Side, CurrentPrice, Valuation, ProfitLoss, ProfitLossRate,\
-            holding, period, period_type)
+            (ExecutionID, AccountType, Symbol, SymbolName, Exchange, ExchangeName, Price, LeavesQty, HoldQty, Side, CurrentPrice, Valuation, ProfitLoss, ProfitLossRate,holding, period,period_type,user_id,
+            created_at, updated_at)
     VALUES 
-            (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s,%s, %s, %s, %s\
-            ,True, 7, 'day')
+            (%s,%s,%s,%s,%s, %s,%s,%s,%s,%s, %s,%s,%s,%s,%s, %s,%s,%s,%s,%s)
+
     ON DUPLICATE KEY UPDATE CurrentPrice = VALUES(CurrentPrice), Valuation = VALUES(Valuation),
     ProfitLoss = VALUES(ProfitLoss), ProfitLossRate = VALUES(ProfitLossRate)\
-    ,holding = VALUES(holding)
+    ,holding = VALUES(holding), updated_at = VALUES(updated_at)
     ''')
+
     cur.executemany(sql, values)
     connection.commit()
 
@@ -110,7 +118,7 @@ def insertOrders(connection, orders):
         (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     ''')
 
-    cur.executemany(sql, values)
+    cur.executemany(sql, valuesList)
     connection.commit()
 
 
