@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postが動かない。">
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postも動く！">
+      <change afterPath="$PROJECT_DIR$/stock/migrations/0004_order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/その他/.ipynb_checkpoints/pyMuSQLOrderTest-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/その他/pyMuSQLOrderTest.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/stock_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/templates/stock_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock/templates/stock_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/その他/.jupyter/desktop-workspaces/default-37a8.jupyterlab-workspace" beforeDir="false" afterPath="$PROJECT_DIR$/その他/.jupyter/desktop-workspaces/default-37a8.jupyterlab-workspace" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -419,14 +425,9 @@
       <workItem from="1699870530164" duration="5688000" />
       <workItem from="1699993459998" duration="738000" />
       <workItem from="1700052626464" duration="2364000" />
-      <workItem from="1700072095882" duration="10481000" />
-    </task>
-    <task id="LOCAL-00006" summary="Edited on Mac OS &#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く">
-      <created>1662222584175</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1662222584175</updated>
+      <workItem from="1700072095882" duration="10835000" />
+      <workItem from="1700114960774" duration="4080000" />
+      <workItem from="1700151390519" duration="3733000" />
     </task>
     <task id="LOCAL-00007" summary="Edited on Mac OS&#10;Database　Stock用に変更した。&#10;とりあえずimportの仮のテンプレート作成、動く">
       <created>1662223700178</created>
@@ -764,7 +765,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700110594301</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postも動く！">
+      <created>1700112771992</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1700112771992</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -804,7 +812,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="9/10&#10;Yahoo finace data load completed.3 inline dummy chart" />
     <MESSAGE value="9/11 str:pkに変更" />
     <MESSAGE value="9/12 Chart をStock detailにインライン表示可能" />
     <MESSAGE value="9/15 Trade情報読み込み　未完" />
@@ -829,7 +836,8 @@
     <MESSAGE value="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。" />
     <MESSAGE value="外部MySQL 用、Runserver できる.&#10;Stock Listは、外部SQL databaseをさくらサーバー上で更新。表示。&#10;StockDetailはUserIDの問題から表示できず。" />
     <MESSAGE value="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postが動かない。" />
-    <option name="LAST_COMMIT_MESSAGE" value="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postが動かない。" />
+    <MESSAGE value="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postも動く！" />
+    <option name="LAST_COMMIT_MESSAGE" value="外部MySQL 用、Runserver できる.&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postも動く！" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -864,9 +872,14 @@
           <line>278</line>
           <option name="timeStamp" value="153" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/stock/views.py</url>
+          <line>274</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="django-line">
           <url>file://$PROJECT_DIR$/stock/templates/stock_detail.html</url>
-          <line>5</line>
+          <line>6</line>
           <option name="timeStamp" value="129" />
         </line-breakpoint>
       </breakpoints>
@@ -880,16 +893,16 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/winStock2$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1700110640948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1700153656189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$createsuperuser.coverage" NAME="createsuperuser Coverage Results" MODIFIED="1663315113004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$runserver_real.coverage" NAME="runserver real Coverage Results" MODIFIED="1699186238598" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$makemigrations.coverage" NAME="makemigrations Coverage Results" MODIFIED="1699804379997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock2$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1700110649737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1700153670332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$migrate.coverage" NAME="migrate Coverage Results" MODIFIED="1699804391028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$del_migrations.coverage" NAME="del_migrations Coverage Results" MODIFIED="1699753646989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$stockChart.coverage" NAME="stockChart Coverage Results" MODIFIED="1663030226009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
     <SUITE FILE_PATH="coverage/winStock$showmigrations.coverage" NAME="showmigrations Coverage Results" MODIFIED="1663310686646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock2$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1700112497315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1700153682987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$testYahooFinance2.coverage" NAME="testYahooFinance2 Coverage Results" MODIFIED="1662852078731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/miscellaneous" />
     <SUITE FILE_PATH="coverage/winStock$myMailRead.coverage" NAME="myMailRead Coverage Results" MODIFIED="1664865476907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
     <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1699804403254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

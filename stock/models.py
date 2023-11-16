@@ -37,14 +37,6 @@ class Stock(models.Model):
 
     symbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40, blank=True,null=True)
     symbolDisp = models.CharField(verbose_name='sName', max_length=40, blank=True,null=True)
-    # cmp = models.OneToOneField(Company,on_delete=models.CASCADE, default='')
-
-    # ExecutionDay = models.DateField(null=True)
-    # Expenses = models.DecimalField(null=True,decimal_places=1, max_digits=10)
-    # Commission = models.DecimalField(null=True, decimal_places=1, max_digits=6)
-    # CommissionTax = models.DecimalField(null=True, decimal_places=1, max_digits=6)
-    # ExpireDay = models.DateField(null=True)
-    # MarginTradeType = models.IntegerField(null=True)
 
     comment = models.TextField(verbose_name='コメント', blank=True, null=True)
     # user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT, blank=True, null=True)
@@ -89,6 +81,39 @@ class Stock(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Order(models.Model):
+    """Orderモデル  注文約定照会　Kabu ステーション　API　"""
+    ID = models.CharField(primary_key=True, max_length=25, default='')
+    State = models.SmallIntegerField(null=True)
+    OrderState = models.SmallIntegerField(null=True)
+    OrdType = models.SmallIntegerField(null=True)
+    RecvTime = models.DateTimeField(null=True)
+    Symbol = models.IntegerField(default=0)
+    SymbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
+    Exchange = models.CharField(db_column='Exchange', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    ExchangeName = models.CharField(db_column='ExchangeName', max_length=15, blank=True,
+                                    null=True)
+    Price = models.DecimalField(null=True, decimal_places=1, max_digits=10)
+    OrderQty = models.IntegerField(null=True)
+    CumQty = models.IntegerField(null=True)
+    Side = models.SmallIntegerField(null=True)
+    AccountType = models.SmallIntegerField(null=True)
+    DelivType = models.SmallIntegerField(null=True)
+    ExpireDay = models.DateField(null=True)
+
+    comment = models.TextField(verbose_name='コメント', blank=True, null=True)
+
+    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Order'
+
+    def __str__(self):
+        return self.ID
+
 
 
 #  Trade database 定義
