@@ -13,6 +13,7 @@ import json, os
 import pprint
 import time, datetime
 
+now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 
 def generate_token():  # Kabu Station API トークン発行
     obj = {'APIPassword': 'e2092eda'}
@@ -102,24 +103,85 @@ def insertPositions(connection, positions):
     connection.commit()
 
 
-# MySQL db table stock_tradeに登録
+# MySQL db table stock_Orderに登録
 def insertOrders(connection, orders):
     cur = connection.cursor()
     values = []
+    compOrders = []        # For value list of completed orders
     for apos in orders:
-        apos.pop('Details')  # Details は邪魔で悪さをする
-        values.append(tuple(apos.values()))
-    # values = [('20231020A02N44303022', 5, 5, 1, '2023-10-20T09:05:07.598398+09:00', '7752', 'リコー', 9, 'SOR', 1245.0, 100.0, 100.0, '2', 4, 2, 20231020, [1,2])]
+        details = apos.pop('Details')  # Details は邪魔で悪さをする。抜き出す。
+        meanPrice = meanPriceGet( details)  #   Price, 'Qty から平均価格をget
+        apos['Price'] = meanPrice           # Price に戻す。
+        values.append(tuple(apos.values())+(now, now))
+
+        if apos['State'] == 5 and meanPrice != 0. :     # For Trade insert
+            ta = apos
+            del ta['State'], ta['OrderState'], ta['OrdType'], ta['RecvTime'], ta['OrderQty'], ta['DelivType'], ta['ExpireDay']
+
+            compOrders.append(ta)
+
     print(values)
     sql = ('''
-    INSERT IGNORE INTO stock_trade 
-        (ID, State, OrderState, OrdType,RecvTime, Symbol, SymbolName, Exchange, ExchangeName, Price, OrderQty, CumQty, Side, AccountType, DelivType, ExpireDay) 
-     VALUES
-        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO stock_order 
+            (ID, State, OrderState, OrdType, RecvTime, Symbol, SymbolName, Exchange, ExchangeName, Price, OrderQty, CumQty, Side, AccountType, DelivType, ExpireDay,
+            created_at, updated_at)
+    VALUES 
+            (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
+            %s,%s)
+    ON DUPLICATE KEY UPDATE
+            State = VALUES(State),
+            OrderState= VALUES(OrderState), 
+            OrdType = VALUES(OrdType), 
+            RecvTime = VALUES(RecvTime), Price = VALUES(Price), OrderQty = VALUES(OrderQty), CumQty = VALUES(CumQty), Side = VALUES(Side), DelivType = VALUES(DelivType),
+            ExpireDay = VALUES(ExpireDay),
+            updated_at = VALUES(updated_at)
     ''')
 
-    cur.executemany(sql, valuesList)
+    cur.executemany(sql, values)
     connection.commit()
+
+    return compOrders   # To use for Trade insert
+
+def meanPriceGet( details ):
+    sumPrice = 0
+    sumQty = 0
+    for det in details:
+        if det['Price'] != 0.:
+            sumPrice += det['Price'] * det['Qty']
+            sumQty += det['Qty']
+
+        if sumQty == 0:
+            meanPrice = 0.
+        else:
+            meanPrice = sumPrice/sumQty
+    return meanPrice
+
+
+# 完了したOrder (state = 5)を　MySQL db table stock_tradeに登録
+def insertCompletedOrdersToTrade(connection, oValues):
+    # oValues:insert_positionから
+    cur = connection.cursor()
+
+    values = []
+    for apos in oValues:
+        keys = apos.keys()
+        apost = tuple(apos.values())
+        apostt = apost + (apos['Symbol'], now, now, now)
+
+        values.append(apostt)
+
+    sql = ('''
+    INSERT  INTO stock_trade 
+        (ID, Symbol, SymbolName, Exchange, ExchangeName, Price, Qty, Side, AccountType,
+        stock_record_id,created_at, updated_at, ExecutionDay)
+     VALUES
+        (%s, %s, %s, %s, %s, %s, %s, %s, %s
+        , %s, %s, %s, %s)
+    ''')
+
+    cur.executemany(sql, values)
+    connection.commit()
+
 
 
 ##### Main ####
@@ -128,6 +190,9 @@ def insertOrders(connection, orders):
 token_value = generate_token()
 # 残高照会
 positions = get_positions(token_value)
+
+# Order query
+orders = get_orders(token_value)
 
 # 　mySQL stockdbローカル接続
 connection = pymysql.connect(host='localhost',
@@ -139,6 +204,10 @@ connection = pymysql.connect(host='localhost',
 
 # Positions hundling
 # deletePositions(connection)
-insertPositions(connection, positions)
+insertPositions(connection, positions)      # To stock_stock table
+
+comporder_vals = insertOrders(connection, orders)      # To stock_orders table
+
+insertCompletedOrdersToTrade(connection, comporder_vals)      # To stock_trade table
 
 print("***** Tables stock_stock(positions) and orders are updated! ****")

@@ -31,4 +31,7 @@ urlpatterns = [
 
     # path('trade-mailImport/', views.tradeMailImport, name='trade-list'),
 
+# Order　データベース読み
+    path('order_list/', views.OrderListView.as_view(), name="order_list"),
+    path('order_list/<str:pk>/', views.OrderListView.as_view(), name="order_list"),
 ]

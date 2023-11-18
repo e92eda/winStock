@@ -70,7 +70,7 @@ class StockCreateForm(forms.ModelForm):
 class CSVUploadForm(forms.Form):    # ２種類のcsvファイルを読み込み
     file = forms.FileField(
         label='CSVファイル',
-        help_text='※拡張子csvのファイルをアップロードしてください。',
+        help_text='※*TradeKabuまたはAccountを名前に含み、拡張子csvのファイルをアップロード**',
         validators=[FileExtensionValidator(allowed_extensions=['csv'])]
     )
     # print("File name:",file)
@@ -121,7 +121,7 @@ class CSVUploadForm(forms.Form):    # ２種類のcsvファイルを読み込み
 
                         post = Trade(ExecutionDay=row[0].replace('/', '-'), DeliveryDay=row[1].replace('/', '-'), ExchangeName=row[2], symbolName=row[3],
                                      symbol=row[4], Side= sideTable.index(row[5]), Qty=row[6], Price=row[7], Valuation=row[8], PointUse=row[9],
-                                     Commission=row[10],  ProfitLoss=row[12], stock_record=stockMatch, user_id=1,
+                                     Commission=row[10],  ProfitLoss=row[12], stock_record=stockMatch, #user_id=1,
                                      id = dtimestring + f'{lcount:03}'  # 年から秒までと、0埋めで3文字)       #AccountType=row[11],
                                      )
                         self._instances.append(post)

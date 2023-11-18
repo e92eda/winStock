@@ -16,7 +16,7 @@ from django.views.generic.detail import SingleObjectMixin
 
 from django import forms
 from .forms import InquiryForm, StockCreateForm, ChoiceForm, CSVUploadForm
-from .models import Stock, Trade, Company
+from .models import Stock, Trade, Company, Order
 from . import stockChart, myMailRead
 
 # グラフ作成
@@ -145,6 +145,74 @@ class TradeListView(LoginRequiredMixin, generic.ListView):
 
             lcount += 1
 
+class OrderListView(LoginRequiredMixin, generic.ListView):
+    model = Order
+    template_name = 'order_list.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+#
+        # tranMailFolder = "/Users/kunieda/Dropbox/StockExecute/tranMail/*.txt"
+        # stockMail= myMailRead.StockMail()
+
+        # fromMailText = stockMail.getFromMailSave(tranMailFolder)
+
+        # self.saveorderMail(fromMailText)        # Convert to Trade and save the results.
+
+        try:
+            symbolForDisplay = self.kwargs['pk']  # Requestの後に、pK（この場合表示すべき銘柄Symbol）がついている場合
+            orders = Order.objects.filter(symbol=symbolForDisplay).order_by(
+                '-created_at')  # .filter(user=self.request.user)        return orders
+
+        except:  # Requestの後に、pK がついていない場合
+            orders = Order.objects.order_by('-created_at')  # .filter(user=self.request.user)        return orders
+
+        return orders
+#
+#     def get_success_url(self):
+#         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
+#
+#     def saveTradeMail(self, fromMailText):        # Convert to Trade and save the results.
+#         # iD の連番生成のため、datetimeを元に、３桁追加して作成、元々はcsvファイルからの読み込みの場合だが、整合性をとる
+#         t_delta = datetime.timedelta(hours=9)
+#         JST = datetime.timezone(t_delta, 'JST')
+#         now = datetime.datetime.now(JST)
+#         dtimestring = now.strftime('%Y%m%d %H%M%S')
+#         # sellBuy = {'売り': 1, '買い': 2}
+#         lcount = 0
+#         for result in fromMailText:
+#
+#             if '売り' in result['sellbuy']:
+#                 side = 1
+#             else:
+#                 side = 2
+#
+#             symbolSerach = result['symbol']
+#             try:
+#                 stockMatch = Stock.objects.get(symbol=symbolSerach)
+#             except Exception as e:  # Muched stock does not exist
+#                 print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
+#
+#                 stockMatch = Stock(symbol=symbolSerach, symbolName=row[0] + '*',
+#                                    user_id=1)  # So, this is dummy., user_id=1
+#                 stockMatch.save()
+#
+#             aTrade = Trade(ExecutionDay=result['tdate'].replace('/', '-'),
+#                 # ExchangeName =row[2],
+#                 symbolName = result['symbolName'],
+#                 symbol=result['symbol'],
+#                 Side= side,
+#                 Qty=result['qty'], Price= result['price'],
+#                 # Valuation=row[8], PointUse=row[9],
+#                 # Commission=row[10], ProfitLoss=row[12], stock_record=stockMatch, user_id=1,
+#                 stock_record=stockMatch,
+#                 user_id=1,
+#                 id=dtimestring + f'{lcount:03}'  # 年から秒までと、0埋めで3文字)       #AccountType=row[11],
+#             )
+#             # ないデータ：　DeliveryDay=,
+#             aTrade.save()       # Databaseに保存
+#
+#             lcount += 1
 
 class StockCreateView(LoginRequiredMixin, generic.CreateView):
     model = Stock
@@ -202,7 +270,7 @@ class StockImportView(LoginRequiredMixin, generic.FormView):
         return super().form_valid(form)
 
 
-class TradeImportView(LoginRequiredMixin, generic.FormView):
+class TradeImportView(LoginRequiredMixin, generic.FormView):    # Kabu Station CSV file read
     template_name = 'trade_import.html'
     success_url = reverse_lazy('stock:trade_list')
     form_class = CSVUploadForm

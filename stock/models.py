@@ -35,6 +35,7 @@ class Stock(models.Model):
     profitlossrate = models.DecimalField(db_column='ProfitLossRate', max_digits=12, decimal_places=1, blank=True,
                                          null=True)  # Field name made lowercase.
 
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, to_field='symbol', default="")
     symbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40, blank=True,null=True)
     symbolDisp = models.CharField(verbose_name='sName', max_length=40, blank=True,null=True)
 
@@ -82,12 +83,11 @@ class Stock(models.Model):
     def __str__(self):
         return self.title
 
-
 class Order(models.Model):
     """Orderモデル  注文約定照会　Kabu ステーション　API　"""
     ID = models.CharField(primary_key=True, max_length=25, default='')
-    State = models.SmallIntegerField(null=True)
-    OrderState = models.SmallIntegerField(null=True)
+    State = models.SmallIntegerField(null=True)         #OrderStateと同一
+    OrderState = models.SmallIntegerField(null=True)    #Stateと同一である
     OrdType = models.SmallIntegerField(null=True)
     RecvTime = models.DateTimeField(null=True)
     Symbol = models.IntegerField(default=0)
@@ -126,7 +126,7 @@ class Trade(models.Model):
     DeliveryDay = models.DateField(null=True)
     Exchange = models.IntegerField(null=True)
 
-    ExchangeName = models.CharField(max_length=6, default=0)
+    ExchangeName = models.CharField(max_length=6, default=0, null=True)
     symbol = models.IntegerField(default=0)
     symbolName = models.CharField(null=True, verbose_name='タイトル', max_length=40)
     Side = models.IntegerField(null=True)
@@ -134,7 +134,7 @@ class Trade(models.Model):
     Price = models.DecimalField(null=True, decimal_places=1, max_digits=10)
 
     Valuation = models.DecimalField(null=True, decimal_places=0, max_digits=10)
-    PointUse = models.BooleanField(default=False)
+    PointUse = models.BooleanField(default=False,null=True)
     Commission = models.DecimalField(null=True, decimal_places=1, max_digits=6)
     AccountType = models.IntegerField(null=True)
     ProfitLoss = models.DecimalField(null=True, decimal_places=0, max_digits=10)
@@ -142,10 +142,10 @@ class Trade(models.Model):
     CurrentPrice = models.DecimalField(null=True, decimal_places=0, max_digits=10)
 
     comment = models.TextField(verbose_name='コメント', blank=True, null=True)
-    user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)
+    # user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)
 
-    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True)
-    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True)
+    created_at = models.DateTimeField(verbose_name='作成日時', auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(verbose_name='更新日時', auto_now=True, null=True)
 
 
     class Meta:

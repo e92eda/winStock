@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}ORDER一覧 | Private Equity{% endblock %}
+
+{% block active_order_list %}active{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block contents %}
+
+<div class="container px-4 px-lg-5 my-div-style">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-4 col-sm-2 "></div>
+
+
+        <table class="table">
+          <thead>
+            <tr style="color:orange">
+                <th>ExecutionDay</th>
+                <th>State</th>
+                <th>Symbol</th>
+                <th>SymbolName</th>
+                <th style="text-align:right;">Qty</th>
+                <th style="text-align:right;">Price</th>
+                <th style="text-align:right;">Side</th>
+                <th style="text-align:right;">ExpireDay</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in order_list %}
+              <tr>
+                  <div style="color:orange">
+                  <td>{{ order.ExecutionDay }}</td>
+                  <td>{{ order.OrderState }}</td>
+                  <td>{{ order.Symbol }}</td>
+                  <td>{{ order.SymbolName }}</td>
+                  <td style="text-align:right;">{{ order.OrderQty | intcomma}}</td>
+                  <td style="text-align:right;">{{ order.Price | intcomma}}</td>
+                  <td>{{ order.Side }}</td>
+                  <td style="text-align:right;">{{ order.ExpireDay }}</td>
+                  </div>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- ページネーション処理 -->
+        {% if is_paginated %}
+        <ul class="pagination">
+            <!-- 前ページへのリンク -->
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- ページ数表示 -->
+            {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+            <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            <!-- 次ページへのリンク -->
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
