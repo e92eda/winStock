@@ -35,8 +35,8 @@ class Stock(models.Model):
     profitlossrate = models.DecimalField(db_column='ProfitLossRate', max_digits=12, decimal_places=1, blank=True,
                                          null=True)  # Field name made lowercase.
 
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, to_field='symbol', default="")
-    symbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40, blank=True,null=True)
+    #company = models.ForeignKey(Company, on_delete=models.CASCADE, to_field='symbol', default="")
+    #symbolAlias = models.CharField(default="", verbose_name='Alias', max_length=40, blank=True,null=True)
     symbolDisp = models.CharField(verbose_name='sName', max_length=40, blank=True,null=True)
 
     comment = models.TextField(verbose_name='コメント', blank=True, null=True)
