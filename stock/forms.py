@@ -166,8 +166,10 @@ class ChoiceForm(forms.Form):
             ('1 year', 'a year'),
 
         ),
-        label = '期間',
+    #initial = '1 day',
+
+    label = 'Period',
         required = True,
-        widget = forms.widgets.RadioSelect
+        widget = forms.widgets.RadioSelect,
     )
 

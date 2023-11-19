@@ -381,7 +381,8 @@ class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailVi
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['form'] = ChoiceForm()
+        given_period = f"{context['object'].period} {context['object'].period_type}"
+        context['form'] = ChoiceForm(initial={'selected_period': given_period})
         return context
 
 
