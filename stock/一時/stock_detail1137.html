@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}Stock詳細 | Private Stock{% endblock %}
+
+{% block active_stock_list %}active{% endblock %}
+
+
+{% block contents %}
+<div class="container my-div-style">
+    <div class="row">
+        <div class="col-1">Symbol</div>
+        <div class="col-2">Name</div>
+        <div class="col-1">LeavesQty</div>
+        <div class="col-1">Price</div>
+        <div class="col-1">CurrentPrice</div>
+        <div class="col-1">Valuation</div>
+        <div class="col-1">ProfitLoss</div>
+        <div class="col-1">ProfitLossRate</div>
+        <div class="col-1">Holding</div>
+    </div>
+    <div class="row">
+        <div class="col-1">{{ object.symbol }}</div>
+        <div class="col-2">{{ object.symbolName }}</div>
+        <div class="col-1">{{ object.leavesqty | intcomma }}</div>
+        <div class="col-1">{{ object.price | intcomma }}</div>
+        <div class="col-1">{{ object.currentprice | intcomma }}</div>
+        <div class="col-1">{{ object.Valuation | intcomma }}</div>
+        <div class="col-1">{{ object.profitloss|intcomma }}</div>
+        <div class="col-1">{{ object.profitlossrate|floatformat }}</div>
+        <div class="col-1">{{ object.holding }}</div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-2">
+            <strong>Comments</strong>
+        </div>
+        <div class="col-4">
+            {{ object.comment|linebreaksbr }}
+        </div>
+        <div class="col-2">
+            <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_detail_pre' object.pk %}">Pre</a>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_detail_post' object.pk %}">Next</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-2">
+            <form action="" method="POST">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-9">
+            <img src='{% url 'stock:plot' object.pk %}' width=600 height=400>
+        </div>
+     </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-1">
+            <strong>Created</strong>
+        </div>
+        <div class="col-4">
+            {{ object.created_at }}
+        </div>
+        <div class="col-1">
+            <strong>Updated</strong>
+        </div>
+        <div class="col-4">
+            {{ object.updated_at }}
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+    </div>
+
+
+    <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_update' object.pk %}">編集</a>
+    <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'stock:stock_delete' object.pk %}">削除</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#id_selected_period').change(function() { // Change 'id_selected_period' to match your choice field ID
+            var selectedValue = $(this).val();
+            // You can perform additional actions based on the selected value here
+            console.log("Selected value: " + selectedValue);
+
+            // You might want to perform AJAX here if needed
+            // For example:
+            // $.ajax({
+            //     url: 'your_url_endpoint/',
+            //     type: 'POST',
+            //     data: { selected_period: selectedValue },
+            //     success: function(response) {
+            //         // Handle successful response
+            //     },
+            //     error: function(error) {
+            //         // Handle error
+            //     }
+            // });
+        });
+    });
+</script>
+{% endblock %}

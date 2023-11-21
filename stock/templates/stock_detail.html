@@ -34,16 +34,22 @@
     <hr>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-2">
             <strong>Comments</strong>
         </div>
-        <div class="col-9">
+        <div class="col-4">
             {{ object.comment|linebreaksbr }}
+        </div>
+        <div class="col-2">
+            <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_detail_pre' object.pk %}">Pre</a>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_detail_post' object.pk %}">Next</a>
         </div>
     </div>
 
     <hr>
-
+<!-- comment: form.py ChoiceFrom クラスより。表示するperiodを選ぶ。 -->
     <div class="row">
         <div class="col-2">
             <form action="" method="POST">
@@ -52,41 +58,135 @@
                 <button type="submit">Submit</button>
             </form>
         </div>
-        <div class="col-1">
-            <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_detail_pre' object.pk %}">Pre</a>
-        </div>
         <div class="col-9">
             <img src='{% url 'stock:plot' object.pk %}' width=600 height=400>
-        </div>
-        <div class="col-1">
-            <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_detail_post' object.pk %}">Next</a>
         </div>
      </div>
 
     <hr>
 
     <div class="row">
-        <div class="col-3">
-            <strong>作成日時</strong>
+        <div class="col-1">
+            <strong>Created</strong>
         </div>
-        <div class="col-9">
+        <div class="col-4">
             {{ object.created_at }}
+        </div>
+        <div class="col-1">
+            <strong>Updated</strong>
+        </div>
+        <div class="col-4">
+            {{ object.updated_at }}
         </div>
     </div>
 
     <hr>
 
     <div class="row">
-        <div class="col-3">
-            <strong>更新日時</strong>
-        </div>
-        <div class="col-9">
-            {{ object.updated_at }}
-        </div>
+
     </div>
 
 
-    <a class="btn btn-success mt-5 mb-3" href="{% url 'stock:stock_update' object.pk %}">編集</a>
-    <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'stock:stock_delete' object.pk %}">削除</a>
+<div class="container px-4 px-lg-5 my-div-style">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+        <table class="table">
+          <thead>
+            <tr style="color:orange">
+                <th>ExecutionDay</th>
+                <th>Side</th>
+                <th>Symbol</th>
+                <th>SymbolName</th>
+                <th style="text-align:right;">Qty</th>
+                <th style="text-align:right;">Price</th>
+{#                <th style="text-align:right;">CurrentPrice</th>#}
+                <th style="text-align:right;">Valuation</th>
+                <th style="text-align:right;">ProfitLoss</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for trade in trade_list %}
+              <tr>
+                  <td>{{ trade.ExecutionDay }}</td>
+                  <td>
+                      {% if trade.Side == 1 %}
+                        Sell
+                      {% elif trade.Side == 2 %}
+                        Buy
+                      {% endif %}
+                  </td>
+                  <td>{{ trade.symbol }}</td>
+                  <td>{{ trade.symbolName }}</td>
+                  <div style="color:orange">
+                  <td style="text-align:right;">{{ trade.Qty | intcomma}}</td>
+                  <td style="text-align:right;">{{ trade.Price | intcomma}}</td>
+{#                  <td style="text-align:right;">{{ trade.CurrentPrice | intcomma}}</td>#}
+                  <td style="text-align:right;">{{ trade.Valuation | intcomma }}</td>
+                  <td style="text-align:right;">{{ trade.ProfitLoss | intcomma }}</td>
+                  </div>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- ページネーション処理 -->
+        {% if is_paginated %}
+        <ul class="pagination">
+            <!-- 前ページへのリンク -->
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+
+            <!-- ページ数表示 -->
+            {% for page_num in page_obj.paginator.page_range %}
+            {% if page_obj.number == page_num %}
+            <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            <!-- 次ページへのリンク -->
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+
+    </div>
 </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#id_selected_period').change(function() { // Change 'id_selected_period' to match your choice field ID
+            var selectedValue = $(this).val();
+            // You can perform additional actions based on the selected value here
+            console.log("Selected value: " + selectedValue);
+
+            // You might want to perform AJAX here if needed
+            // For my case:
+            $.ajax({
+                 url: 'your_url_endpoint/',
+                 type: 'POST',
+                 data: { selected_period: selectedValue },
+                 success: function(response) {
+                     // Handle successful response
+                 },
+                 error: function(error) {
+                     // Handle error
+                 }
+             });
+        });
+    });
+</script>
 {% endblock %}

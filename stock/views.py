@@ -168,51 +168,6 @@ class OrderListView(LoginRequiredMixin, generic.ListView):
             orders = Order.objects.order_by('-created_at')  # .filter(user=self.request.user)        return orders
 
         return orders
-#
-#     def get_success_url(self):
-#         return reverse_lazy('stock:stock_detail', kwargs={'pk': self.object.pk})
-#
-#     def saveTradeMail(self, fromMailText):        # Convert to Trade and save the results.
-#         # iD の連番生成のため、datetimeを元に、３桁追加して作成、元々はcsvファイルからの読み込みの場合だが、整合性をとる
-#         t_delta = datetime.timedelta(hours=9)
-#         JST = datetime.timezone(t_delta, 'JST')
-#         now = datetime.datetime.now(JST)
-#         dtimestring = now.strftime('%Y%m%d %H%M%S')
-#         # sellBuy = {'売り': 1, '買い': 2}
-#         lcount = 0
-#         for result in fromMailText:
-#
-#             if '売り' in result['sellbuy']:
-#                 side = 1
-#             else:
-#                 side = 2
-#
-#             symbolSerach = result['symbol']
-#             try:
-#                 stockMatch = Stock.objects.get(symbol=symbolSerach)
-#             except Exception as e:  # Muched stock does not exist
-#                 print(f'Error!! {symbolSerach} :Corresponding Stock does not exits. {e} ')
-#
-#                 stockMatch = Stock(symbol=symbolSerach, symbolName=row[0] + '*',
-#                                    user_id=1)  # So, this is dummy., user_id=1
-#                 stockMatch.save()
-#
-#             aTrade = Trade(ExecutionDay=result['tdate'].replace('/', '-'),
-#                 # ExchangeName =row[2],
-#                 symbolName = result['symbolName'],
-#                 symbol=result['symbol'],
-#                 Side= side,
-#                 Qty=result['qty'], Price= result['price'],
-#                 # Valuation=row[8], PointUse=row[9],
-#                 # Commission=row[10], ProfitLoss=row[12], stock_record=stockMatch, user_id=1,
-#                 stock_record=stockMatch,
-#                 user_id=1,
-#                 id=dtimestring + f'{lcount:03}'  # 年から秒までと、0埋めで3文字)       #AccountType=row[11],
-#             )
-#             # ないデータ：　DeliveryDay=,
-#             aTrade.save()       # Databaseに保存
-#
-#             lcount += 1
 
 class StockCreateView(LoginRequiredMixin, generic.CreateView):
     model = Stock
@@ -364,25 +319,36 @@ def trade_delete(request):
     return redirect('/trade-list/')
 
 
-class StockDetailView(generic.FormView):
+class StockDetailView(generic.FormView): # 最初の入り口
 
     def get(self, request, *args, **kwargs):
-        view = StockDetailOriginalView.as_view()
+        view = StockDetailOriginalView.as_view()    #GetならOriginalViewへ
         return view(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        view = StockDetailFormView.as_view()
+        view = StockDetailFormView.as_view()        #PostならFormViewへ
         return view(request, *args, **kwargs)
 
 
 class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailView):
     model = Stock
     template_name = "stock_detail.html"
+    # trades = Trade.objects.order_by(
+    # '-created_at')  #         return trades
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         given_period = f"{context['object'].period} {context['object'].period_type}"
         context['form'] = ChoiceForm(initial={'selected_period': given_period})
+
+        symbolForDisplay =context['object'].symbol
+        trades = Trade.objects.filter(symbol=symbolForDisplay).order_by('-created_at')  #         return trades
+        # context['trade_list'] = trades
+        # 追加したいコンテキスト情報(取得したコンテキスト情報のキーのリストを設定)
+        extra = {"trade_list": trades}
+        # コンテキスト情報のキーを追加
+        context.update(extra)
+
         return context
 
 

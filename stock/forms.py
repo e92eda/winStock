@@ -166,7 +166,6 @@ class ChoiceForm(forms.Form):
             ('1 year', 'a year'),
 
         ),
-    #initial = '1 day',
 
     label = 'Period',
         required = True,
