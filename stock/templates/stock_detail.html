@@ -102,6 +102,7 @@
 {#                <th style="text-align:right;">CurrentPrice</th>#}
                 <th style="text-align:right;">Valuation</th>
                 <th style="text-align:right;">ProfitLoss</th>
+                <th style="text-align:right;">Balance</th>
             </tr>
           </thead>
           <tbody>
@@ -123,6 +124,7 @@
 {#                  <td style="text-align:right;">{{ trade.CurrentPrice | intcomma}}</td>#}
                   <td style="text-align:right;">{{ trade.Valuation | intcomma }}</td>
                   <td style="text-align:right;">{{ trade.ProfitLoss | intcomma }}</td>
+                  <td style="text-align:right;">{{ trade.Balance | intcomma }}</td>
                   </div>
               </tr>
             {% endfor %}

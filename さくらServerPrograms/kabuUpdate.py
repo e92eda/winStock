@@ -16,7 +16,7 @@ import time, datetime
 now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
 
 def generate_token():  # Kabu Station API トークン発行
-    obj = {'APIPassword': 'e2092eda'}
+    obj = {'APIPassword': os.environ.get('KS_API_PASSWORD')}
     json_data = json.dumps(obj).encode('utf8')
 
     url = 'http://localhost:18080/kabusapi/token'

@@ -138,8 +138,9 @@ class Trade(models.Model):
     Commission = models.DecimalField(null=True, decimal_places=1, max_digits=6)
     AccountType = models.IntegerField(null=True)
     ProfitLoss = models.DecimalField(null=True, decimal_places=0, max_digits=10)
+    Balance = models.DecimalField(null=True, decimal_places=0, max_digits=10)
 
-    CurrentPrice = models.DecimalField(null=True, decimal_places=0, max_digits=10)
+    # CurrentPrice = models.DecimalField(null=True, decimal_places=0, max_digits=10)
 
     comment = models.TextField(verbose_name='コメント', blank=True, null=True)
     # user = models.ForeignKey(CustomUser, verbose_name='ユーザー', on_delete=models.PROTECT)

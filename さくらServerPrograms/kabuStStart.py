@@ -6,7 +6,7 @@
 
 import webbrowser
 import pyautogui
-import time
+import time,os
 
 #pyautogui.FAILSAFE = False
 
@@ -27,5 +27,5 @@ browser.open(url ,window_open_mode, True)
 print("起動が完了するまで待つ!")
 time.sleep(7) #起動が完了するまで待つ。
 print("まった!")
-pyautogui.typewrite("e2092eda")  #パスワード　ログインIDは記録させておくため入力しない
+pyautogui.typewrite(os.environ.get('KS_PASSWORD'))  #KSパスワード　ログインIDは記録させておくため入力しない
 pyautogui.typewrite("\n")

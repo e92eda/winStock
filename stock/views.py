@@ -345,9 +345,20 @@ class StockDetailOriginalView(LoginRequiredMixin, OnlyYouMixin, generic.DetailVi
         trades = Trade.objects.filter(symbol=symbolForDisplay).order_by('-created_at')  #         return trades
         # context['trade_list'] = trades
         # 追加したいコンテキスト情報(取得したコンテキスト情報のキーのリストを設定)
-        extra = {"trade_list": trades}
+        # addList = []
+        tradeBalance = 0    # Trade balance of each Stock
+        for atrd in trades:
+            if atrd.Side == 1:      # Sell
+                tradeBalance += atrd.Valuation
+            elif atrd.Side == 2:    # Buy
+                tradeBalance -= atrd.Valuation
+            else:
+                raise ValueError("Trade Side error!")
+            atrd.Balance = tradeBalance
+            # addList.append(tradeBalance)      # Make list for data transfer
+
         # コンテキスト情報のキーを追加
-        context.update(extra)
+        context['trade_list'] = trades
 
         return context
 
