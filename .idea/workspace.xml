@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="holdings の３state button&#10;問題多し、途中" />
+    <list default="true" id="be1e1b97-be19-4c8f-8292-9fc8e9f5520e" name="Changes" comment="Detail でTrade表示&#10;Balanceを表示できる。&#10;多少エラー">
+      <change afterPath="$PROJECT_DIR$/stock/views/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stock/views/stockViews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock/views/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +55,7 @@
     <setting file="file://$PROJECT_DIR$/accounts/templates/account/signup.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/accounts/templates/account/verification_sent.html" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/stock/models.py" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/stock/views.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/stock/views/views.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/winStock/settings.py" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/winStock/urls.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -94,6 +100,7 @@
       <recent name="X:\PythonsWin\winStock\stock\templates" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stock/views" />
       <recent name="$PROJECT_DIR$/その他" />
       <recent name="$PROJECT_DIR$/ServerPrograms/Old" />
       <recent name="$PROJECT_DIR$/stock/" />
@@ -453,13 +460,6 @@
       <workItem from="1700533737572" duration="2077000" />
       <workItem from="1700659284076" duration="3214000" />
     </task>
-    <task id="LOCAL-00010" summary="9/5&#10;user_id をとりあえず１へ　＠forms.pyで">
-      <created>1662380185602</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1662380185602</updated>
-    </task>
     <task id="LOCAL-00011" summary="9/6 temp">
       <created>1662446400905</created>
       <option name="number" value="00011" />
@@ -796,7 +796,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700663919514</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Detail でTrade表示&#10;Balanceを表示できる。&#10;多少エラー">
+      <created>1702569847195</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1702569847195</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -867,7 +874,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="9/15 Trade情報読み込み　読み込める&#10;&#10;Relationはできた&#10;Trade 重複読み込みでエラー" />
     <MESSAGE value="9/18 Trade 重複読み込み可　&#10;trade.id Unique に作成" />
     <MESSAGE value="9/19 Trade読み込みの際に、Stockがない場合には、仮にSymbolName='Dummy'で作る。" />
     <MESSAGE value="9/21&#10;Radio button 作成中" />
@@ -892,7 +898,8 @@
     <MESSAGE value="外部MySQL 用&#10;&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postも動くが端でエラー&#10;OrderはKabu ステーションから" />
     <MESSAGE value="外部MySQL 用&#10;StockDetailはUserIDの制限を解除し、表示できる。Pre ,Postも動くが端でエラー&#10;Relation作成中、エラーがでるのでやめた。" />
     <MESSAGE value="動かないVersion Del later&#10;Detail でTrade表示&#10;Balanceを表示できる。&#10;多少エラー" />
-    <option name="LAST_COMMIT_MESSAGE" value="動かないVersion Del later&#10;Detail でTrade表示&#10;Balanceを表示できる。&#10;多少エラー" />
+    <MESSAGE value="Detail でTrade表示&#10;Balanceを表示できる。&#10;多少エラー" />
+    <option name="LAST_COMMIT_MESSAGE" value="Detail でTrade表示&#10;Balanceを表示できる。&#10;多少エラー" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -913,12 +920,12 @@
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
+          <url>file://$PROJECT_DIR$/stock/views/views.py</url>
           <line>346</line>
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
+          <url>file://$PROJECT_DIR$/stock/views/views.py</url>
           <line>342</line>
           <option name="timeStamp" value="155" />
         </line-breakpoint>
@@ -933,7 +940,7 @@
           <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/stock/views.py</url>
+          <url>file://$PROJECT_DIR$/stock/views/views.py</url>
           <line>393</line>
           <option name="timeStamp" value="173" />
         </line-breakpoint>
@@ -971,7 +978,7 @@
     <SUITE FILE_PATH="coverage/winStock$del_migrations.coverage" NAME="del_migrations Coverage Results" MODIFIED="1699753646989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$stockChart.coverage" NAME="stockChart Coverage Results" MODIFIED="1663030226009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
     <SUITE FILE_PATH="coverage/winStock$showmigrations.coverage" NAME="showmigrations Coverage Results" MODIFIED="1663310686646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/winStock2$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1702530138834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/winStock2$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1702572036451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/winStock$testYahooFinance2.coverage" NAME="testYahooFinance2 Coverage Results" MODIFIED="1662852078731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/miscellaneous" />
     <SUITE FILE_PATH="coverage/winStock$myMailRead.coverage" NAME="myMailRead Coverage Results" MODIFIED="1664865476907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/stock" />
     <SUITE FILE_PATH="coverage/winStock$runserver.coverage" NAME="runserver Coverage Results" MODIFIED="1699804403254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

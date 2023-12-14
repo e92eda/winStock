@@ -1,18 +1,21 @@
 from django.urls import path
 
-from . import views
+from .views import views
+from .views import stockViews
 
 
 app_name = 'stock'
 urlpatterns = [
     path('', views.IndexView.as_view(), name="index"),
     path('inquiry/', views.InquiryView.as_view(), name="inquiry"),
-    path('stock-list/', views.StockListView.as_view(), name="stock_list"),
     path('stock-create/', views.StockCreateView.as_view(), name="stock_create"),
     path('stock-update/<str:pk>/', views.StockUpdateView.as_view(), name="stock_update"),
     path('stock-delete/<str:pk>/', views.StockDeleteView.as_view(), name="stock_delete"),
 
-# グラフ描画
+# in views.stockViews file
+    path('stock-list/', stockViews.StockListView.as_view(), name="stock_list"),
+
+    # グラフ描画
     path('stock-detail/<str:pk>/', views.StockDetailView.as_view(), name="stock_detail"),
     path('stock-detail/<str:pk>/plot/', views.get_svg, name='plot'),
     path('stock-detail-pre/<str:pk>/', views.stock_detail_pre, name='stock_detail_pre'),
